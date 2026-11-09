@@ -12,6 +12,8 @@
 .hero .h1 .dim{color:rgba(255,255,255,.45)}
 .hero-intro{display:flex;flex-direction:column;gap:28px;width:400px;max-width:100%;align-items:flex-start;position:relative;z-index:2}
 .hero-intro p{font-size:20px;line-height:1.5;color:rgba(255,255,255,.8)}
+/* Figma 63:4341 — hero is 924 tall; the product strip ends at 860, leaving 64 below */
+.hero .wrap{padding-bottom:64px}
 .plinks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;padding-bottom:40px;position:relative;z-index:2}
 .plink{display:flex;flex-direction:column;justify-content:space-between;min-height:176px;padding:24px;border-radius:16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:#fff;transition:background .3s,border-color .3s,color .3s,transform .4s cubic-bezier(.2,.8,.2,1);backdrop-filter:blur(2px)}
 .plink .top{display:flex;justify-content:space-between;align-items:center;gap:12px}
@@ -39,19 +41,33 @@
 .fig.loyal{grid-column:span 2;background:var(--ink);color:#fff;border:0;flex-direction:row;gap:40px;padding:32px 40px}
 .fig.loyal>div{flex:1;display:flex;flex-direction:column;justify-content:space-between;gap:24px;min-width:0}
 .fig.loyal p{color:rgba(255,255,255,.7)}
-.presence{margin-top:16px;padding:40px;border-radius:20px;background:#fff;border:1px solid rgba(6,11,34,.08);display:flex;flex-direction:column;gap:40px}
+.presence{margin-top:64px;padding:40px;border-radius:20px;background:#fff;border:1px solid rgba(6,11,34,.08);display:flex;flex-direction:column;gap:24px}
 .presence .hd{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
 .presence .hd h3{font-weight:500;font-size:clamp(28px,2.29vw,44px);line-height:1.1;letter-spacing:-.03em;margin-top:16px}
 .presence .hd p{width:420px;max-width:100%;font-size:16px;line-height:1.5;color:var(--muted)}
-.ruler{position:relative;height:96px;--l:24px}
-.ruler .axis{position:absolute;left:0;right:0;top:60px;height:1px;background:rgba(6,11,34,.12)}
-.ruler .tick{position:absolute;top:56px;width:1px;height:8px;background:rgba(6,11,34,.2);left:calc(var(--l) + (100% - 2*var(--l)) * var(--k) / 13)}
-.ruler .tick span{position:absolute;top:18px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:11px;color:var(--muted)}
-.ruler .pin{position:absolute;top:8px;left:calc(var(--l) + (100% - 2*var(--l)) * var(--k) / 13);transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0}
-.ruler .pin em{font-style:normal;font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.04em;padding:7px 12px;border-radius:999px;background:var(--ink);color:rgba(255,255,255,.6);white-space:nowrap}
-.ruler .pin i{width:12px;height:12px;border-radius:50%;background:var(--brand);border:2px solid #fff;box-shadow:0 0 0 1px var(--brand);margin-top:20px;position:relative}
-.ruler .pin i::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1px solid var(--brand);opacity:0;animation:ping 2.6s ease-out infinite;animation-delay:calc(var(--k) * .18s)}
-@keyframes ping{0%{transform:scale(.5);opacity:.7}100%{transform:scale(1.6);opacity:0}}
+/* ---- Global presence · world map ----
+   Figma 347:6658 — the map frame is 1678 x 410; the landmass artwork (347:6659) sits at
+   317,2 and is 1044 x 406. Pins, labels and leader lines are placed from the Figma
+   coordinates as percentages of that frame, so the whole thing scales with the column.
+   (The build previously had an invented time-zone ruler here, 96px tall.) */
+.wmap{position:relative;aspect-ratio:1678/410;width:100%}
+.wmap .wm-base{position:absolute;left:18.8915%;top:.4878%;width:62.2169%;height:auto}
+.wmap .wm-leads{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.wmap .wm-leads line{stroke:#a2b2de;stroke-width:1;vector-effect:non-scaling-stroke}
+.wmap .wm-pin{position:absolute;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 7px rgba(34,70,189,.14)}
+.wmap .wm-pin::after{content:"";position:absolute;inset:-7px;border-radius:50%;border:1px solid var(--brand);opacity:0;animation:wmping 2.8s ease-out infinite}
+.wmap .wm-pin:nth-of-type(2)::after{animation-delay:.4s}
+.wmap .wm-pin:nth-of-type(3)::after{animation-delay:.8s}
+.wmap .wm-pin:nth-of-type(4)::after{animation-delay:1.2s}
+.wmap .wm-pin:nth-of-type(5)::after{animation-delay:1.6s}
+.wmap .wm-pin:nth-of-type(6)::after{animation-delay:2s}
+@keyframes wmping{0%{transform:scale(.6);opacity:.6}100%{transform:scale(1.7);opacity:0}}
+.wmap .wm-label{position:absolute;display:inline-flex;align-items:center;height:35px;padding:0 10px;border-radius:6px;background:#fff;color:var(--ink);font-size:16px;line-height:1;white-space:nowrap;box-shadow:0 2px 10px rgba(6,11,34,.1)}
+@media (max-width:1100px){
+  .wmap .wm-label{height:26px;padding:0 7px;font-size:12px;border-radius:5px}
+  .wmap .wm-pin{width:9px;height:9px;margin:-4.5px 0 0 -4.5px;box-shadow:0 0 0 5px rgba(34,70,189,.14)}
+}
+@media (max-width:700px){.wmap .wm-label{display:none}}
 .countries{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}
 .countries>div{border-top:1px solid rgba(6,11,34,.12);padding-top:24px;display:flex;flex-direction:column;gap:20px;transition:border-color .3s}
 .countries>div:hover{border-color:var(--brand)}
@@ -60,8 +76,11 @@
 .countries small{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--muted)}
 
 /* ---------- Products ---------- */
-.plist{display:flex;flex-direction:column;gap:16px;margin-top:64px}
-.pshow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;padding:clamp(24px,2.5vw,48px);border-radius:24px;background:var(--surface-dark);border:1px solid rgba(255,255,255,.08);position:relative;overflow:hidden;transition:border-color .4s,box-shadow .4s}
+.plist{display:flex;flex-direction:column;gap:24px;margin-top:64px}
+/* Figma 63:6335 — row padding 49, copy column 801, visual column 797, 64 between them.
+   The copy sets the row height; the visual is a fixed 797 x 465 window and the mock inside
+   it bleeds past the edges, as it does in the design. */
+.pshow{display:grid;grid-template-columns:minmax(0,801fr) minmax(0,797fr);gap:64px;align-items:center;padding:clamp(24px,2.55vw,49px);border-radius:24px;background:var(--surface-dark);border:1px solid rgba(255,255,255,.08);position:relative;overflow:hidden;transition:border-color .4s,box-shadow .4s}
 .pshow:hover{border-color:rgba(85,121,235,.35);box-shadow:0 30px 80px rgba(0,0,0,.3)}
 .pshow.flip .pcopy{order:2}
 .pcopy{display:flex;flex-direction:column;gap:24px;min-width:0}
@@ -74,8 +93,8 @@
 .pkf{display:flex;gap:40px;flex-wrap:wrap}
 .pkf b{display:block;font-weight:500;font-size:clamp(26px,1.875vw,36px);letter-spacing:-.03em;line-height:1}
 .pkf small{display:block;margin-top:8px;font-size:14px;color:rgba(255,255,255,.6)}
-.pvis{position:relative;min-width:0}
-.pvis .fit-view{width:100%}
+.pvis{position:relative;min-width:0;aspect-ratio:797/465}
+.pvis .fit-view{position:absolute;inset:0;width:100%;height:100%}
 .callout{position:absolute;display:flex;align-items:center;gap:8px;padding:7px 12px;border-radius:6px;background:#fff;color:var(--ink);font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;box-shadow:0 10px 30px rgba(0,0,0,.35);z-index:5}
 .callout::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--brand)}
 .m{position:relative;font-family:var(--sans)}

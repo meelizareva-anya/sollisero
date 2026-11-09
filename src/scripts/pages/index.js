@@ -1,13 +1,6 @@
 (() => {
   const { $, $$, RM, el, onVisible } = Sollisero;
 
-  /* ---- Time-zone ruler (About) ---- */
-  const ruler = $('#ruler');
-  if (ruler) {
-    for (let k = 0; k <= 13; k++) { const z = k - 5; const t = el('span', 'tick', `<span>${z < 0 ? '−' + (-z) : z === 0 ? '±0' : '+' + z}</span>`); t.style.setProperty('--k', k); ruler.append(t); }
-    [['US', 0], ['UK', 5], ['AM · AE', 9], ['UZ', 10], ['HK', 13]].forEach(([n, k]) => { const p = el('span', 'pin', `<em>${n}</em><i></i>`); p.style.setProperty('--k', k); ruler.append(p); });
-  }
-
   /* ---- Engagement models: moving highlight ---- */
   const models = $('#models');
   if (models) {
