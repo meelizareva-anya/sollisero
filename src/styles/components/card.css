@@ -2,7 +2,7 @@
 .s-dark .card,.s-navy .card{background:var(--surface-dark);border-color:rgba(255,255,255,.08)}
 .card-ink{border-radius:20px;background:var(--ink);color:#fff;padding:clamp(24px,2vw,40px);border:1px solid rgba(255,255,255,.08)}
 .card-blue{border-radius:20px;background:linear-gradient(138deg,var(--brand) 0%,var(--brand-deep) 100%);color:#fff;padding:clamp(24px,2vw,40px)}
-.ico{width:56px;height:56px;border-radius:14px;display:grid;place-items:center;background:rgba(85,121,235,.1);border:1px solid rgba(85,121,235,.2);color:var(--brand);flex:none}
+.ico{width:56px;height:56px;border-radius:14px;display:grid;place-items:center;background:rgba(34,70,189,.08);border:0;color:var(--brand);flex:none}
 .s-dark .ico,.s-navy .ico,.card-ink .ico,.card-blue .ico{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.14);color:#fff}
 .num-label{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.04em;color:var(--brand)}
 .s-dark .num-label,.s-navy .num-label,.card-ink .num-label,.card-blue .num-label{color:var(--accent)}

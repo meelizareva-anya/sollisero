@@ -37,3 +37,9 @@
 .fit-view{position:relative;width:100%;overflow:hidden}
 .fit-view>*{position:absolute;left:0;top:0;transform-origin:0 0}
 
+/* .wd forces the dark chrome back onto a .light window (used on light sections
+   where the mock itself is a dark product UI). */
+.win.light.wd{background:#060b22;border-color:rgba(255,255,255,.18);box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.win.light.wd .win-bar{background:#0e1a45;border-color:rgba(255,255,255,.1)}
+.win.light.wd .win-bar>i{background:rgba(255,255,255,.18)}
+.win.light.wd .win-url{background:rgba(255,255,255,.06);border:0;color:rgba(194,209,245,.8)}

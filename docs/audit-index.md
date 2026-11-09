@@ -78,3 +78,39 @@ the bleed.
 - Engagement models (−23) and the careers band (−19) are within what the font substitution
   explains; see the note in `audit-cash-solutions.md` about webfonts not loading in this
   container.
+
+---
+
+## 2026-11-10 — products section reworked outside the repo, ported back
+
+An edited single-file build of the home page was handed back and ported into source. It was
+produced from this repo's standalone export, so the day's Figma work is present in it (checked
+before porting: `wm-base` / `wm-pin` world map, `aspect-ratio:797/465`, the `801fr` product
+column — all with unchanged counts). **Nothing was removed** on either CSS layer; the edit is
+additive plus a few retuned rules.
+
+What changed:
+
+- **The products section is now a bento accordion** — one expanded card with its mock and six
+  collapsed ones, plus a "not sure which fits?" CTA card (`.bento`, `.brow`, `.bcard`, `.bhit`,
+  `.bcopy`, `.btitle`/`.bdesc` with `on-open` / `on-shut` label variants, `.barrow`, `.bvis`).
+  46 new page-level selectors. The section is 1246 tall where the Figma frame has 2884; the
+  frame describes the four-row layout it replaces, so that delta is the redesign, not a defect.
+- **Five product screenshots** arrived embedded as base64 (`.mockshot`, 580 × 456 each). They
+  are now files under `src/static/img/mock-*.png` and referenced by path — a 675 KB HTML file
+  was mostly those data URIs. They are 1×, so they will be soft on retina.
+- Shared: a `.win.light.wd` variant that forces dark chrome back onto a light window; `.ico`
+  loses its border; the footer gets a taller bottom clamp and a bigger wordmark.
+- Shared `components/hero.js`: the hero dot field is retuned to the design — grid 38, cone
+  falloff centred at 69 % / 50 % with radius 0.727 W, flatter alpha.
+
+**The hero bottom padding needed the same care as the other two pages.** The export predates
+the shared `.hero{padding-bottom:clamp(48px,4.5vw,80px)}` merged earlier that day, so its page
+stylesheet still carried `.hero .wrap{padding-bottom:64px}` — which *stacks* on the shared rule
+instead of replacing it and pushed the hero to 1002. Rewritten as `.hero{padding-bottom:64px}`;
+re-measured at 922 against the frame's 924.
+
+Verified after porting: the rebuilt page markup and page script reproduce the upload exactly,
+and the only app-bundle differences are the earlier dspm / cash-solutions merges the export
+could not have known about. `build --check`, the 31-check e2e suite, and no overflow, broken
+images or console errors across ten pages at 375 / 768 / 1200 / 1440 / 1920.
