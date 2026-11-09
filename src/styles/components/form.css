@@ -1,0 +1,47 @@
+.cta{background:var(--cta-bg);overflow:hidden;padding-top:96px;padding-bottom:96px;color:#fff}
+.cta .sec-head{border-color:rgba(255,255,255,.2)}
+.cta canvas.dots{position:absolute;right:-80px;top:120px;width:min(1100px,60vw);height:900px;pointer-events:none}
+.cta-grid{position:relative;display:grid;grid-template-columns:1fr 640px;gap:60px;align-items:center;min-height:612px}
+.cta h2{font-weight:500;font-size:clamp(44px,5.833vw,112px);line-height:1.04;letter-spacing:-.04em}
+.cta h2 .dim{color:rgba(194,209,245,.7)}
+.cta .copy p{font-size:20px;line-height:1.5;color:rgba(255,255,255,.8);max-width:560px;margin:40px 0}
+.contacts{display:flex;gap:48px;flex-wrap:wrap}
+.contacts small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:rgba(255,255,255,.6);text-transform:uppercase;margin-bottom:8px}
+.contacts a{font-family:var(--mono);font-size:15px}
+.contacts a:hover{text-decoration:underline}
+.form{background:var(--ink);border-radius:20px;padding:40px;display:grid;grid-template-columns:1fr 1fr;gap:24px 16px;box-shadow:0 40px 100px rgba(0,0,0,.35);position:relative;color:#fff}
+.form .full{grid-column:1/-1}
+.form h3{grid-column:1/-1;font-family:var(--mono);font-weight:400;font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+.field label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:10px}
+.field input,.field textarea,.field select{width:100%;background:#111a44;border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:16px;font-size:16px;color:#fff;outline:none;transition:border-color .2s,background .2s;resize:vertical}
+.field textarea{min-height:120px}
+.field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,.35)}
+.field input:focus,.field textarea:focus{border-color:var(--accent);background:#141f52}
+.field.err input{border-color:var(--red)}
+.field .e{display:block;color:#ff7b80;font-size:12px;margin-top:6px}
+.form-foot{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:8px;flex-wrap:wrap}
+.form-foot p{font-size:13px;color:rgba(255,255,255,.55);max-width:260px;line-height:1.5}
+.form .done{position:absolute;inset:0;border-radius:20px;background:var(--ink);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:16px;padding:40px;opacity:0;pointer-events:none;transition:opacity .4s}
+.form.sent .done{opacity:1;pointer-events:auto}
+.done h4{font-size:32px;font-weight:500;letter-spacing:-.02em}
+.done p{color:rgba(255,255,255,.7);font-size:16px;line-height:1.5;max-width:420px}
+.done .ok{width:56px;height:56px;border-radius:50%;background:var(--brand);display:grid;place-items:center}
+
+
+/* ---------- Consent checkbox (one component for every lead form) ----------
+   Tune per page via --consent-w / --consent-fs / --consent-c / --consent-accent on .form */
+.form .consent{display:flex;gap:10px;align-items:flex-start;max-width:var(--consent-w,290px);font-size:var(--consent-fs,13px);line-height:1.5;color:var(--consent-c,rgba(255,255,255,.5));cursor:pointer;font-family:var(--sans);letter-spacing:0;text-transform:none;margin:0}
+.form .consent input[type="checkbox"]{width:16px;height:16px;margin:2px 0 0;padding:0;border:0;background:none;flex:none;cursor:pointer;accent-color:var(--consent-accent,var(--accent))}
+.consent a{text-decoration:underline}
+.consent input[aria-invalid="true"]{outline:2px solid var(--red);outline-offset:2px}
+
+/* ---------- Anti-spam honeypot: invisible to people, filled by naive bots ---------- */
+.hp{position:absolute!important;left:-10000px!important;width:1px;height:1px;overflow:hidden}
+
+/* ---------- Submission states ---------- */
+.form [type="submit"][aria-busy="true"]{opacity:.7;cursor:progress}
+.form [type="submit"][aria-busy="true"] .arr{animation:form-spin 1s linear infinite}
+@keyframes form-spin{to{transform:rotate(360deg)}}
+.form-status{grid-column:1/-1;margin:0;padding:12px 16px;border-radius:10px;background:rgba(229,72,77,.12);border:1px solid rgba(229,72,77,.4);color:#ffb3b5;font-size:14px;line-height:1.5}
+.form-status[hidden]{display:none}
+.form-status a{text-decoration:underline}

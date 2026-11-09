@@ -1,0 +1,49 @@
+/* ==========================================================================
+   Product themes (Figma variables "Product theme", 8 modes).
+   Activated by <body data-product="…"> (set from the page front matter).
+   Only brand-level tokens belong here; page-private variables stay in pages/<slug>.css.
+   ========================================================================== */
+
+/* dspm — Sollisero Blue with a lighter accent */
+body[data-product="dspm"]{
+  --vivid:#3d6bff;--vivid-deep:#0429a8;
+  --accent:#5579eb;--pale:#c9d5ff;
+}
+
+/* Sollisero ATM — ocean blue */
+body[data-product="atm"]{
+  --vivid:#0a85c2;--vivid-deep:#064f78;
+  --brand:#0a85c2;--brand-deep:#064f78;--brand-bright:#0a85c2;
+  --accent:#3fb6ee;--pale:#cde9f6;--chip:#9fdcff;
+}
+
+/* cash solutions — indigo */
+body[data-product="cash"]{--vivid:#4a3fd6;--vivid-deep:#2a2190;--hero-bg:linear-gradient(138deg,var(--vivid) 0%,var(--vivid-deep) 71%)}
+
+/* retail banking — cornflower */
+body[data-product="retail"]{--vivid:#4a6bdf;--vivid-deep:#2240a8}
+
+/* digital employees — cerulean */
+body[data-product="work-it"]{--vivid:#0079ad;--vivid-deep:#004a6b;--hero-bg:linear-gradient(141deg,var(--vivid) 0%,var(--vivid-deep) 71%)}
+
+/* meeting notes — charcoal surfaces, lime accent. Lime is only ever paired with dark text. */
+body[data-product="meetly"]{
+  --vivid:#a6da0e;--vivid-deep:#5f8300;
+  --ink:#0b0c09;--surface-dark:#15170f;--surface-dark-2:#1d2015;--screen:#101209;--foot:#070806;
+  --brand:#22251c;--brand-deep:#0b0c09;--brand-bright:#5f8300;
+  --accent:#a6da0e;--pale:#ecfbc2;--chip:#d9f28a;
+  --win-bar:#eef0e8;--win-screen:#f7f8f4;--win-line:rgba(11,12,9,.16);
+  --glass:rgba(11,12,9,.82);
+  --hero-bg:linear-gradient(136deg,#15170f 0%,#0b0c09 71%);
+  --cta-bg:linear-gradient(151deg,#22251c 0%,#0b0c09 71%);
+}
+
+/* bim-agent — deep teal */
+body[data-product="bim"]{
+  --vivid:#14808c;--vivid-deep:#0a4a52;
+  --ink:#06262d;--surface-dark:#0a3338;--surface-dark-2:#0d4047;--screen:#082b30;--foot:#041c20;
+  --brand:#14808c;--brand-deep:#0a4a52;--brand-bright:#14808c;
+  --accent:#2ec4b6;--pale:#9fe3dc;--chip:#9fe3dc;
+  --hero-bg:radial-gradient(1200px 700px at 78% 30%,rgba(20,128,140,.55),transparent 60%),linear-gradient(143deg,#0b3d44 0%,#06262d 71%);
+  --cta-bg:linear-gradient(138deg,var(--brand) 0%,var(--brand-deep) 71%);
+}

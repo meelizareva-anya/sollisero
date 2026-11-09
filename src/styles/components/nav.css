@@ -1,0 +1,48 @@
+/* ==========================================================================
+   Site navigation (Figma "Nav" 63:4344, mobile overlay 287:7028).
+   Same on every page: logo · product links + Careers · "Discuss a project".
+   Desktop ≥1280px: inline links (tightened ≤1600px). Below 1280px: burger + full-screen menu.
+   ========================================================================== */
+.nav-wrap{position:fixed;inset:0 0 auto;z-index:50;transition:background .35s,backdrop-filter .35s}
+.nav-wrap.scrolled{background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:40px;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,.14);transition:padding .35s,border-color .35s}
+.scrolled .nav{padding-top:16px;padding-bottom:16px;border-color:transparent}
+.logo{font-size:26px;font-weight:500;letter-spacing:-.03em;color:#fff;line-height:1;flex:none}
+
+.nav-links{display:flex;gap:32px;align-items:flex-start}
+.nav-links a{display:flex;flex-direction:column;align-items:center;gap:6px;font-family:var(--mono);font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.75);transition:color .2s;white-space:nowrap}
+.nav-links a::after{content:"";width:16px;height:2px;background:#fff;transform:scaleX(0);transition:transform .25s}
+.nav-links a:hover,.nav-links a.active{color:#fff}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+
+.nav-cta{padding:12px 22px;border-radius:999px;background:#fff;color:var(--ink);font-size:15px;font-weight:500;transition:background .2s;white-space:nowrap;flex:none}
+.nav-cta:hover{background:var(--pale)}
+
+.burger{display:none;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:transparent;cursor:pointer;position:relative;padding:0;flex:none}
+.burger i{position:absolute;left:13px;right:13px;height:1.5px;background:#fff;transition:transform .3s,top .3s}
+.burger i:first-child{top:17px}.burger i:last-child{top:25px}
+.menu-open .burger i:first-child{top:21px;transform:rotate(45deg)}
+.menu-open .burger i:last-child{top:21px;transform:rotate(-45deg)}
+
+.mobile-menu{display:none}
+
+/* Laptops: 8 links + CTA must fit the 1280–1600px range */
+@media (max-width:1600px){
+  .nav-links{gap:20px}
+  .nav-links a{font-size:12px;letter-spacing:.02em}
+}
+
+@media (max-width:1279px){
+  .nav-links,.nav>.nav-cta{display:none}
+  .burger{display:block}
+  .mobile-menu{display:flex;flex-direction:column;max-height:0;overflow:hidden;transition:max-height .45s ease;background:var(--ink)}
+  .menu-open .mobile-menu{max-height:calc(100dvh - 80px);overflow:auto;overscroll-behavior:contain;padding-bottom:24px}
+  .menu-open.nav-wrap{background:var(--ink)}
+  .mobile-menu .mm-label{font-family:var(--mono);font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.55);padding:28px 0 12px}
+  .mobile-menu a.mm{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+  .mobile-menu a.mm b{display:block;font-weight:500;font-size:20px;letter-spacing:-.02em}
+  .mobile-menu a.mm small{display:block;margin-top:4px;font-size:13px;color:rgba(255,255,255,.55)}
+  .mobile-menu a.mm span{font-family:var(--mono);color:rgba(255,255,255,.6)}
+  .mobile-menu a.mm[aria-current="page"] b{color:var(--accent)}
+  .mobile-menu .btn{margin-top:28px;justify-content:space-between}
+}

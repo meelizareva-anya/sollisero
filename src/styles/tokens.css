@@ -1,0 +1,50 @@
+/* ==========================================================================
+   Design tokens. Source: Figma variables (file "Solisero (рабочий)").
+   Brand-level colours are overridden per product in themes.css — components must
+   only reference these semantic names, never raw hex values for brand colours.
+   ========================================================================== */
+:root{
+  /* Brand (Sollisero Blue by default; product themes override) */
+  --brand:#2246bd;          /* primary: hero/CTA gradients, links on light, highlights */
+  --brand-deep:#0429a8;     /* gradient end */
+  --brand-bright:#1e3fd9;   /* promo surfaces */
+  --accent:#5579eb;         /* accent on dark surfaces, focus ring */
+  --pale:#c2d1f5;           /* light accent text on brand surfaces */
+  --chip:#9db4ff;           /* chip / label accent */
+  --vivid:#2246bd;          /* product signature colour (brand-architecture "vivid") */
+  --vivid-deep:#0429a8;
+
+  /* Dark surfaces */
+  --ink:#060b22;            /* page background on dark sections, primary text on light */
+  --surface-dark:#0c1433;   /* cards on dark */
+  --surface-dark-2:#0e1a45; /* raised/selected on dark */
+  --screen:#0a1130;         /* mock UI screens */
+  --foot:#050a20;           /* footer */
+  --glass:rgba(6,11,34,.78);/* sticky nav backdrop */
+
+  /* Light surfaces & text */
+  --paper:#f4f6fb;--card:#ffffff;--text:#060b22;--muted:#55607f;
+  --line:rgba(6,11,34,.14);--dim:rgba(85,96,127,.55);
+  --win-bar:#eef1f8;--win-screen:#fafbfd;--win-line:rgba(6,11,34,.12);
+
+  /* Status */
+  --red:#e5484d;--green:#3ecf8e;--amber:#f5a524;
+
+  /* Layout */
+  --pad:clamp(16px,4.1667vw,80px);   /* page gutter: 80px @1920 → 16px @390 */
+  --sec:clamp(64px,6.25vw,120px);    /* section vertical rhythm */
+  --max:1760px;                      /* content width @1920 */
+
+  /* Type */
+  --sans:"Manrope",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+
+  color-scheme:light;
+}
+
+/* Derived tokens reference other tokens, so they are declared on <body>, where product
+   themes have already been applied (a var() inside a custom property resolves where it is declared). */
+body{
+  --hero-bg:linear-gradient(138deg,var(--brand) 0%,var(--brand-deep) 71%); /* hero */
+  --cta-bg:var(--hero-bg);                                                  /* closing CTA */
+}

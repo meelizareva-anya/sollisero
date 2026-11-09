@@ -1,0 +1,26 @@
+{
+  "siteUrl": "https://sollisero.com",
+  "basePath": "/",
+  "siteName": "Sollisero",
+  "lang": "en",
+  "contactEmail": "sales@sollisero.com",
+  "forms": {
+    "endpoint": "/api/leads",
+    "timeoutMs": 15000
+  },
+  "fonts": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap",
+  "legal": [
+    {
+      "label": "Privacy policy",
+      "href": "#"
+    },
+    {
+      "label": "Terms of use",
+      "href": "#"
+    },
+    {
+      "label": "Cookie policy",
+      "href": "#"
+    }
+  ]
+}

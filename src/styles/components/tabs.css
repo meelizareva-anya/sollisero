@@ -1,0 +1,22 @@
+.adv{display:grid;grid-template-columns:620px 1fr;gap:40px;min-height:640px;margin-top:64px}
+.tabs{display:flex;flex-direction:column;gap:6px}
+.tab{display:flex;align-items:center;gap:20px;padding:20px;border:0;border-bottom:1px solid rgba(255,255,255,.08);border-radius:12px;background:transparent;color:rgba(255,255,255,.7);cursor:pointer;text-align:left;font-size:19px;font-weight:500;letter-spacing:-.01em;transition:background .25s,color .25s;position:relative;overflow:hidden}
+.tab .n{font-family:var(--mono);font-size:12px;color:var(--accent)}
+.tab .t{flex:1}
+.tab .a{font-family:var(--mono);font-weight:400;font-size:18px;opacity:0;transform:translateX(-6px);transition:opacity .25s,transform .25s}
+.tab:hover{color:#fff;background:rgba(255,255,255,.03)}
+.tab[aria-selected="true"]{background:var(--surface-dark-2);color:var(--accent);border-bottom-color:transparent}
+.tab[aria-selected="true"] .a{opacity:1;transform:none}
+.tab .prog{position:absolute;left:0;bottom:0;height:2px;background:var(--accent);width:0}
+.tab[aria-selected="true"] .prog{animation:prog var(--dur,7s) linear forwards}
+.adv.paused .tab .prog{animation-play-state:paused}
+@keyframes prog{to{width:100%}}
+.panel{position:relative;border-radius:24px;border:1px solid rgba(255,255,255,.1);padding:48px;display:flex;flex-direction:column;gap:24px;overflow:hidden;background:linear-gradient(214deg,rgba(34,70,189,.85) 10%,#0e1a45 29%,#0c1433 61%);color:#fff}
+.panel .big{position:absolute;right:20px;top:-30px;font-weight:500;font-size:220px;letter-spacing:-.06em;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(194,209,245,.18);pointer-events:none}
+.panel .k{color:var(--pale);font-family:var(--mono);font-size:12px;letter-spacing:.04em}
+.panel h3{font-weight:500;font-size:clamp(30px,2.29vw,44px);line-height:1.08;letter-spacing:-.03em;max-width:700px;position:relative}
+.panel p{font-size:17px;line-height:1.6;color:rgba(255,255,255,.7);max-width:720px;position:relative}
+.panel .swap{display:flex;flex-direction:column;gap:24px}
+.fade-swap{animation:fsw .35s ease}
+@keyframes fsw{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+

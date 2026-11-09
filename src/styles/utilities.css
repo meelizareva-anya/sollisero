@@ -1,0 +1,24 @@
+/* Scroll reveal. Hidden only when JS is running (html.js), so a failed script never blanks the page. */
+:where(.js) .rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+:where(.js) .rv.in{opacity:1;transform:none}
+
+/* Accessibility (.sr-only lives in base.css) */
+.skip-link{position:fixed;left:16px;top:-60px;z-index:100;padding:12px 18px;border-radius:999px;background:#fff;color:var(--ink);font-weight:500;transition:top .2s}
+.skip-link:focus{top:16px}
+
+/* --------------------------------------------------------------------------
+   Utilities — single-purpose, used for one-off layout tweaks in page markup instead of
+   inline style attributes. Keep this list short; anything repeated per component belongs
+   in that component's CSS.
+   They replace inline style attributes 1:1, so they carry !important to keep inline-style precedence.
+   -------------------------------------------------------------------------- */
+.u-flex{display:flex!important}.u-col{flex-direction:column!important}.u-between{justify-content:space-between!important}.u-center{align-items:center!important}
+.u-grow{flex:1!important}.u-gap-12{gap:12px!important}.u-gap-16{gap:16px!important}.u-ml-auto{margin-left:auto!important}
+.u-mt-0{margin-top:0!important}.u-mt-4{margin-top:4px!important}.u-mt-32{margin-top:32px!important}.u-mt-64{margin-top:64px!important}
+.u-m-0{margin:0!important}.u-p-0{padding:0!important}.u-b-0{border:0!important}
+.u-muted{color:var(--muted)!important}.u-text{color:var(--text)!important}.u-brand{color:var(--brand)!important}.u-ui-mute{color:var(--u-mute)!important}.u-white{color:#fff!important}
+.u-left{text-align:left!important}.u-right{text-align:right!important}.u-tc{text-align:center!important}.u-pre{white-space:pre!important}
+.u-fs-10{font-size:10px!important}.u-fs-11{font-size:11px!important}.u-fs-12{font-size:12px!important}.u-fs-14{font-size:14px!important}.u-fw-600{font-weight:600!important}
+.u-rel{position:relative!important}.u-maxw-420{max-width:420px!important}.u-maxw-1000{max-width:1000px!important}
+.u-slate{color:#5c6679!important}.u-fs-24{font-size:24px!important}.u-maxw-380{max-width:380px!important}.u-maxw-1300{max-width:1300px!important}
+.u-pad-chip{padding:2px 6px!important}.u-float-r{float:right!important}

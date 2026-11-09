@@ -1,0 +1,25 @@
+.cap-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:64px}
+.cap{position:relative;height:600px;border-radius:20px;background:var(--surface-dark);border:1px solid rgba(255,255,255,.08);padding:40px;display:flex;flex-direction:column;gap:28px;overflow:hidden;outline:none;isolation:isolate;color:#fff}
+.cap::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(138deg,var(--brand) 0%,var(--brand-deep) 75%);opacity:0;transition:opacity .45s}
+.cap-h{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.cap-h>div{display:flex;gap:24px;align-items:center}
+.cap .ico{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1);color:#fff;transition:background .4s}
+.cap h3{font-weight:500;font-size:clamp(26px,1.875vw,36px);line-height:1.1;letter-spacing:-.03em}
+.cap .no{font-family:var(--mono);font-weight:500;font-size:12px;color:var(--accent);transition:color .4s}
+.cap .win{flex:1;transition:opacity .4s,transform .5s cubic-bezier(.2,.8,.2,1)}
+.cap-fn{position:absolute;left:40px;right:40px;top:124px;bottom:40px;display:flex;flex-direction:column;opacity:0;transform:translateY(16px);transition:opacity .4s,transform .5s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+.cap-fn li{display:flex;gap:16px;padding:22px 0;border-top:1px solid rgba(255,255,255,.14);opacity:0;transform:translateX(-8px);transition:opacity .4s,transform .4s}
+.cap-fn li svg{flex:none;margin-top:2px}
+.cap-fn b{display:block;font-weight:500;font-size:20px;letter-spacing:-.01em;margin-bottom:6px}
+.cap-fn span{font-size:15px;color:rgba(255,255,255,.7);line-height:1.5}
+.cap-foot{margin-top:auto;display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:rgba(255,255,255,.7)}
+.cap-foot a{text-transform:uppercase;letter-spacing:.04em;color:#fff;pointer-events:auto}
+.cap:is(:hover,:focus-within,.open)::before{opacity:1}
+.cap:is(:hover,:focus-within,.open) .win{opacity:0;transform:translateY(24px) scale(.98)}
+.cap:is(:hover,:focus-within,.open) .cap-fn{opacity:1;transform:none;pointer-events:auto}
+.cap:is(:hover,:focus-within,.open) .cap-fn li{opacity:1;transform:none}
+.cap:is(:hover,:focus-within,.open) .cap-fn li:nth-child(2){transition-delay:.07s}
+.cap:is(:hover,:focus-within,.open) .cap-fn li:nth-child(3){transition-delay:.14s}
+.cap:is(:hover,:focus-within,.open) .ico{background:rgba(255,255,255,.14)}
+.cap:is(:hover,:focus-within,.open) .no{color:#fff}
+
