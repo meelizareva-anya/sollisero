@@ -17,8 +17,17 @@ body[data-product="atm"]{
   --accent:#3fb6ee;--pale:#cde9f6;--chip:#9fdcff;
 }
 
-/* cash solutions — indigo */
-body[data-product="cash"]{--vivid:#4a3fd6;--vivid-deep:#2a2190;--hero-bg:linear-gradient(138deg,var(--vivid) 0%,var(--vivid-deep) 71%)}
+/* cash solutions — indigo. Values are the Figma "Product theme" variables read off
+   node 60:3221 (get_variable_defs): heroA/heroB/accent/tintText/deep/surface2/surface.
+   The theme previously set only the hero gradient, so every dark surface, accent and
+   ink on the page fell back to the generic blue and nothing matched the design. */
+body[data-product="cash"]{
+  --vivid:#4a3fd6;--vivid-deep:#2c2399;
+  --accent:#5b50e8;--pale:#c4bffb;
+  --ink:#15113f;--surface-dark:#1a1550;--surface-dark-2:#221c66;--screen:#1a1550;
+  --win-bar:#eeecfe;
+  --hero-bg:linear-gradient(138deg,var(--vivid) 0%,var(--vivid-deep) 71%)
+}
 
 /* retail banking — cornflower */
 body[data-product="retail"]{--vivid:#4a6bdf;--vivid-deep:#2240a8}

@@ -23,7 +23,7 @@ try:
         pg.goto(f'http://127.0.0.1:{port}/{page}.html', wait_until='load')
         pg.wait_for_timeout(1200)
         pg.evaluate("document.querySelectorAll('.rv').forEach(e=>e.classList.add('in'))")
-        pg.add_style_tag(content="*,*::before,*::after{transition:none!important;animation:none!important}"
+        pg.add_style_tag(content="*,*::before,*::after{transition:none!important;animation:none!important}.wordmark,.h1 .w,.rv{opacity:1!important;transform:none!important}"
                                  ".nav-wrap{position:absolute!important}")
         pg.wait_for_timeout(500)
         if not ids:

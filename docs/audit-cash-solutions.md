@@ -151,3 +151,198 @@ Figma desktop `60:2776`, mobile `60:4077`. File key `GqV9zPNuDtmj8DHBy8C6YK`.
   in the markup; the animation still overwrites them on scroll.
   (`src/pages/careers.html` has the same `>0<` pattern on four counters — out of my scope,
   worth fixing by whoever owns that page.)
+
+---
+
+## #hero (Figma `60:2777`, 1920 × 1229) — pixel-level pass
+
+Measured with `tools/measure.py PAGE WIDTH REF_SELECTOR sel…`, which reports element rects
+relative to a reference element so they compare directly against Figma frame coordinates.
+
+Figma geometry: nav 40…109 · Hero·Main 109…961 (852 tall) · Stats 961…1165 (204) · 64 bottom
+pad. Copy (900 × 549) and Mockup (857 × 660) are centred inside the 852 block, which is what
+produces Figma's 151.5 / 96 top offsets — so `min-height:852px` + `align-items:center`
+reproduces both offsets without hard-coding either.
+
+Fixed:
+
+1. **Hero was 193 px short** (1036 vs 1229). `.hero-grid` used `padding:96px 0 64px` with a
+   560-tall visual column; now `min-height:852px`, `.hero-vis{height:660px}`, and the 64 px
+   bottom pad moved onto `.hero .stats`. Copy block was 47–50 px high throughout; stats 132 px.
+2. **Hero illustration was the wrong object.** The build drew a flat blue CSS phone
+   (`.pos-wrap > .pos.sm`); Figma has a white isometric POS terminal, `201:12665`, 586.3 × 370.2
+   at −60,335 in the mock frame. Exported the node with `get_screenshot contentsOnly:true`,
+   cropped to its alpha bbox (576 × 360) → `src/static/img/pos-terminal.png`, placed at
+   −6.3% / 51.67% / 67% of `.hero-vis` (= 929, 546, 574.3 at 1920, matching the Figma artwork
+   bbox to within a pixel). **The export is 1×** — `get_screenshot` never upscales past the
+   node's natural size, and `figma.com` is blocked from this container's egress proxy so the
+   SVG/2× asset URLs from `download_assets` cannot be fetched. Allowing `www.figma.com` would
+   let this be a crisp vector instead.
+3. **Mock frame was 37 px narrow and 100 px short** — now 857 × 660 at x 983.
+4. **Portal window was 562 tall, Figma 500** (chrome 58 + screen 440). The `data-h` on the
+   `.fit-view` and the inline `.win-screen` height were both stale.
+5. **Window chrome was the light variant**; Figma's is dark indigo `#2F296F` over a white
+   screen. Scoped to `.hero-vis .portal.win.light`.
+6. **The whole portal UI was off-metric.** Figma authors it as `Cash/UI/Portal · Analytics`
+   (`137:12635`) at **758 × 551.13**, clipped by the 440-tall screen — so the sidebar profile
+   chip (y 509) and all but the first row of the top-selling list fall outside the window *by
+   design*. The build had `.pt{height:100%}`, which squeezed 551 px of layout into 440 and
+   inflated every row (sidebar nav pitch 30.8 vs 27.37, KPI card 85 vs 73.58, sidebar 150 vs
+   130.54). Rewrote the `.pt*` block against the Figma numbers and set `.pt{height:551.13px}`
+   so the clip is the design's clip. **Do not restore `height:100%`.**
+   - An earlier audit recorded "Maria Bell chip is not in Figma" — it *is* (`193:8391`), it is
+     simply below the clip line. Keep it.
+7. **Payment-methods card had the wrong layout and palette.** Figma stacks donut over a
+   full-width legend (Donut wrap y 31.95, Legend y 135.12); the build put them side by side,
+   which wrapped "QR pay". Segment colours: Card `#2450D6` ✓, QR pay `#1A9E8F` (was `#12A150`),
+   Cash `#C2410C` (was `#F5A524`).
+8. **Revenue-by-hour area fill rendered as solid blue.** `.in .spark .area{opacity:1}` — a CSS
+   `opacity` declaration overrides the SVG `opacity=".12"` presentation attribute. Now
+   `opacity:.12`. This was a real production bug, not a screenshot artefact.
+9. **Top-selling list had 4 rows, Figma 8**, with bar lengths as explicit px (400.06 … 184.24)
+   so each count sits just past its own bar, as in the design.
+10. **Stats columns**: Figma's first column is narrower (564.67 / 597.67 / 597.67 with 33 px
+    inner pad) so the icons land at 80 / 677.67 / 1275.33, not on equal thirds.
+11. Callouts: merchant-portal pill `right:30px;top:4px`; POS-app pill `left:-70px;top:330px`.
+
+Result: mean absolute pixel difference across the full 1920 × 1229 hero **16.3 → 11.1**, with
+no block above 25. The residual is concentrated in the headline and the background texture and
+is **not** closable here: the brand webfonts do not load in this container (`Manrope` measures
+identically to `serif`; `document.fonts` is empty), so glyph shapes and text wrapping differ
+from Figma's render. Allowing `fonts.googleapis.com` / `fonts.gstatic.com` would make a literal
+text diff meaningful.
+
+## #problem (Figma illustration `60:2900`, 780 × 520)
+
+Structure, copy, chips and legend already matched. Fixed: every dashed connector in Figma is
+the brand violet `#493FD6` (`--vivid`), including the row whose chip is red; the build drew
+rows 1–2 in `--accent` (`#5579EB`, the default blue — the `cash` theme never sets `--accent`)
+and row 3 in red. `.diagram .route`, `.dnode i` and the legend swatches now use `--vivid`.
+
+## Section heights vs Figma (1920)
+
+| section | Figma | build | Δ |
+|---|---|---|---|
+| Hero | 1229 | 1232 | +3 |
+| Problem | 1477 | 1525 | +48 |
+| Capabilities | 1712 | 1715 | +3 |
+| Hardware | 1822 | 1825 | +3 |
+| Use cases | 1604 | 1652 | +48 |
+| Industries | 1209 | 1233 | +24 |
+| Analytics | 1314 | 1297 | −17 |
+| Integrations | 1037 | 1066 | +29 |
+| Getting started | 842 | 810 | −32 |
+| Why | 1036 | 1028 | −8 |
+| FAQ | 1651 | 1489 | **−162** |
+| CTA | 906 | 907 | +1 |
+
+FAQ is the one section still materially off and is the obvious next target; the ±48 on Problem
+and Use cases is within what the font substitution alone can explain, FAQ's −162 is not.
+
+---
+
+## Product theme — the root cause behind "the illustrations don't match"
+
+Reading the Figma "Product theme" variables off node `60:3221` with `get_variable_defs`:
+
+```
+theme/heroA  #4a3fd6   theme/heroB    #2c2399   theme/accent #5b50e8
+theme/deep   #15113f   theme/surface2 #1a1550   theme/surface #221c66
+theme/tintText #c4bffb
+```
+
+`body[data-product="cash"]` was setting **only** `--vivid`, `--vivid-deep` and `--hero-bg`.
+Everything else — `--accent`, `--pale`, `--ink`, `--surface-dark`, `--surface-dark-2`,
+`--screen` — fell through to the generic Sollisero blue in `tokens.css`. That is why the
+drawings read as "not the design": the geometry was mostly right, the palette was a different
+product's. Measured before the fix: section background `#060B22` vs Figma `#15113F`, card
+surface `#0C1433` vs `#1A1550`, capability bars `#082DAB` vs `#3B31B7`, dimmed headline
+`#C2D1F5` vs `#C4BFFB`.
+
+The theme now carries the full set, matching the pattern the `meetly` and `bim` themes already
+used. Verified after: section background and gradient sample **exactly** equal to Figma's
+render; hero mean pixel difference fell 11.1 → **8.3**.
+
+Three more defects surfaced while checking the palette:
+
+- **`--hero-a` was never defined anywhere in the stylesheets**, so `.callout i` resolved to an
+  invalid value and every hero callout rendered with an invisible dot. Figma's `theme/heroA`
+  is `--vivid`.
+- `.flow .plat` (the highlighted capability bars) was painted from `--brand`/`--brand-deep`,
+  the corporate blue, not the product indigo.
+- `.stage svg.arcs` and four other page rules hard-coded `rgba(85,121,235,…)`, the *default*
+  accent, so they ignored the theme entirely. Figma draws those arcs in `theme/accent`
+  `#5B50E8`. Replaced with `color-mix(in srgb, var(--accent) N%, transparent)`.
+- The second payment-methods donut (`#use-cases` card 04) still carried the old green/amber
+  segments; unified with the hero on Figma's `#2450D6 / #1A9E8F / #C2410C`.
+
+Sections re-verified against their Figma nodes after the change: `#capabilities` (`60:3221`),
+`#hardware` (`60:3239`), `#use-cases` (`60:3252`), `#problem`, `#hero`.
+
+### Still open on this page
+
+1. **`#use-cases` card 01 — the checkout mock is a different screen.** Figma (card `01 //
+   CHECKOUT`) shows "Sale #58" with a scan-icon search field and item rows carrying quantity
+   steppers (− 2 +) and an "Edit weight" button, with the device drawn larger and cropped by
+   the card. The build shows a simpler row list with a `$17.85` total and a smaller device.
+2. **`#use-cases` card 04 and the `#analytics` window render their inner UI larger than Figma**
+   — the same class of defect fixed in the hero portal (component authored at one scale, built
+   at another). The hero fix only covers `.pt` inside `.hero-vis`.
+3. **FAQ is 162 px shorter than Figma** — the one section whose delta font substitution cannot
+   explain.
+
+---
+
+## Closing the three open items
+
+### FAQ — was −162 px, now +1
+
+11 items in both; nothing was missing. Figma `FAQ/Item` (`60:3435` …) is **105 tall on a 113
+pitch** (8 px gap), first item open at 179. The shared component rendered 97 with no gap, so
+each of the ten collapsed items lost 16 px. Corrected in the page stylesheet (header padding
+28 → 32, answer bottom padding 28 → 23, 8 px gap on the list) rather than in
+`components/faq.css`, because the other seven product pages were not checked against their own
+frames — the same correction very likely applies there and is worth a follow-up.
+
+### use cases, card 01 — the device was at the wrong scale
+
+Figma `201:11261` draws the POS device **190 × 443.33** at (112, 22) inside a 414 × 298 screen,
+i.e. the shared `.pos` (260 × 607) at **0.7308**, centred, and clipped by the card. The build
+used `scale(.52)`. The screen content was never wrong — "Sale #38", the scan search field, the
+quantity steppers and "Edit weight" were all already there and all match the Figma strings;
+they were simply rendered too small to read. One `scale()` value fixed it: measured after,
+193 / 443.9 / 190 × 443.6 against Figma's 193 / 443.9 / 190 × 443.33.
+
+### use cases card 04 and #analytics — inner UI rendered at the wrong scale
+
+Both mocks embed the **same** portal component the hero uses, at a different size, and the
+build had reimplemented each by hand instead:
+
+- **Card 04** (`60:3397`): screen 414 × 238, instance at (−109.119, −152.84) sized 633.6 ×
+  460.68 = **758 × 551.13 at 0.835884**. The x offset is exactly the 130.54 sidebar width, so
+  the crop starts where the sidebar ends and lands on Row 2 — which is why the design shows the
+  revenue chart, the donut and the top of the top-selling list and nothing else. Replaced the
+  bespoke `.mini-portal` with the real `.pt`, positioned and scaled to those numbers.
+- **#analytics** (`213:7961`): mock 1100 × 545, chrome 58, screen 1098 × 485, instance 1098 ×
+  798.34 = the same component at **1.448549**. The build stretched `.pt` to 1098 px wide while
+  leaving its internals at 758-space metrics, so the sidebar stayed 130.5 where Figma has
+  189.1. Now scaled; `.pt-kpis` measures 847.9 against Figma's 847.9.
+- That window also wears a dark chrome in Figma (`#221C66`, as the hero's is `#2F296F`), not
+  the light one.
+- Removed a `.attn` toast ("Product ranking shifted · check Drinks") that exists nowhere in
+  `213:7961` and sat on top of the Refunds KPI.
+
+### What the remaining ±48 on Problem and Use cases is
+
+Not a layout defect. In `#problem` every structural block lands within 1.4 px of Figma
+(`prob` 223.2/520 vs 222/520, `chal` 807.2/138.2 vs 806/138, `solution` top 1009.4 vs 1008).
+The entire delta is inside the solution card: its headline sits in a container measuring
+**exactly 1246 px**, the same as Figma's text frame, at the same 36 px — but the substituted
+font is wider and wraps to **three** lines (140 px) where Manrope takes **two** (94 px). 140 −
+94 = 46 ≈ the +48 on the section. It will close by itself once the webfonts can load; nothing
+to change in the markup.
+
+### Section heights after this pass
+
+Hero +3 · Problem +48 · Capabilities +3 · Hardware +3 · Use cases +48 · Industries +24 ·
+Analytics −14 · Integrations +29 · Getting started −32 · Why −8 · FAQ **+1** · CTA +1.
