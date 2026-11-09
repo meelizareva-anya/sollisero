@@ -57,3 +57,46 @@ showcases was compared against its Figma frame and fixed in `src/`. Per-page det
 `node build.mjs --check` passes; 10 pages × 5 widths (1920/1440/1024/768/390) with no horizontal
 overflow and no console errors; the 31-check end-to-end suite (CSP, forms, no-JS) passes; visual
 regression captured before and after the audit (`tools/visual-regression.py`).
+
+---
+
+## 2026-11-10 — dspm and cash solutions reworked outside the repo
+
+Two edited single-file builds of `dspm` and `cash-solutions` were handed back and ported into
+source. They were produced from the standalone exports of this repo, so all of the Figma work
+of 2026-11-09 is present in them (verified by probing for `.pos-iso`, `.uc-portal`, `#anPortal`,
+`.pt{height:551.13px}`, the `#15113f` theme and the `.835884` / `1.448549` crop scales — all
+intact before porting).
+
+**The two files carried divergent copies of the shared bundle**, because each was edited
+independently from the same export. Both sets of shared changes were merged:
+
+- `components/window.css` — chrome colours moved from literals to theme tokens
+  (`var(--ink)`, `var(--surface-dark-2)`, `var(--pale)`), so a themed page gets its own window
+  chrome. Identical output for the default theme; cash, meetly and bim now tint.
+- `components/tabs.css` — `.panel` gradient built from `--vivid` via `color-mix`.
+- `components/hero.css` — `.hero` gains `padding-bottom:clamp(48px,4.5vw,80px)`.
+  **Both pages whose hero geometry is pinned to Figma override it**: index sets 64, cash
+  solutions sets 0 because its 64 already comes from `.hero .stats`. Without those overrides
+  the heroes grow by 80 and stop matching their frames — index was re-measured at 922 (Figma
+  924) and cash solutions at 1231.6 (Figma 1229) after the merge.
+- `components/fit-view.js` — new `data-fluid-below="N"`: under N px the mock stops being a
+  fixed scaled canvas and reflows as ordinary responsive markup.
+- `partials/layout.mjs` — optional `legalSuffix` in front matter; only dspm sets it
+  (`© 2026 Sollisero // dspm`). The cash solutions file left the line untouched, so this is
+  per-page rather than site-wide.
+
+Page-level: `src/pages/{dspm,cash-solutions}.html`, `src/styles/pages/{dspm,cash-solutions}.css`
+and `src/scripts/pages/dspm{,.data}.js` were replaced from the uploads. The rebuilt page markup
+and CSS were diffed back against the uploads to confirm they reproduce them (dspm page CSS
+differs only by the comments the minifier strips; cash solutions matches exactly).
+
+The cash solutions page stylesheet came back minified with no comments, so the ten Figma
+explanations were re-attached to the rules they document — all ten anchors survived the rework.
+
+The 32-symbol SVG sprite that cash solutions now uses sat in `<body>` ahead of `<main>` in the
+export; since a page's source is only its `<main>`, it was moved inside, otherwise every
+`<use href="#i-…">` dangles (the build's anchor check catches this).
+
+Verified after porting: `build --check`, the 31-check e2e suite, and no overflow or console
+errors across ten pages at 375 / 768 / 1440 / 1920.

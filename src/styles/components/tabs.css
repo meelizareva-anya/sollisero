@@ -11,7 +11,7 @@
 .tab[aria-selected="true"] .prog{animation:prog var(--dur,7s) linear forwards}
 .adv.paused .tab .prog{animation-play-state:paused}
 @keyframes prog{to{width:100%}}
-.panel{position:relative;border-radius:24px;border:1px solid rgba(255,255,255,.1);padding:48px;display:flex;flex-direction:column;gap:24px;overflow:hidden;background:linear-gradient(214deg,rgba(34,70,189,.85) 10%,#0e1a45 29%,#0c1433 61%);color:#fff}
+.panel{position:relative;border-radius:24px;border:1px solid rgba(255,255,255,.1);padding:48px;display:flex;flex-direction:column;gap:24px;overflow:hidden;background:linear-gradient(214deg,color-mix(in srgb,var(--vivid) 85%,transparent) 10%,var(--surface-dark-2) 29%,var(--surface-dark) 61%);color:#fff}
 .panel .big{position:absolute;right:20px;top:-30px;font-weight:500;font-size:220px;letter-spacing:-.06em;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(194,209,245,.18);pointer-events:none}
 .panel .k{color:var(--pale);font-family:var(--mono);font-size:12px;letter-spacing:.04em}
 .panel h3{font-weight:500;font-size:clamp(30px,2.29vw,44px);line-height:1.08;letter-spacing:-.03em;max-width:700px;position:relative}

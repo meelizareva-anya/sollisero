@@ -16,14 +16,6 @@
     let k = 4;
     if (!RM) setInterval(() => { const r = row(events[k++ % events.length]); r.style.animation = 'vin .5s cubic-bezier(.2,.8,.2,1)'; list.prepend(r); list.lastElementChild.remove(); }, 4200);
   }
-  const viol = [
-    ['PUSH /analytics','card=5536 •••• 0217','PCI'],
-    ['POST /crm/export','email=i•••@bank.ru','PII'],
-    ['GET /reports/raw','phone=+7 ••• •• 42','PII'],
-    ['PUT /s3/customer-exports','iban=DE•• •••• 3301','PCI']
-  ];
-  const vrow = $('#vrow'); let vi = 0;
-  if (vrow && !RM) setInterval(() => { vi = (vi+1) % viol.length; const v = viol[vi]; vrow.innerHTML = `<div class="line"><b>${v[0]}</b><span class="v">${v[1]}</span><b>${v[2]}</b><span class="tag-red">Violation</span></div>`; }, 3600);
 
   /* ---- Capabilities: policy toggles are clickable ---- */
   $$('.tgl').forEach(t => t.addEventListener('click', e => { e.stopPropagation(); t.classList.toggle('on'); }));

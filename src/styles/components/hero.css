@@ -1,4 +1,4 @@
-.hero{background:var(--hero-bg);overflow:hidden;padding-top:109px;color:#fff}
+.hero{background:var(--hero-bg);overflow:hidden;padding-top:109px;padding-bottom:clamp(48px,4.5vw,80px);color:#fff}
 .texture{position:absolute;inset:0 -40px auto;height:968px;overflow:hidden;font-family:var(--mono);font-size:13px;line-height:1.7;color:rgba(255,255,255,.045);white-space:pre;pointer-events:none;user-select:none}
 .texture div{animation:drift 90s linear infinite}
 .texture div:nth-child(even){animation-direction:reverse;animation-duration:120s}

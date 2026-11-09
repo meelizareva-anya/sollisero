@@ -1,7 +1,9 @@
-.win{display:flex;flex-direction:column;border-radius:14px;overflow:hidden;background:#060b22;border:1px solid rgba(255,255,255,.18);box-shadow:0 30px 80px rgba(0,0,0,.35);min-height:0}
-.win-bar{display:flex;gap:8px;align-items:center;padding:14px 18px;background:#0e1a45;border-bottom:1px solid rgba(255,255,255,.1);flex:none}
-.win-bar>i{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.18)}
-.win-url{display:flex;gap:8px;align-items:center;margin-left:4px;padding:6px 14px;border-radius:6px;background:rgba(255,255,255,.06);font-family:var(--mono);font-size:13px;color:rgba(194,209,245,.8);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* Chrome colours come from the product theme, not literals, so a themed page
+   (cash solutions, meeting notes, bim) gets its own window chrome. */
+.win{display:flex;flex-direction:column;border-radius:14px;overflow:hidden;background:var(--ink);border:1px solid rgba(255,255,255,.18);box-shadow:0 30px 80px rgba(0,0,0,.35);min-height:0}
+.win-bar{display:flex;gap:8px;align-items:center;padding:14px 18px;background:var(--surface-dark-2);border-bottom:1px solid rgba(255,255,255,.1);flex:none}
+.win-bar>i{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.3)}
+.win-url{display:flex;gap:8px;align-items:center;margin-left:4px;padding:6px 14px;border-radius:6px;background:rgba(255,255,255,.1);font-family:var(--mono);font-size:13px;color:var(--pale);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .win-url i{width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none}
 .win-screen{position:relative;flex:1;min-height:0;background:var(--screen);overflow:hidden}
 .win.light{background:var(--card);border-color:var(--win-line);box-shadow:0 24px 64px rgba(6,11,34,.08)}

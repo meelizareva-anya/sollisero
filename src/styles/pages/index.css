@@ -13,7 +13,7 @@
 .hero-intro{display:flex;flex-direction:column;gap:28px;width:400px;max-width:100%;align-items:flex-start;position:relative;z-index:2}
 .hero-intro p{font-size:20px;line-height:1.5;color:rgba(255,255,255,.8)}
 /* Figma 63:4341 — hero is 924 tall; the product strip ends at 860, leaving 64 below */
-.hero .wrap{padding-bottom:64px}
+.hero{padding-bottom:64px}
 .plinks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;padding-bottom:40px;position:relative;z-index:2}
 .plink{display:flex;flex-direction:column;justify-content:space-between;min-height:176px;padding:24px;border-radius:16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:#fff;transition:background .3s,border-color .3s,color .3s,transform .4s cubic-bezier(.2,.8,.2,1);backdrop-filter:blur(2px)}
 .plink .top{display:flex;justify-content:space-between;align-items:center;gap:12px}
