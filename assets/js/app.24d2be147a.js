@@ -136,7 +136,7 @@ Sollisero.component('dot-field', () => {
   $$('canvas.dots').forEach((canvas) => {
     const host = canvas.parentElement;
     const ctx = canvas.getContext('2d');
-    const GRID = 22, HOVER_R = 140;
+    const GRID = 38, HOVER_R = 140;
     let W = 0, H = 0, pts = [], mx = -999, my = -999, running = false;
 
     const resize = () => {
@@ -149,14 +149,17 @@ Sollisero.component('dot-field', () => {
     };
     const draw = (t) => {
       ctx.clearRect(0, 0, W, H);
+      // Cone falloff from the design: centre at 69%/50%, radius 0.727W, max r 7.85.
+      const cx = W * 0.69, cy = H * 0.5, RR = W * 0.727, RMAX = 7.85;
       for (const [x, y] of pts) {
-        let r = 0.6 + 2.6 * (x / W) * (1 - Math.abs(y / H - 0.45) * 1.4);
-        r *= 0.65 + 0.55 * (Math.sin(x * 0.012 + y * 0.008 - t * 0.0012) * 0.5 + 0.5);
+        let r = RMAX * (1 - Math.hypot(x - cx, y - cy) / RR);
+        r *= 0.92 + 0.08 * (Math.sin(x * 0.012 + y * 0.008 - t * 0.0012) * 0.5 + 0.5);
         const d = Math.hypot(x - mx, y - my);
-        if (d < HOVER_R) r += (1 - d / HOVER_R) * 2.2;
-        if (r < 0.4) continue;
-        ctx.globalAlpha = Math.min(0.9, 0.18 + r * 0.22);
-        ctx.fillStyle = d < HOVER_R ? '#ffffff' : '#c2d1f5';
+        const hov = d < HOVER_R ? 1 - d / HOVER_R : 0;
+        r += hov * 1.6;
+        if (r < 1) continue;
+        ctx.globalAlpha = Math.min(0.4, 0.05 + r * 0.0101 + hov * 0.2);
+        ctx.fillStyle = '#ffffff';
         ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.fill();
       }
     };
