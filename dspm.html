@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>dspm — sensitive data monitoring for Kubernetes — Sollisero</title>
+<meta name="description" content="dspm: eBPF-powered platform that analyzes inter-service traffic and connected storage in Kubernetes, detecting security policy violations in real time.">
+<link rel="canonical" href="https://sollisero.com/dspm.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sollisero">
+<meta property="og:title" content="dspm — sensitive data monitoring for Kubernetes — Sollisero">
+<meta property="og:description" content="dspm: eBPF-powered platform that analyzes inter-service traffic and connected storage in Kubernetes, detecting security policy violations in real time.">
+<meta property="og:url" content="https://sollisero.com/dspm.html">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#060b22">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/app.4eaa599a90.css">
+<link rel="stylesheet" href="assets/css/dspm.12a77a7444.css">
+<script defer src="assets/js/app.1d15f0d5e0.js"></script>
+<script defer src="assets/js/dspm.82d4a18553.js"></script>
+</head>
+<body data-page="dspm" data-product="dspm">
+<a class="skip-link" href="#top">Skip to content</a>
+<header class="nav-wrap" id="navWrap">
+  <div class="wrap">
+    <nav class="nav" aria-label="Main">
+      <a href="index.html" class="logo" aria-label="Sollisero — home">sollisero</a>
+      <div class="nav-links">
+        <a href="atm.html">Sollisero ATM</a>
+        <a href="dspm.html" class="active" aria-current="page">dspm</a>
+        <a href="cash-solutions.html">cash solutions</a>
+        <a href="retail-banking.html">retail banking</a>
+        <a href="digital-employees.html">digital employees</a>
+        <a href="meeting-notes.html">meeting notes</a>
+        <a href="bim-agent.html">bim-agent</a>
+        <a href="careers.html">Careers</a>
+      </div>
+      <a href="#contact" class="nav-cta">Discuss a project</a>
+      <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><i></i><i></i></button>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+      <span class="mm-label">[ Products ]</span>
+      <a class="mm" href="atm.html"><div><b>Sollisero ATM</b><small>ATM network management</small></div><span aria-hidden="true">↗</span></a>
+      <a class="mm" href="dspm.html" aria-current="page"><div><b>dspm</b><small>Sensitive data monitoring for Kubernetes</small></div><span aria-hidden="true">↗</span></a>
+      <a class="mm" href="cash-solutions.html"><div><b>cash solutions</b><small>POS terminal and merchant portal</small></div><span aria-hidden="true">↗</span></a>
+      <a class="mm" href="retail-banking.html"><div><b>retail banking</b><small>Mobile bank for individuals</small></div><span aria-hidden="true">↗</span></a>
+      <a class="mm" href="digital-employees.html"><div><b>digital employees</b><small>Digital employees for business processes</small></div><span aria-hidden="true">↗</span></a>
+      <a class="mm" href="meeting-notes.html"><div><b>meeting notes</b><small>Meeting reports, tasks and decisions</small></div><span aria-hidden="true">↗</span></a>
+      <a class="mm" href="bim-agent.html"><div><b>bim-agent</b><small>BIM process automation</small></div><span aria-hidden="true">↗</span></a>
+      <span class="mm-label">[ Company ]</span>
+      <a class="mm" href="careers.html"><div><b>Careers</b><small>Open roles and how hiring works</small></div><span aria-hidden="true">↗</span></a>
+      <a href="#contact" class="btn btn-primary">Discuss a project<span class="arr">↗</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ===== 01 HERO ===== -->
+<section class="hero dspm" id="hero">
+  <div class="texture" aria-hidden="true" data-lines="POST /orders email=a•••@mail.com PII 200|GET /profile phone=+7 ••• •• 42 PII 200|POST /pay card=4276 •••• 5521 PCI 201|GET /health status=ok 200|GET /catalog items=24 200|POST /crm email=i•••@bank.ru PII 200|PUT /users/829 email=k•••@corp.io PII 204|GET /ledger iban=DE•• •••• 3301 PCI 200"></div>
+  <div class="wordmark" aria-hidden="true">dspm</div>
+  <div class="wrap">
+    <div class="hero-main">
+      <div class="hero-copy">
+        <span class="mono crumb">[ 01 ]  Products  /  dspm</span>
+        <h1 class="h1" data-split>Where does your sensitive data <span class="dim">actually go?</span></h1>
+        <div class="tag mono"><i></i>dspm — sensitive data monitoring platform</div>
+        <p class="sub">Powered by eBPF, the platform analyzes inter-service traffic and connected storage, detecting security policy violations in real time.</p>
+        <div class="ctas">
+          <a href="#contact" class="btn btn-primary">Request a demo<span class="arr">↗</span></a>
+          <a href="#capabilities" class="btn btn-ghost">Learn more</a>
+        </div>
+      </div>
+      <div class="hero-mock rv">
+        <div class="callout"><i></i>1 violation detected · just now</div>
+        <div class="win" role="img" aria-label="dspm Security overview dashboard: data sources, sensitive fields, priority events and the composition of sensitive data">
+          <div class="win-bar"><i></i><i></i><i></i><span class="win-url"><i></i>dspm.sollisero / flows</span></div>
+          <div class="win-screen">
+            <div class="fit-view" data-w="857" data-h="442" data-mode="width">
+              <div class="dash">
+                <nav class="dash-rail">
+                  <span class="dash-logo">.S<i></i></span>
+                  <span class="dash-rail-i on"><svg viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="1" width="6" height="6" rx="1.5"/><rect x="9" y="1" width="6" height="6" rx="1.5"/><rect x="1" y="9" width="6" height="6" rx="1.5"/><rect x="9" y="9" width="6" height="6" rx="1.5"/></svg>Overview</span>
+                  <span class="dash-rail-i"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><ellipse cx="8" cy="4" rx="5.5" ry="2.2"/><path d="M2.5 4v8c0 1.2 2.5 2.2 5.5 2.2s5.5-1 5.5-2.2V4"/></svg>Inventory</span>
+                  <span class="dash-rail-i"><b class="dash-dot-red"></b><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 1.5 3 3.5v4c0 3 2.1 5.3 5 6.1 2.9-.8 5-3.1 5-6.1v-4z"/></svg>Protection</span>
+                  <span class="dash-rail-i"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="2.3"/><path d="M8 1.6v2M8 12.4v2M1.6 8h2M12.4 8h2M3.5 3.5l1.4 1.4M11.1 11.1l1.4 1.4M12.5 3.5l-1.4 1.4M4.9 11.1l-1.4 1.4"/></svg>Manage</span>
+                </nav>
+                <aside class="dash-side">
+                  <span class="dash-brand">sollisero<b>/ dspm</b></span>
+                  <span class="dash-org"><i>N</i><span><b>Northstar Inc.</b><small>Production · EU-West</small></span><em>⌄</em></span>
+                  <span class="dash-lbl">[ 01 ]&nbsp;&nbsp;WORKSPACE</span>
+                  <span class="dash-ws"><b>Workspace</b><small>Northstar · production</small></span>
+                  <span class="dash-nav on"><svg viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="1" width="6" height="6" rx="1.5"/><rect x="9" y="1" width="6" height="6" rx="1.5"/><rect x="1" y="9" width="6" height="6" rx="1.5"/><rect x="9" y="9" width="6" height="6" rx="1.5"/></svg>Overview</span>
+                  <span class="dash-nav"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="4" cy="4" r="2"/><circle cx="12" cy="12" r="2"/><path d="M6 4h3a3 3 0 0 1 3 3v3"/></svg>Data map<em>56</em></span>
+                  <span class="dash-lbl dash-lbl-row">PINNED<em>+</em></span>
+                  <span class="dash-pin"><i class="b"></i>Payments perimeter</span>
+                  <span class="dash-pin"><i class="a"></i>EU customer data</span>
+                </aside>
+                <div class="dash-main">
+                  <div class="dash-top">
+                    <span class="dash-crumb">Workspace<em>›</em><b>Overview</b></span>
+                    <span class="dash-search"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="4.5"/><path d="m11 11 3 3"/></svg>Search assets, events, policies...<em>⌘K</em></span>
+                    <span class="dash-ico">?</span>
+                    <span class="dash-ico"><b class="dash-dot-red"></b><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 7a4 4 0 0 1 8 0c0 3 1 4 1 4H3s1-1 1-4Z"/><path d="M6.8 13.2a1.6 1.6 0 0 0 2.4 0"/></svg></span>
+                    <span class="dash-copilot"><svg viewBox="0 0 16 16" fill="currentColor"><path d="m8 1.6 1.5 4.3 4.3 1.5-4.3 1.5L8 13.2 6.5 8.9 2.2 7.4l4.3-1.5z"/></svg>Copilot</span>
+                  </div>
+                  <div class="dash-body">
+                    <div class="dash-head">
+                      <div>
+                        <span class="dash-eyebrow">[ 01 ]&nbsp;&nbsp;DATA SECURITY</span>
+                        <h4>Security overview<span class="dash-live"><i></i>Live monitoring</span></h4>
+                        <p>Sensitive data, priority events and the state of your infrastructure.</p>
+                      </div>
+                      <div class="dash-head-act">
+                        <span class="dash-btn"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="3" width="12" height="11" rx="2"/><path d="M2 6.5h12M5.5 1.5v3M10.5 1.5v3"/></svg>Last 7 days</span>
+                        <span class="dash-btn pri"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 12V7M6 12V3M10 12v-4M14 12V5"/></svg>Explore data</span>
+                      </div>
+                    </div>
+                    <div class="dash-wiz">
+                      <div class="dash-wiz-h">
+                        <div><span class="dash-eyebrow">FIRST STEPS&nbsp;·&nbsp;1 OF 3 DONE</span><b>From the first resource to a clear risk</b></div>
+                        <span class="dash-wiz-a"><em>→</em>Show me how<i>×</i></span>
+                      </div>
+                      <div class="dash-steps">
+                        <span class="dash-step"><i class="ok"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m4 8.2 2.6 2.6L12 5.4"/></svg></i><span><b>Explore sensitive data</b><small>Open the customer-exports card</small></span><em>→</em></span>
+                        <span class="dash-step"><i>2</i><span><b>Trace links on the map</b><small>Select a resource, explore neighbours</small></span><em>→</em></span>
+                        <span class="dash-step"><i>3</i><span><b>Review the first event</b><small>See the cause and affected data</small></span><em>→</em></span>
+                      </div>
+                    </div>
+                    <div class="dash-kpis">
+                      <span class="dash-kpi">
+                        <span class="dash-kpi-h"><i class="b"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="8" cy="4" rx="5" ry="2"/><path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4"/></svg></i>Data sources<em>›</em></span>
+                        <span class="dash-val"><b data-count="33">33</b><em class="dash-up">+3</em></span>
+                        <small>15 data stores · 18 services</small>
+                      </span>
+                      <span class="dash-kpi">
+                        <span class="dash-kpi-h"><i class="b"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 7V2.6h4.4L14 10.2 10.2 14 2.6 6.4"/><circle cx="4.6" cy="4.6" r="1"/></svg></i>Sensitive fields<em>›</em></span>
+                        <b>4,132</b>
+                        <span class="dash-bar"><i style="width:55%"></i></span>
+                        <small>in 12 data stores and 2 services</small>
+                      </span>
+                      <span class="dash-kpi warn">
+                        <span class="dash-kpi-h"><i class="r"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2.2 14.4 13H1.6z"/><path d="M8 6.6v3M8 11.2v.4"/></svg></i>Need attention<em>›</em></span>
+                        <b>7</b>
+                        <small class="r">Critical 2 · High 5</small>
+                      </span>
+                      <span class="dash-kpi">
+                        <span class="dash-kpi-h"><i class="b"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3.5 9.5a4.5 4.5 0 0 1 9 0"/><circle cx="8" cy="12" r="1.3"/></svg></i>Sensors online<em>›</em></span>
+                        <b>1<span class="dash-of"> / 3</span></b>
+                        <span class="dash-bar a"><i style="width:33%"></i></span>
+                        <small class="a">No signal from 2 sensors</small>
+                      </span>
+                    </div>
+                    <div class="dash-panels">
+                      <section class="dash-panel">
+                        <span class="dash-panel-h"><span><b>Priority events</b><small>Start with what affects security most.</small></span><em>All events →</em></span>
+                        <span class="dash-ev"><i><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2.6 13.8 13H2.2z"/><path d="M8 6.6v3M8 11.2v.4"/></svg></i><span class="m"><b>Card numbers sent over plaintext HTTP</b><small>checkout-api → payments_ledger</small></span><span class="sev"><span class="bars c"><i></i><i></i><i></i><i></i></span>94<em>Critical</em><u>12 min</u></span></span>
+                        <span class="dash-ev"><i><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2.6 13.8 13H2.2z"/><path d="M8 6.6v3M8 11.2v.4"/></svg></i><span class="m"><b>Public bucket exposes customer PII</b><small>s3://exports-eu · 2,148 objects</small></span><span class="sev"><span class="bars c"><i></i><i></i><i></i><i></i></span>94<em>Critical</em><u>1 h</u></span></span>
+                        <span class="dash-ev"><i class="h"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2.6 13.8 13H2.2z"/><path d="M8 6.6v3M8 11.2v.4"/></svg></i><span class="m"><b>Secret detected in application logs</b><small>auth-svc · api-key</small></span><span class="sev"><span class="bars h"><i></i><i></i><i></i><i></i></span>72<em>High</em><u>3 h</u></span></span>
+                      </section>
+                      <section class="dash-panel">
+                        <span class="dash-panel-h"><span><b>What we found</b><small>Composition of sensitive data</small></span><svg class="dash-tag" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 7V2.6h4.4L14 10.2 10.2 14 2.6 6.4"/><circle cx="4.6" cy="4.6" r="1"/></svg></span>
+                        <span class="dash-found"><b>4,132</b><small>sensitive fields</small></span>
+                        <span class="dash-comp"><i class="b" style="width:81%"></i><i class="a" style="width:11%"></i><i class="r" style="width:8%"></i></span>
+                        <span class="dash-leg"><em><i class="b"></i>PII 81%</em><em><i class="a"></i>PCI 11%</em><em><i class="r"></i>Secrets 8%</em></span>
+                        <span class="dash-src"><i><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="8" cy="4" rx="5" ry="2"/><path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4"/></svg></i><span class="m"><b>SQL databases</b><small>PostgreSQL · MySQL</small></span><span class="n"><b>14</b><small>sources</small></span></span>
+                      </section>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="vrow" id="vrow" aria-live="polite"><div class="line"><b>PUSH /analytics</b><span class="v">card=5536 •••• 0217</span><b>PCI</b><span class="tag-red">Violation</span></div></div>
+    <div class="stats">
+      <div class="stat rv"><div class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1.5 11s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="11" cy="11" r="2.5"/></svg></div><span class="n">01</span><h3>Full visibility</h3><p>into different types of sensitive data</p></div>
+      <div class="stat rv"><div class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1.5 11h4l2.5-6 4 12 2.5-6h6"/></svg></div><span class="n">02</span><h3>Continuous monitoring</h3><p>of inter-service data transfers</p></div>
+      <div class="stat rv"><div class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 2.5 20 18H2L11 2.5Z"/><path d="M11 9v4M11 15.5v.5"/></svg></div><span class="n">03</span><h3>Automated detection</h3><p>of security policy violations</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 02 PROBLEM ===== -->
+<section class="sec s-light" id="problem">
+  <div class="wrap">
+    <div class="sec-head"><span>[ 02 ]  The problem</span><span>02 / 09</span></div>
+    <div class="prob-grid">
+      <div class="rv">
+        <h2 class="title">Actual data flows are more complex <span class="dim">than the architecture diagram</span></h2>
+        <p class="lead u-mt-32">In Kubernetes, new services constantly emerge, while integrations and interaction routes continuously change. Architectural diagrams, documentation and event logs don’t always show where sensitive data is actually located, which applications process it, and where it is being transmitted — so a number of data flows remain outside the control of information security.</p>
+      </div>
+      <div class="fit-view rv" data-w="780" data-h="520" data-mode="width">
+        <div class="flow" role="img" aria-label="Planned versus actual data routes between services">
+          <div class="grid"></div>
+          <svg viewBox="0 0 760 452" aria-hidden="true">
+            <!-- planned routes -->
+            <path class="p" d="M200 26H660"/>
+            <path class="p" d="M100 52V200"/>
+            <path class="p" d="M660 52V200"/>
+            <path class="p" d="M100 252V400"/>
+            <!-- actual routes -->
+            <path class="a" id="r1" d="M200 226H560"/>
+            <path class="a" d="M660 252V400"/>
+            <path class="a red" id="r2" d="M100 330H320 M320 330H660"/>
+            <circle class="mv" r="3.5" fill="#2246bd"><animateMotion dur="3s" repeatCount="indefinite" path="M200 226H560"/></circle>
+            <circle class="mv" r="3.5" fill="#e5484d"><animateMotion dur="3.6s" begin="1s" repeatCount="indefinite" path="M100 330H660"/></circle>
+            <circle class="mv" r="3.5" fill="#2246bd"><animateMotion dur="2.6s" begin=".4s" repeatCount="indefinite" path="M660 252V400"/></circle>
+          </svg>
+          <div class="fnode" style="left:0;top:0"><i></i>api-gateway</div>
+          <div class="fnode" style="left:560px;top:0"><i></i>orders-svc</div>
+          <div class="fnode" style="left:0;top:200px"><i></i>crm-svc</div>
+          <div class="fnode" style="left:560px;top:200px"><i class="b"></i>payments-svc</div>
+          <div class="fnode" style="left:0;top:400px"><i></i>postgres</div>
+          <div class="fnode bad" style="left:560px;top:400px"><i class="r"></i>analytics</div>
+          <div class="fchip" style="left:334px;top:214px">email · PII</div>
+          <div class="fchip red" style="left:297px;top:318px">card · PCI · violation</div>
+          <div class="flegend"><span><em></em>Planned route</span><span><em class="a"></em>Actual route</span><span><u></u>Sensitive data</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="three">
+      <div class="rv"><h3><span class="num-label">01</span>Incomplete data visibility</h3><p>Sensitive data is distributed across services, databases and storage systems. Getting a unified picture of its flow becomes difficult.</p></div>
+      <div class="rv"><h3><span class="num-label">02</span>Unauthorized data transfers</h3><p>Changes can create new routes where sensitive data is transmitted outside of authorized interactions.</p></div>
+      <div class="rv"><h3><span class="num-label">03</span>Complex incident investigations</h3><p>To investigate violations, data from multiple sources must be correlated without a unified data transfer context.</p></div>
+    </div>
+    <div class="solution rv">
+      <div class="top"><span class="mono">[ Solution ]</span><p>dspm maps every sensitive data route automatically and ties each discovery to the service, endpoint and interaction behind it — one context instead of scattered logs.</p></div>
+      <div class="bot"><p>Control not only over transfers planned by the architecture, but over the actual interactions between infrastructure components.</p><a href="#contact" class="btn btn-primary">Request a demo<span class="arr">↗</span></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 03 CAPABILITIES ===== -->
+<section class="sec s-dark" id="capabilities">
+  <div class="wrap">
+    <div class="sec-head"><span>[ 03 ]  Capabilities</span><span>03 / 09</span></div>
+    <div class="split">
+      <h2 class="title rv">Sensitive data monitoring, <span class="dim">end to end</span></h2>
+      <div class="rv u-flex u-col u-gap-16 u-maxw-380"><p class="lead">Four capabilities, twelve functions. One platform from detection to investigation.</p><div class="hint"><b>↖</b><span class="hint-t">Hover over a card to see details</span></div></div>
+    </div>
+    <div class="cap-grid">
+      <!-- 01 -->
+      <article class="cap rv">
+        <div class="cap-h"><div><span class="ico"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11.5" cy="11.5" r="7"/><path d="m17 17 6 6"/></svg></span><h3>Sensitive Data Detection</h3></div><span class="no">01</span></div>
+        <div class="win"><div class="win-bar"><i></i><i></i><i></i><span class="win-url"><i></i>dspm.sollisero / discovery</span></div><div class="win-screen"><div class="ui">
+          <div class="ui-h"><b>Data types</b><small>A single dictionary of sensitive data and how it spreads across your infrastructure.</small><span class="pill blue">+ Add data type</span></div>
+          <div class="kpis" style="grid-template-columns:repeat(3,1fr)"><div class="kpi"><small>Personal data</small><b>18</b><span class="d">PII · 12 types · 1,401 fields</span></div><div class="kpi"><small>Payment data</small><b>9</b><span class="d">PCI · 5 types · 461 fields</span></div><div class="kpi"><small>Secrets</small><b>6</b><span class="d">Tokens · 831 fields</span></div></div>
+          <table class="tbl"><thead><tr><th>Data type</th><th>Category</th><th>Sensitivity</th><th class="num">Stores</th><th class="num">Services</th></tr></thead><tbody>
+            <tr><td class="k">Birth date<span class="s">Built-in detector</span></td><td><span class="pill">PII</span></td><td><span class="pill amber">Medium</span></td><td class="num">11</td><td class="num">4</td></tr>
+            <tr><td class="k">Driver license<span class="s">Built-in detector</span></td><td><span class="pill">PII</span></td><td><span class="pill red">High</span></td><td class="num">3</td><td class="num">2</td></tr>
+            <tr><td class="k">Email<span class="s">Built-in detector</span></td><td><span class="pill">PII</span></td><td><span class="pill amber">Medium</span></td><td class="num">16</td><td class="num">9</td></tr>
+            <tr><td class="k">IBAN<span class="s">Built-in detector</span></td><td><span class="pill blue">PCI</span></td><td><span class="pill red">High</span></td><td class="num">7</td><td class="num">3</td></tr>
+            <tr><td class="k">Card number<span class="s">Built-in detector</span></td><td><span class="pill blue">PCI</span></td><td><span class="pill red">High</span></td><td class="num">5</td><td class="num">4</td></tr>
+          </tbody></table>
+        </div></div></div>
+        <ul class="cap-fn">
+          <li><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="9.5"/><path d="m6.5 11 3 3 6-6"/></svg><div><b>Traffic and storage analysis</b><span>Locate sensitive data in inter-service requests, databases, and connected storage systems.</span></div></li>
+          <li><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="9.5"/><path d="m6.5 11 3 3 6-6"/></svg><div><b>Automated classification</b><span>Determine sensitive data types based on its content and structure.</span></div></li>
+          <li><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="9.5"/><path d="m6.5 11 3 3 6-6"/></svg><div><b>Infrastructure mapping</b><span>Identify which services and storage systems contain the discovered data.</span></div></li>
+          <li class="cap-foot u-b-0 u-p-0"><span>dspm.sollisero / discovery</span><a href="#contact">Open in product  →</a></li>
+        </ul>
+      </article>
+      <!-- 02 -->
+      <article class="cap rv">
+        <div class="cap-h"><div><span class="ico"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9h17l-4-4M23 17H6l4 4"/></svg></span><h3>Inter-Service Transfer Analysis</h3></div><span class="no">02</span></div>
+        <div class="win"><div class="win-bar"><i></i><i></i><i></i><span class="win-url"><i></i>dspm.sollisero / flow-map</span></div><div class="win-screen"><div class="ui">
+          <div class="ui-h"><b>Data map</b><small>From the entry point to the data store — follow the path of sensitive data.</small><span class="pill blue">Share view</span></div>
+          <div class="cols">
+            <div class="col"><h6>External <b>3</b></h6><div class="node">internet<small>Public ingress · 4 connections</small></div><div class="node">payment-provider<small>Partner API · 2 connections</small></div><div class="node risk">partner-sftp <span class="rk">1 risk</span><small>File drop · 1 connection</small></div></div>
+            <div class="col"><h6>Services <b>14</b></h6><div class="node risk">checkout-api <span class="rk">2 risks</span><small>payments · 6 connections</small><span class="bar"><i></i><i></i><i class="r"></i><i></i><i></i></span></div><div class="node">payments-core<small>payments · 3 connections</small><span class="bar"><i></i><i></i><i></i></span></div><div class="node">user-profile<small>identity · 5 connections</small></div><div class="node risk">crm-sync <span class="rk">1 risk</span><small>crm · 2 connections</small></div></div>
+            <div class="col store"><h6>Data stores <b>11</b></h6><div class="node risk">PostgreSQL <span class="rk">6 risks</span><small>3 clusters · 9 schemas</small></div><div class="node">Kafka<small>events-bus · 6 connections</small></div><div class="node">S3 / archive<small>cold storage · 2 connections</small></div></div>
+          </div>
+        </div></div></div>
+        <ul class="cap-fn">
+          <li><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="9.5"/><path d="m6.5 11 3 3 6-6"/></svg><div><b>Actual data flows</b><span>Identify which sensitive data is being transmitted between services.</span></div></li>
+          <li><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="9.5"/><path d="m6.5 11 3 3 6-6"/></svg><div><b>Interaction context</b><span>Link discovered data with sources, recipients, and endpoints.</span></div></li>
+          <li><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="9.5"/><path d="m6.5 11 3 3 6-6"/></svg><div><b>Real-time visibility</b><span>Account for changes in inter-service interactions without manual diagram updates.</span></div></li>
+          <li class="cap-foot u-b-0 u-p-0"><span>dspm.sollisero / flow-map</span><a href="#contact">Open in product  →</a></li>
+        </ul>
+      </article>
+      <!-- 03 -->
+      <article class="cap rv">
+        <div class="cap-h"><div><span class="ico"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2.5 4 6v7c0 5 4 8.5 9 10 5-1.5 9-5 9-10V6l-9-3.5Z"/><path d="m9 13 3 3 5-6"/></svg></span><h3>Security Policy Enforcement</h3></div><span class="no">03</span></div>
+        <div class="win"><div class="win-bar"><i></i><i></i><i></i><span class="win-url"><i></i>dspm.sollisero / policies</span></div><div class="win-screen"><div class="ui">
+          <div class="ui-h"><b>Policies</b><small>Conditions that detect how its data at rest, in transit and in access.</small><span class="pill blue">Create policy</span></div>
+          <div class="scan" style="background:rgba(85,121,235,.12)"><i>✓</i><span><b>Heads-up:</b> 2 of 5 policies are active and checking your perimeter.</span><span class="pill blue u-ml-auto">Enable all</span></div>
+          <table class="tbl"><thead><tr><th>Policy</th><th>Type</th><th>Severity</th><th class="num">Triggered</th><th>Monitoring</th></tr></thead><tbody id="polTbl">
+            <tr><td class="k">Card data over plaintext HTTP<span class="s">PCI · in transit · any destination</span></td><td>Transfer</td><td><span class="pill red dot">Critical</span></td><td class="num">14</td><td><span class="tgl on"></span></td></tr>
+            <tr><td class="k">PII leaving EU regions<span class="s">Customer data · geo</span></td><td>Transfer</td><td><span class="pill amber dot">High</span></td><td class="num">6</td><td><span class="tgl on"></span></td></tr>
+            <tr><td class="k">IBAN in unprotected policy<span class="s">All resources · auto-generated</span></td><td>At rest</td><td><span class="pill amber dot">High</span></td><td class="num">—</td><td><span class="tgl"></span></td></tr>
+            <tr><td class="k">SSH autogenerated policy<span class="s">All resources · auto-generated</span></td><td>At rest</td><td><span class="pill blue dot">Medium</span></td><td class="num">—</td><td><span class="tgl"></span></td></tr>
+            <tr><td class="k">Driver license autogenerated policy<span class="s">All resources · auto-generated</span></td><td>At rest</td><td><span class="pill blue dot">Medium</span></td><td class="num">—</td><td><span class="tgl"></span></td></tr>
+          </tbody></table>
+        </div></div></div>
+        <ul class="cap-fn">
+          <li><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="9.5"/><path d="m6.5 11 3 3 6-6"/></svg><div><b>Authorized transfer verification</b><span>Compare actual sensitive data flows against predefined rules.</span></div></li>
+          <li><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="9.5"/><path d="m6.5 11 3 3 6-6"/></svg><div><b>Anomaly detection</b><span>Identify unauthorized data transfers between services.</span></div></li>
+          <li><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="9.5"/><path d="m6.5 11 3 3 6-6"/></svg><div><b>Incident logging</b><span>Log events with the necessary context for further analysis.</span></div></li>
+          <li class="cap-foot u-b-0 u-p-0"><span>dspm.sollisero / policies</span><a href="#contact">Open in product  →</a></li>
+        </ul>
+      </article>
+      <!-- 04 -->
+      <article class="cap rv">
+        <div class="cap-h"><div><span class="ico"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6h18M4 13h12M4 20h7"/><circle cx="19" cy="18" r="3"/><path d="m21.5 20.5 2 2"/></svg></span><h3>Incident Investigation</h3></div><span class="no">04</span></div>
+        <div class="win"><div class="win-bar"><i></i><i></i><i></i><span class="win-url"><i></i>dspm.sollisero / incidents</span></div><div class="win-screen"><div class="ui">
+          <div class="ui-h"><b>Events</b><small>Priority, context and owner — everything you need to investigate.</small><span class="pill blue">Start triage</span></div>
+          <div class="kpis"><div class="kpi"><small>Open events</small><b>32</b><span class="d">+4 since yesterday</span></div><div class="kpi warn"><small>Critical</small><b>4</b><span class="d">2 unassigned</span></div><div class="kpi"><small>In progress</small><b>6</b><span class="d">Assigned to analysts</span></div><div class="kpi"><small>Resolved</small><b>18</b><span class="d">This week · median 4.2 h</span></div></div>
+          <table class="tbl"><thead><tr><th>Event</th><th>Severity</th><th>Status</th><th>Owner</th><th>Detected</th></tr></thead><tbody>
+            <tr><td class="k">Card numbers sent over plaintext HTTP<span class="s">#842 · checkout-api → analytics</span></td><td><span class="sev c"><i></i><i></i><i></i><i></i></span></td><td><span class="pill red">Unassigned</span></td><td>—</td><td>Nov 3 · 09:41</td></tr>
+            <tr><td class="k">Public bucket exposes customer PII<span class="s">#839 · s3 / customer-exports</span></td><td><span class="sev h"><i></i><i></i><i></i><i></i></span></td><td><span class="pill amber">Investigating</span></td><td>Liam Ortiz</td><td>Nov 3 · 08:22</td></tr>
+            <tr><td class="k">Secret detected in application logs<span class="s">#835 · auth-svc · api-key</span></td><td><span class="sev h"><i></i><i></i><i></i><i></i></span></td><td><span class="pill amber">Investigating</span></td><td>Mara Chen</td><td>Nov 2 · 22:30</td></tr>
+            <tr><td class="k">Unusual export volume<span class="s">#831 · reports-worker · 1.2 GB</span></td><td><span class="sev m"><i></i><i></i><i></i><i></i></span></td><td><span class="pill">New</span></td><td>—</td><td>Nov 2 · 18:04</td></tr>
+          </tbody></table>
+        </div></div></div>
+        <ul class="cap-fn">
+          <li><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="9.5"/><path d="m6.5 11 3 3 6-6"/></svg><div><b>Event details</b><span>Identify the types of transferred data, source, and recipient.</span></div></li>
+          <li><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="9.5"/><path d="m6.5 11 3 3 6-6"/></svg><div><b>Route reconstruction</b><span>Identify services, endpoints, and exact data transfer routes.</span></div></li>
+          <li><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="9.5"/><path d="m6.5 11 3 3 6-6"/></svg><div><b>External system integration</b><span>Send incident data through integrations to your existing security workflows.</span></div></li>
+          <li class="cap-foot u-b-0 u-p-0"><span>dspm.sollisero / incidents</span><a href="#contact">Open in product  →</a></li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 04 PRODUCT ===== -->
+<section class="sec s-light" id="product">
+  <div class="wrap">
+    <div class="sec-head"><span>[ 04 ]  Product</span><span>04 / 09</span></div>
+    <div class="split">
+      <h2 class="title rv">Unified picture <span class="dim">of sensitive data flows</span></h2>
+      <p class="lead rv">Where the data is stored, which services process it, and what routes it takes — in one workspace for security, compliance and platform teams.</p>
+    </div>
+    <div class="iface">
+      <div class="slot big-slot rv">
+        <span class="chip"><b>01</b>Security overview</span>
+        <div class="win light"><div class="win-bar"><i></i><i></i><i></i><span class="win-url"><i></i>dspm.sollisero / overview</span></div><div class="win-screen">
+          <div class="dm ui light u-p-0">
+            <nav class="dm-rail">
+              <span class="dm-logo">.S</span>
+              <span class="dm-rail-i on"><svg viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="1" width="6" height="6" rx="1.5"/><rect x="9" y="1" width="6" height="6" rx="1.5"/><rect x="1" y="9" width="6" height="6" rx="1.5"/><rect x="9" y="9" width="6" height="6" rx="1.5"/></svg>Overview</span>
+              <span class="dm-rail-i"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><ellipse cx="8" cy="4" rx="5.5" ry="2.2"/><path d="M2.5 4v8c0 1.2 2.5 2.2 5.5 2.2s5.5-1 5.5-2.2V4"/></svg>Inventory</span>
+              <span class="dm-rail-i"><b class="dm-badge">22</b><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 1.5 3 3.5v4c0 3 2.1 5.3 5 6.1 2.9-.8 5-3.1 5-6.1v-4z"/><path d="m6 7.8 1.6 1.6L10.4 6"/></svg>Protection</span>
+              <span class="dm-rail-i"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="2.3"/><path d="M8 1.6v2M8 12.4v2M1.6 8h2M12.4 8h2"/></svg>Manage</span>
+            </nav>
+            <aside class="dm-side">
+              <span class="dm-brand">sollisero<b> / dspm</b></span>
+              <span class="dm-org"><i>N</i><span><b>Northstar Inc.</b><small>Production · EU-West</small></span><em>⌄</em></span>
+              <span class="dm-lbl">[ 01 ]&nbsp;&nbsp;WORKSPACE</span>
+              <span class="dm-ws"><b>Workspace</b><small>Northstar · production</small></span>
+              <span class="dm-nav"><svg viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="1" width="6" height="6" rx="1.5"/><rect x="9" y="1" width="6" height="6" rx="1.5"/><rect x="1" y="9" width="6" height="6" rx="1.5"/><rect x="9" y="9" width="6" height="6" rx="1.5"/></svg>Overview</span>
+              <span class="dm-nav on"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="4" cy="4" r="2"/><circle cx="12" cy="12" r="2"/><path d="M6 4h3a3 3 0 0 1 3 3v3"/></svg>Data map<em>56</em></span>
+              <span class="dm-lbl dm-lbl-row">PINNED<em>+</em></span>
+              <span class="dm-pin"><i class="b"></i>Payments perimeter</span>
+              <span class="dm-pin"><i class="r"></i>EU customer data</span>
+            </aside>
+            <div class="body">
+              <div class="dm-top">
+                <span class="dm-crumb">Workspace<em>›</em><b>Data map</b></span>
+                <span class="dm-search"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="4.5"/><path d="m11 11 3 3"/></svg>Search assets, events, policies...<em>⌘K</em></span>
+                <span class="dm-ico">?</span>
+                <span class="dm-ico"><b class="dm-badge sm"></b><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 7a4 4 0 0 1 8 0c0 3 1 4 1 4H3s1-1 1-4Z"/><path d="M6.8 13.2a1.6 1.6 0 0 0 2.4 0"/></svg></span>
+                <span class="dm-copilot"><svg viewBox="0 0 16 16" fill="currentColor"><path d="m8 1.6 1.5 4.3 4.3 1.5-4.3 1.5L8 13.2 6.5 8.9 2.2 7.4l4.3-1.5z"/></svg>Copilot</span>
+              </div>
+              <div class="dm-head">
+                <div>
+                  <span class="num-label">[ 01 ]&nbsp;&nbsp;TOPOLOGY</span>
+                  <h5>Data map</h5>
+                  <small class="u-ui-mute">From the entry point to the data store — follow the path of sensitive data.</small>
+                </div>
+                <div class="dm-head-act">
+                  <span class="dm-btn"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="2.5" width="12" height="11" rx="2"/><path d="M2 6h12"/></svg>Resource groups</span>
+                  <span class="dm-btn pri"><em>→</em>Share view</span>
+                </div>
+              </div>
+              <div class="scan">
+                <i><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2.5a5.5 5.5 0 1 0 5.5 5.5"/><path d="M13.5 2.5v3.5h-3.5"/></svg></i>
+                <span><b>Scanning</b> Discovering your infrastructure — the first full map takes up to 7 days<small>56 of ~80 expected nodes found · 3 sensors reporting · last update 4 min ago</small></span>
+                <span class="dm-btn"><em>→</em>Sensor status</span>
+              </div>
+              <div class="dm-filters">
+                <span class="dm-field"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="4.5"/><path d="m11 11 3 3"/></svg>Node, data or cluster</span>
+                <span class="dm-sel">Group<b>Namespace</b><em>⌄</em></span>
+                <span class="dm-sel">Region<b>All</b><em>⌄</em></span>
+                <span class="dm-sel">Data<b>Any</b><em>⌄</em></span>
+                <span class="dm-check"><i></i>High risk only</span>
+                <span class="dm-legend"><em><i class="b"></i>Service</em><em><i class="g"></i>Store</em><em><i class="r"></i>Risk</em></span>
+              </div>
+              
+              <div class="cols" style="--u-row:#fff">
+                <div class="col"><h6>External <em>entry points</em><b>3</b></h6><div class="node">internet<small>Public ingress · 4 connections</small></div><div class="node">payment-provider<small>Partner API · 2 connections</small></div><div class="node risk">partner-sftp <span class="rk">1 risk</span><small>File drop · 1 connection</small></div></div>
+                <div class="col"><h6>Services <em>by namespace</em><b>14</b></h6><div class="node risk">checkout-api <span class="rk">2 risks</span><small>payments · 6 connections</small><span class="bar"><i></i><i></i><i class="r"></i><i></i><i></i><i></i></span></div><div class="node">payments-core<small>payments · 3 connections</small><span class="bar"><i></i><i></i><i></i></span></div><div class="node">user-profile<small>identity · 5 connections</small></div><div class="node risk">crm-sync <span class="rk">1 risk</span><small>crm · 2 connections</small></div><div class="node risk">reporting-worker <span class="rk">1 risk</span><small>analytics · 2 connections</small></div><div class="node">billing-events<small>payments · 3 connections</small></div><div class="node">auth-service<small>identity · 4 connections</small></div></div>
+                <div class="col store"><h6>Data stores <em>by engine</em><b>11</b></h6><div class="node risk">PostgreSQL <span class="rk">6 risks</span><small>3 clusters · 9 schemas</small><span class="bar"><i></i><i class="r"></i><i></i><i></i><i class="r"></i></span></div><div class="node">Kafka<small>events-bus · 6 connections</small></div><div class="node">S3 / archive<small>cold storage</small></div></div>
+              </div>
+            </div>
+          </div>
+        </div></div>
+      </div>
+      <div class="side">
+        <div class="slot rv">
+          <span class="chip"><b>02</b>Data inventory</span>
+          <div class="win light"><div class="win-bar"><i></i><i></i><i></i><span class="win-url"><i></i>dspm.sollisero / inventory</span></div><div class="win-screen"><div class="ui light">
+            <div class="ui-h"><b>Events</b><small>Priority, context and owner.</small><span class="pill blue">Events report</span></div>
+            <div class="kpis"><div class="kpi"><small>Open</small><b>32</b></div><div class="kpi warn"><small>Critical</small><b>4</b></div><div class="kpi"><small>In progress</small><b>6</b></div><div class="kpi"><small>Resolved</small><b>18</b></div></div>
+            <div class="lst"><div><span class="sev c"><i></i><i></i><i></i></span><div class="m"><b>Card numbers sent over plaintext HTTP</b><small>#842 · checkout-api → analytics</small></div><span class="pill red">New</span></div><div><span class="sev h"><i></i><i></i><i></i></span><div class="m"><b>Public bucket exposes customer PII</b><small>#839 · s3 / customer-exports</small></div><span class="pill amber">Triage</span></div><div><span class="sev m"><i></i><i></i><i></i></span><div class="m"><b>Secret detected in application logs</b><small>#835 · auth-svc</small></div><span class="pill">Open</span></div></div>
+          </div></div></div>
+        </div>
+        <div class="slot rv">
+          <span class="chip"><b>03</b>Compliance reports</span>
+          <div class="win light"><div class="win-bar"><i></i><i></i><i></i><span class="win-url"><i></i>dspm.sollisero / reports</span></div><div class="win-screen"><div class="ui light">
+            <div class="ui-h"><b>Policies</b><small>Conditions that detect how data is stored, moved and accessed.</small><span class="pill blue">Create policy</span></div>
+            <div class="lst"><div><div class="m"><b>Card data over plaintext HTTP</b><small>Transfer · PCI</small></div><span class="pill red dot">Critical</span><span class="tgl on"></span></div><div><div class="m"><b>PII leaving EU regions</b><small>Transfer · geo</small></div><span class="pill amber dot">High</span><span class="tgl on"></span></div><div><div class="m"><b>IBAN autogenerated policy</b><small>At rest</small></div><span class="pill amber dot">High</span><span class="tgl"></span></div><div><div class="m"><b>SSH autogenerated policy</b><small>At rest</small></div><span class="pill blue dot">Medium</span><span class="tgl"></span></div></div>
+          </div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="ticks"><span>Traffic  //  Storage  //  Routes</span><span>Detect  //  Enforce  //  Investigate</span></div>
+  </div>
+</section>
+
+<!-- ===== 05 ADVANTAGES ===== -->
+<section class="sec s-navy" id="advantages">
+  <div class="wrap">
+    <div class="sec-head"><span>[ 05 ]  Advantages</span><span>05 / 09</span></div>
+    <div class="conv-wrap">
+      <div class="conv" aria-hidden="true" id="conv"></div>
+      <div class="adv-intro rv">
+        <h2 class="title">Why <span class="dim">dspm</span></h2>
+        <p>Visibility into sensitive data inside Kubernetes — without manual diagram updates or external infrastructure.</p>
+        <div class="hint"><b>↖</b><span class="hint-t">Hover a tab to switch the panel</span></div>
+      </div>
+    </div>
+    <div class="adv rv" data-tabs="ADV">
+      <div class="tabs" role="tablist" aria-label="Advantages"></div>
+      <div class="panel"><span class="big" aria-hidden="true"></span><div class="swap"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 06 USE CASES ===== -->
+<section class="sec s-light" id="use-cases">
+  <div class="wrap">
+    <div class="sec-head"><span>[ 06 ]  Use cases</span><span>06 / 09</span></div>
+    <div class="uc-head">
+      <h2 class="title rv">Infrastructure evolves. <span class="dim">Data control stays with you.</span></h2>
+      <div class="side rv"><p>Connect new services and integrations while keeping control over sensitive data flows and security policy enforcement.</p><a href="#contact" class="btn btn-primary">Discuss your project<span class="arr">↗</span></a></div>
+    </div>
+    <div class="uc-legend"><span><i></i>Detected value</span><span><i class="b"></i>Classified · flagged</span><span><i class="r"></i>Violation</span></div>
+    <div class="stream" id="stream" aria-hidden="true">
+      <div class="rows"></div>
+      <div class="trail" style="left:12.5%"><b style="top:4px">0</b><b style="top:34px">0</b><b style="top:64px">1</b><b style="top:94px">0</b><b style="top:124px">0</b><b style="top:154px">0</b><b class="m" style="top:184px">1</b><span class="ln"></span><span class="ch">New route</span></div>
+      <div class="trail" style="left:37.5%"><b style="top:4px">1</b><b style="top:34px">1</b><b style="top:64px">0</b><b style="top:94px">0</b><b style="top:124px">1</b><b style="top:154px">0</b><b class="m" style="top:184px">1</b><span class="ln"></span><span class="ch">Email · PII</span></div>
+      <div class="trail red" style="left:62.5%"><b style="top:4px">0</b><b style="top:34px">1</b><b style="top:64px">0</b><b style="top:94px">1</b><b style="top:124px">1</b><b style="top:154px">1</b><b class="m" style="top:184px">1</b><span class="ln"></span><span class="ch">Card · PCI · violation</span></div>
+      <div class="trail" style="left:87.5%"><b style="top:4px">0</b><b style="top:34px">1</b><b style="top:64px">1</b><b style="top:94px">0</b><b style="top:124px">0</b><b style="top:154px">1</b><b class="m" style="top:184px">1</b><span class="ln"></span><span class="ch">Phone · PII</span></div>
+      <div class="scanline"></div>
+    </div>
+    <div class="cases">
+      <div class="case rv">
+        <div class="win light"><div class="win-bar"><i></i><i></i><i></i><span class="win-url"><i></i>dspm.sollisero / changes</span></div><div class="win-screen"><div class="ui light">
+          <div class="ui-h"><b>Resource groups</b><span class="pill blue">New group</span></div>
+          <div class="scan"><i>⟳</i><span>A new route appeared · reports-worker → partner-sftp</span></div>
+          <div class="lst"><div><div class="m"><b>Payments perimeter</b><small>6 services · 2 stores</small></div><span class="pill green dot">Covered</span></div><div><div class="m"><b>EU customer data</b><small>4 services · 3 stores</small></div><span class="pill green dot">Covered</span></div><div><div class="m"><b>reports-worker</b><small>New · added 2 min ago</small></div><span class="pill amber dot">Review</span></div></div>
+        </div></div></div>
+        <div class="txt"><span class="num-label u-pre">01  //  Changes</span><h3>Infrastructure updates</h3><p>Catch new sensitive-data routes as services, integrations and Kubernetes components change.</p></div>
+      </div>
+      <div class="case rv">
+        <div class="win light"><div class="win-bar"><i></i><i></i><i></i><span class="win-url"><i></i>dspm.sollisero / inventory</span></div><div class="win-screen"><div class="ui light">
+          <div class="ui-h"><b>Data stores</b><span class="pill blue">Add source</span></div>
+          <div class="kpis"><div class="kpi"><small>Stores</small><b>15</b></div><div class="kpi"><small>Schemas</small><b>12</b></div><div class="kpi"><small>Scanned</small><b>9</b></div><div class="kpi"><small>Last scan</small><b style="font-size:13px">7 days</b></div></div>
+          <div class="lst"><div><div class="m"><b>PostgreSQL · customers</b><small>14 fields · PII</small></div><span class="pill red">6 risks</span></div><div><div class="m"><b>Kafka · events-bus</b><small>Email · phone</small></div><span class="pill amber">2 risks</span></div><div><div class="m"><b>S3 · archive</b><small>No sensitive data</small></div><span class="pill green">Clean</span></div></div>
+        </div></div></div>
+        <div class="txt"><span class="num-label u-pre">02  //  Inventory</span><h3>Identifying data locations</h3><p>Find sensitive data across databases and storage, mapped to services and routes.</p></div>
+      </div>
+      <div class="case rv">
+        <div class="win light"><div class="win-bar"><i></i><i></i><i></i><span class="win-url"><i></i>dspm.sollisero / violations</span></div><div class="win-screen"><div class="ui light">
+          <div class="ui-h"><b>API endpoints</b><span class="pill blue">Export</span></div>
+          <div class="kpis"><div class="kpi"><small>Endpoints</small><b>778</b></div><div class="kpi"><small>Requests</small><b>1.2M</b></div><div class="kpi"><small>Sensitive</small><b>590</b></div><div class="kpi warn"><small>Violations</small><b>214</b></div></div>
+          <div class="lst"><div><div class="m"><b>POST /analytics/ingest</b><small>card · PCI · plaintext</small></div><span class="pill red dot">Violation</span></div><div><div class="m"><b>GET /crm/contacts</b><small>email · PII</small></div><span class="pill blue dot">Allowed</span></div><div><div class="m"><b>PUT /users/{id}</b><small>phone · PII</small></div><span class="pill blue dot">Allowed</span></div></div>
+        </div></div></div>
+        <div class="txt"><span class="num-label u-pre">03  //  Security</span><h3>Verifying transfer authorization</h3><p>Detect transfers between services and clusters that break security policy.</p></div>
+      </div>
+      <div class="case rv">
+        <div class="win light"><div class="win-bar"><i></i><i></i><i></i><span class="win-url"><i></i>dspm.sollisero / incident-842</span></div><div class="win-screen"><div class="ui light">
+          <div class="ui-h"><b>Reports</b><span class="pill blue">Generate</span></div>
+          <div class="kv"><div><span>Incident</span><b>#842 · card data over HTTP</b></div><div><span>Route</span><b>checkout-api → analytics</b></div><div><span>Data</span><b>card=5536 •••• 0217 · PCI</b></div><div><span>Window</span><b>Nov 3 · 09:41 – 09:52</b></div><div><span>Status</span><span class="pill green dot">Evidence exported</span></div></div>
+        </div></div></div>
+        <div class="txt"><span class="num-label u-pre">04  //  Audit</span><h3>Answering the regulator</h3><p>Hand auditors a complete record of what data left, where it went and through which service.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 07 FAQ ===== -->
+<section class="sec s-dark" id="faq">
+  <div class="wrap">
+    <div class="sec-head"><span>[ 07 ]  FAQ</span><span>07 / 09</span></div>
+    <div class="faq u-mt-0">
+      <div class="intro rv"><h2 class="title">Questions <span class="dim">&amp; answers</span></h2><p>Didn’t find your answer? Our team will walk you through deployment in your environment.</p></div>
+      <div data-faq class="rv">
+        <div class="qa open"><button type="button" aria-expanded="true"><sup>01</sup><span class="t">Which sensitive data types does dspm detect?</span><span class="pm"></span></button><div class="ans"><div><p>The platform detects sensitive data in inter-service traffic and connected storage systems, including email addresses, phone numbers, and payment card numbers. Data classification is performed using templates, regular expressions, and data structure analysis.</p></div></div></div>
+        <div class="qa"><button type="button" aria-expanded="false"><sup>02</sup><span class="t">Does deployment require any application modifications?</span><span class="pm"></span></button><div class="ans"><div><p>No. Management, classification and storage components are deployed within the customer’s infrastructure. The platform works in an isolated environment and requires no changes to monitored applications — deploy into the cluster and get a live map of where sensitive data lives and moves.</p></div></div></div>
+        <div class="qa"><button type="button" aria-expanded="false"><sup>03</sup><span class="t">What happens when a security policy is violated?</span><span class="pm"></span></button><div class="ans"><div><p>dspm compares actual sensitive data flows against predefined security rules, detects transfers along routes not permitted by policies, logs the violations, and stores the data for further analysis. The event keeps data type, source, recipient, involved services, endpoints and the exact transfer route, and can be sent to Jira, Slack, email or webhooks.</p></div></div></div>
+        <div class="qa"><button type="button" aria-expanded="false"><sup>04</sup><span class="t">Does dspm replace DLP solutions?</span><span class="pm"></span></button><div class="ans"><div><p>dspm focuses on actual inter-service interactions and connected storage inside Kubernetes — it gives security teams the context of where sensitive data is located, which applications process it and where it is transmitted. Detected violations flow into existing security tools and workflows, so dspm complements the controls you already run.</p></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 08 CLIENTS ===== -->
+<section class="sec s-dark" id="clients">
+  <div class="wrap">
+    <div class="sec-head"><span>[ 08 ]  Trusted by</span><span>08 / 09</span></div>
+    <h2 class="title rv u-maxw-1000">Trusted by <span class="dim">teams that guard sensitive data</span></h2>
+    <div class="logos">
+      <div class="logo-c rv">Bereke Bank</div><div class="logo-c rv">Highland Gold</div><div class="logo-c rv">kardex</div><div class="logo-c rv">Asakabank</div><div class="logo-c rv">audiomack</div><div class="logo-c rv">SheKnows</div>
+    </div>
+    <div class="clients-note">150+ clients worldwide</div>
+  </div>
+</section>
+
+<!-- ===== 09 CTA ===== -->
+<section class="cta dspm" id="contact">
+  <canvas class="dots" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="sec-head"><span>[ 09 ]  Next step</span><span>09 / 09</span></div>
+    <div class="cta-grid">
+      <div class="copy rv">
+        <h2>See dspm <span class="dim">in action</span></h2>
+        <p>We’ll show how the platform maps sensitive data flows in your Kubernetes environment.</p>
+        <div class="contacts"><div><small>Email</small><a href="mailto:sales@sollisero.com">sales@sollisero.com</a></div><div><small>Web</small><a href="https://sollisero.com">sollisero.com</a></div></div>
+      </div>
+      <form action="/api/leads" method="post" data-form="demo" class="form rv" novalidate>
+        <input type="hidden" name="form" value="demo"><input type="hidden" name="product" value="dspm">
+        <div class="hp" aria-hidden="true"><label>Leave this field empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+        <h3>[ Request a demo ]</h3>
+        <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" placeholder="John Smith" required><span class="e"></span></div>
+        <div class="field"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" placeholder="john@bank.com" required><span class="e"></span></div>
+        <div class="field full"><label for="f-company">Bank / company</label><input id="f-company" name="company" type="text" placeholder="Company name"><span class="e"></span></div>
+        <div class="field full"><label for="f-msg">Comment</label><textarea id="f-msg" name="message" placeholder="Tell us about your task"></textarea><span class="e"></span></div>
+        <div class="form-foot">
+          <label class="consent"><input type="checkbox" name="consent" value="yes" required><span>I agree to the processing of my personal data in accordance with the <a href="#">Privacy Policy</a>.</span></label>
+          <button type="submit" class="btn btn-primary">Request a demo<span class="arr">↗</span></button>
+        </div>
+        <div class="done" aria-live="polite"><span class="ok"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="m5 12 5 5 9-10"/></svg></span><h4>Request received</h4><p>Thanks. We’ll write to you within one business day.</p><button type="button" class="btn btn-ghost btn-sm again">Send another</button></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<section class="s-dark" id="other-products" aria-label="Other products">
+  <div class="wrap others">
+    <span class="mono">Other products</span>
+    <a class="prod-card" href="atm.html"><span><b>Sollisero ATM</b><small>ATM network management</small></span><i>↗</i></a>
+    <a class="prod-card" href="cash-solutions.html"><span><b>cash solutions</b><small>POS terminal and merchant portal</small></span><i>↗</i></a>
+  </div>
+</section>
+
+<footer>
+  <div class="wordmark" aria-hidden="true">sollisero</div>
+  <div class="wrap">
+    <div class="foot">
+      <div><a href="index.html" class="logo">sollisero</a><p>International technology group for the design and development of digital products.</p></div>
+      <div><h4>Products</h4><ul>
+        <li><a href="atm.html">Sollisero ATM</a></li><li><a href="dspm.html">dspm</a></li><li><a href="cash-solutions.html">cash solutions</a></li><li><a href="retail-banking.html">retail banking</a></li><li><a href="digital-employees.html">digital employees</a></li><li><a href="meeting-notes.html">meeting notes</a></li><li><a href="bim-agent.html">bim-agent</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="index.html#about">About</a></li><li><a href="index.html#engagement">Services</a></li><li><a href="index.html#industries">Industries</a></li><li><a href="careers.html">Careers</a></li></ul></div>
+      <div><h4>Contacts</h4><ul><li><a href="mailto:sales@sollisero.com">sales@sollisero.com</a></li></ul></div>
+    </div>
+    <div class="legal"><span>© 2026 Sollisero</span><div><a href="#">Privacy policy</a><a href="#">Terms of use</a><a href="#">Cookie policy</a></div></div>
+  </div>
+</footer>
+</body>
+</html>

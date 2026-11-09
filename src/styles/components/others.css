@@ -1,9 +1,0 @@
-.others{display:grid;grid-template-columns:220px 1fr 1fr;gap:40px;align-items:center;padding-block:64px}
-.others>span{color:rgba(255,255,255,.7)}
-.prod-card{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:32px;border-radius:14px;background:var(--surface-dark);border:1px solid rgba(255,255,255,.08);transition:background .3s,border-color .3s}
-.prod-card b{display:block;font-weight:500;font-size:clamp(26px,1.875vw,36px);letter-spacing:-.03em}
-.prod-card small{display:block;margin-top:8px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5)}
-.prod-card i{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--surface-dark-2);font-style:normal;font-family:var(--mono);transition:transform .35s,background .3s;flex:none}
-.prod-card:hover{background:var(--surface-dark-2);border-color:rgba(85,121,235,.4)}
-.prod-card:hover i{transform:rotate(45deg);background:var(--brand)}
-
