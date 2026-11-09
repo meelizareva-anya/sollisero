@@ -1,7 +1,7 @@
 /* scripts/pages/dspm.data.js */
 /* Advantages data (must be defined before site.js) */
 (function(){
-  const mock = (url, label, rows) => `<div class="win"><div class="win-bar"><i></i><i></i><i></i><span class="win-url"><i></i>${url}</span></div><div class="win-screen"><div class="ui"><div class="lst">${rows.map(r=>`<div><div class="m"><b>${r[0]}</b><small>${r[1]}</small></div><span class="pill ${r[3]||''}">${r[2]}</span></div>`).join('')}</div><span class="cap-lbl">${label}</span></div></div></div>`;
+  const mock = (url, label, rows) => `<div class="win"><div class="win-bar"><i></i><i></i><i></i><span class="win-url"><i></i>${url}</span></div><div class="win-screen"><div class="ui"><div class="ui-h"><b>${label}</b><span class="pill blue">Live</span></div><div class="lst">${rows.map(r=>`<div><div class="m"><b>${r[0]}</b><small>${r[1]}</small></div><span class="pill ${r[3]||''}">${r[2]}</span></div>`).join('')}</div></div></div></div>`;
   Sollisero.data.ADV = [
     {tab:'Data visibility within Kubernetes', title:'Full visibility in days, not months', text:'Deploy into the cluster and get a live map of where sensitive data lives and moves — no code changes in applications and no manual data inventories.', chips:['Traffic','Storage','Routes'], html: mock('dspm.sollisero / flow-map','Data map · live',[['checkout-api → PostgreSQL','card · PCI · 6 connections','2 risks','red'],['user-profile → Kafka','email · phone · PII','Allowed','blue'],['crm-sync → partner-sftp','email · PII · new route','Review','amber']])},
     {tab:'Request content inspection', title:'Request content inspection', text:'dspm analyzes not only the interactions between services, but also the types of data being transmitted — detecting sensitive information even within authorized connections if its transmission is not permitted by policy.', chips:['Microservices','Request content','Endpoints'], html: mock('dspm.sollisero / requests','Request inspector · payload',[['POST /analytics/ingest','{ "card": "5536 •••• 0217" } · 2.1 KB','PCI','red'],['GET /crm/contacts?page=4','email=i•••@bank.ru · 14 KB','PII','blue'],['PUT /users/829','phone=+7 ••• •• 42 · 0.6 KB','PII','blue']])},
@@ -34,14 +34,6 @@ Sollisero.onReady(() => {
     let k = 4;
     if (!RM) setInterval(() => { const r = row(events[k++ % events.length]); r.style.animation = 'vin .5s cubic-bezier(.2,.8,.2,1)'; list.prepend(r); list.lastElementChild.remove(); }, 4200);
   }
-  const viol = [
-    ['PUSH /analytics','card=5536 •••• 0217','PCI'],
-    ['POST /crm/export','email=i•••@bank.ru','PII'],
-    ['GET /reports/raw','phone=+7 ••• •• 42','PII'],
-    ['PUT /s3/customer-exports','iban=DE•• •••• 3301','PCI']
-  ];
-  const vrow = $('#vrow'); let vi = 0;
-  if (vrow && !RM) setInterval(() => { vi = (vi+1) % viol.length; const v = viol[vi]; vrow.innerHTML = `<div class="line"><b>${v[0]}</b><span class="v">${v[1]}</span><b>${v[2]}</b><span class="tag-red">Violation</span></div>`; }, 3600);
 
   /* ---- Capabilities: policy toggles are clickable ---- */
   $$('.tgl').forEach(t => t.addEventListener('click', e => { e.stopPropagation(); t.classList.toggle('on'); }));

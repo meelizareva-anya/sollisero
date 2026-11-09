@@ -184,10 +184,20 @@ Sollisero.component('dot-field', () => {
     const h = +view.dataset.h || 580;
     const mode = view.dataset.mode || 'contain';
     if (mode === 'contain' && !view.style.aspectRatio && !view.style.height) view.style.aspectRatio = `${w}/${h}`;
-    inner.style.width = `${w}px`;
-    inner.style.height = `${h}px`;
+    // Narrower than `data-fluid-below` the mock would scale into illegibility, so it
+    // stops being a fixed canvas and reflows as ordinary responsive markup instead.
+    const fluidBelow = +view.dataset.fluidBelow || 0;
     new ResizeObserver(() => {
       const W = view.clientWidth;
+      if (fluidBelow && W && W < fluidBelow) {
+        view.classList.add('is-fluid');
+        view.style.height = '';
+        inner.style.width = inner.style.height = inner.style.transform = '';
+        return;
+      }
+      view.classList.remove('is-fluid');
+      inner.style.width = `${w}px`;
+      inner.style.height = `${h}px`;
       const H = view.clientHeight || (W * h) / w;
       const k = mode === 'width' ? W / w : Math.min(W / w, H / h);
       const x = (W - w * k) / 2;
