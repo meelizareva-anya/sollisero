@@ -12,6 +12,9 @@ on:
 
 permissions:
   contents: read
+  # deploy-pages@v4 lists the uploaded artifact through the Actions API;
+  # without actions:read it reports "Found 0 artifact(s)" and fails.
+  actions: read
   pages: write
   id-token: write
 
