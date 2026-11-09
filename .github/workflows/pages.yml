@@ -1,5 +1,6 @@
 # Publishes dist/ to GitHub Pages.
-# Enable once in the repo: Settings → Pages → Source: "GitHub Actions".
+# configure-pages turns Pages on by itself (enablement: true). If that step is ever
+# denied, switch it on by hand: Settings → Pages → Source: "GitHub Actions".
 name: Deploy to GitHub Pages
 
 on:
@@ -29,6 +30,8 @@ jobs:
           node-version: 20
       - uses: actions/configure-pages@v5
         id: pages
+        with:
+          enablement: true
       # A project site is served from /<repo>/, so the 404 page's <base href>
       # and the canonical/sitemap URLs have to follow.
       - run: node build.mjs --check
