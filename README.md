@@ -73,6 +73,16 @@ tools/                      preview server, e2e tests, visual-regression tool
 3. nginx: `deploy/nginx.conf` (HTTPS redirect, security headers incl. CSP, gzip, `immutable` caching for hashed assets, `no-cache` for HTML, `/dspm` → `/dspm.html`, `/api/` proxy with rate limit, 404 page). Add `limit_req_zone $binary_remote_addr zone=leads:10m rate=10r/m;` in the `http {}` block.
 4. Forms API: run `server/leads-server.mjs` with `deploy/leads-api.service`, or point `forms.endpoint` at your own backend implementing [docs/FORMS_API.md](docs/FORMS_API.md).
 
+### GitHub Pages (preview hosting)
+`.github/workflows/pages.yml` builds and publishes `dist/` on every push to `main`. It needs one
+manual step first: **Settings → Pages → Source: "GitHub Actions"**. Until then the workflow fails at
+`configure-pages`; it goes green on the next push.
+
+A project site is served from `/<repo>/`, so the workflow passes `SITE_BASE` and `SITE_URL` to the
+build — those drive the 404 page's `<base href>` and the canonical/sitemap URLs. All other links are
+relative, so they work under any prefix. Pages is static: the lead forms will 404 on `/api/leads`
+there, which is expected — point `forms.endpoint` at a real backend for anything but a visual preview.
+
 Asset file names contain a content hash, so browsers never see stale CSS/JS after a deploy, and HTML is always revalidated.
 
 ### Before launch — checklist

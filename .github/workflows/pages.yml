@@ -1,6 +1,8 @@
 # Publishes dist/ to GitHub Pages.
-# configure-pages turns Pages on by itself (enablement: true). If that step is ever
-# denied, switch it on by hand: Settings → Pages → Source: "GitHub Actions".
+# One-time setup: Settings → Pages → Source: "GitHub Actions".
+# Until that is set, this workflow fails at configure-pages with "Get Pages site failed";
+# it goes green on the next push afterwards. (The workflow token is not allowed to turn
+# Pages on by itself — "Resource not accessible by integration".)
 name: Deploy to GitHub Pages
 
 on:
@@ -30,8 +32,6 @@ jobs:
           node-version: 20
       - uses: actions/configure-pages@v5
         id: pages
-        with:
-          enablement: true
       # A project site is served from /<repo>/, so the 404 page's <base href>
       # and the canonical/sitemap URLs have to follow.
       - run: node build.mjs --check
