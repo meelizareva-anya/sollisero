@@ -24,8 +24,8 @@
 .nav-toggle{position:relative;flex-direction:row;align-items:center;gap:7px}
 .nav-toggle::after{position:absolute;bottom:-8px;left:50%;margin-left:-8px}
 .nav-item.has-menu{position:relative;display:flex;flex-direction:column;align-items:center}
-.caret{width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translate(-2px,-2px);transition:transform .25s}
-.nav-link[aria-expanded="true"] .caret{transform:rotate(-135deg) translate(-3px,-3px)}
+.caret{width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-4.3px) rotate(45deg);transition:transform .25s}
+.nav-link[aria-expanded="true"] .caret{transform:translateY(1.1px) rotate(-135deg)}
 
 /* The panel opens on hover and on keyboard focus with no JS; the script adds
    click-to-open, Escape and outside-click for touch and pointer users. */
