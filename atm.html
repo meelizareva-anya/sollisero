@@ -17,9 +17,9 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/app.a2dd3b5c65.css">
+<link rel="stylesheet" href="assets/css/app.1032dab2b4.css">
 <link rel="stylesheet" href="assets/css/atm.9cf523d1ae.css">
-<script defer src="assets/js/app.24d2be147a.js"></script>
+<script defer src="assets/js/app.99753ba352.js"></script>
 <script defer src="assets/js/atm.7683f314a7.js"></script>
 </head>
 <body data-page="atm" data-product="atm">
@@ -29,14 +29,34 @@
     <nav class="nav" aria-label="Main">
       <a href="index.html" class="logo" aria-label="Sollisero — home">sollisero</a>
       <div class="nav-links">
-        <a href="atm.html" class="active" aria-current="page">Sollisero ATM</a>
-        <a href="dspm.html">dspm</a>
-        <a href="cash-solutions.html">cash solutions</a>
-        <a href="retail-banking.html">retail banking</a>
-        <a href="digital-employees.html">digital employees</a>
-        <a href="meeting-notes.html">meeting notes</a>
-        <a href="bim-agent.html">bim-agent</a>
-        <a href="careers.html">Careers</a>
+        <div class="nav-item has-menu" data-navmenu>
+          <button class="nav-link nav-toggle active" type="button" id="navProductsBtn"
+            aria-expanded="false" aria-controls="navProducts" aria-current="true">Products<i class="caret" aria-hidden="true"></i></button>
+          <div class="nav-menu" id="navProducts" role="group" aria-labelledby="navProductsBtn">
+            <div class="nav-menu-inner">
+            <div class="nav-col">
+            <h3>BANKING &amp; PAYMENTS</h3>
+            <a href="atm.html" aria-current="page"><b>Sollisero ATM</b><small>ATM network management</small></a>
+            <a href="cash-solutions.html"><b>cash solutions</b><small>POS terminal and merchant portal</small></a>
+            <a href="retail-banking.html"><b>retail banking</b><small>Mobile bank for individuals</small></a>
+          </div>
+            <div class="nav-col">
+            <h3>DATA SECURITY</h3>
+            <a href="dspm.html"><b>dspm</b><small>Sensitive data monitoring for Kubernetes</small></a>
+          </div>
+            <div class="nav-col">
+            <h3>AI &amp; AUTOMATION</h3>
+            <a href="digital-employees.html"><b>digital employees</b><small>Digital employees for business processes</small></a>
+            <a href="meeting-notes.html"><b>meeting notes</b><small>Meeting reports, tasks and decisions</small></a>
+            <a href="bim-agent.html"><b>bim-agent</b><small>BIM process automation</small></a>
+          </div>
+          </div>
+          </div>
+        </div>
+        <a class="nav-link" href="index.html#about">About</a>
+        <a class="nav-link" href="careers.html">Careers</a>
+        <span class="nav-link is-soon" aria-disabled="true">Blog<em>soon</em></span>
+        <a class="nav-link" href="#contact">Contacts</a>
       </div>
       <a href="#contact" class="nav-cta">Discuss a project</a>
       <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><i></i><i></i></button>
@@ -51,7 +71,10 @@
       <a class="mm" href="meeting-notes.html"><div><b>meeting notes</b><small>Meeting reports, tasks and decisions</small></div><span aria-hidden="true">↗</span></a>
       <a class="mm" href="bim-agent.html"><div><b>bim-agent</b><small>BIM process automation</small></div><span aria-hidden="true">↗</span></a>
       <span class="mm-label">[ Company ]</span>
+      <a class="mm" href="index.html#about"><div><b>About</b><small>Who we are and how we work</small></div><span aria-hidden="true">↗</span></a>
       <a class="mm" href="careers.html"><div><b>Careers</b><small>Open roles and how hiring works</small></div><span aria-hidden="true">↗</span></a>
+      <span class="mm is-soon"><div><b>Blog</b><small>Coming soon</small></div><span aria-hidden="true">soon</span></span>
+      <a class="mm" href="#contact"><div><b>Contacts</b><small>Tell us about your project</small></div><span aria-hidden="true">↗</span></a>
       <a href="#contact" class="btn btn-primary">Discuss a project<span class="arr">↗</span></a>
     </div>
   </div>
