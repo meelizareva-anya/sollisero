@@ -1,6 +1,8 @@
 /* ==========================================================================
-   Site navigation (Figma "Nav" 63:4344, mobile overlay 287:7028).
-   Same on every page: logo · product links + Careers · "Discuss a project".
+   Site navigation (Figma "Nav" 63:4344, open menu 403:12337, mobile overlay 287:7028).
+   Same on every page: logo · Products (menu) · About · Careers · Blog · Contacts ·
+   "Discuss a project". The product list lives in src/data/products.json and is grouped
+   by its "groups" entries, so adding a product updates the menu everywhere.
    Desktop ≥1280px: inline links (tightened ≤1600px). Below 1280px: burger + full-screen menu.
    ========================================================================== */
 .nav-wrap{position:fixed;inset:0 0 auto;z-index:50;transition:background .35s,backdrop-filter .35s}
@@ -10,10 +12,33 @@
 .logo{font-size:26px;font-weight:500;letter-spacing:-.03em;color:#fff;line-height:1;flex:none}
 
 .nav-links{display:flex;gap:32px;align-items:flex-start}
-.nav-links a{display:flex;flex-direction:column;align-items:center;gap:6px;font-family:var(--mono);font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.75);transition:color .2s;white-space:nowrap}
-.nav-links a::after{content:"";width:16px;height:2px;background:#fff;transform:scaleX(0);transition:transform .25s}
-.nav-links a:hover,.nav-links a.active{color:#fff}
-.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+.nav-link{display:flex;flex-direction:column;align-items:center;gap:6px;font-family:var(--mono);font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.75);transition:color .2s;white-space:nowrap;background:none;border:0;padding:0;cursor:pointer;line-height:1.2}
+.nav-link::after{content:"";width:16px;height:2px;background:#fff;transform:scaleX(0);transition:transform .25s}
+.nav-link:hover,.nav-link.active,.nav-link[aria-expanded="true"]{color:#fff}
+.nav-link:hover::after,.nav-link.active::after,.nav-link[aria-expanded="true"]::after{transform:scaleX(1)}
+/* Blog has no page yet — present but inert, and it must not look clickable. */
+.nav-link.is-soon{flex-direction:row;align-items:baseline;gap:5px;color:rgba(255,255,255,.38);cursor:default}
+.nav-link.is-soon::after{display:none}
+.nav-link.is-soon em{font-style:normal;font-size:9px;letter-spacing:.08em;opacity:.7;transform:translateY(-1px)}
+
+.nav-toggle{position:relative;flex-direction:row;align-items:center;gap:7px}
+.nav-toggle::after{position:absolute;bottom:-8px;left:50%;margin-left:-8px}
+.nav-item.has-menu{position:relative;display:flex;flex-direction:column;align-items:center}
+.caret{width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translate(-2px,-2px);transition:transform .25s}
+.nav-link[aria-expanded="true"] .caret{transform:rotate(-135deg) translate(-3px,-3px)}
+
+/* The panel opens on hover and on keyboard focus with no JS; the script adds
+   click-to-open, Escape and outside-click for touch and pointer users. */
+.nav-menu{position:absolute;top:100%;left:50%;transform:translate(-50%,8px);margin-top:18px;opacity:0;visibility:hidden;transition:opacity .22s,transform .22s,visibility .22s;background:var(--surface-dark);border:1px solid rgba(255,255,255,.12);border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.45);padding:28px 32px;z-index:60}
+.nav-item.has-menu:hover .nav-menu,.nav-item.has-menu:focus-within .nav-menu,.nav-item.has-menu.open .nav-menu{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.nav-menu::before{content:"";position:absolute;left:0;right:0;top:-18px;height:18px}
+.nav-menu-inner{display:grid;grid-template-columns:repeat(3,minmax(190px,1fr));gap:12px 40px;text-align:left}
+.nav-col h3{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:rgba(255,255,255,.45);font-weight:400;margin-bottom:12px}
+.nav-col a{display:block;padding:9px 10px;margin:0 -10px;border-radius:10px;color:#fff;text-transform:none;letter-spacing:0;font-family:inherit;transition:background .18s}
+.nav-col a:hover{background:rgba(255,255,255,.07)}
+.nav-col a b{display:block;font-size:15px;font-weight:500;letter-spacing:-.01em}
+.nav-col a small{display:block;margin-top:2px;font-size:12px;color:rgba(255,255,255,.55)}
+.nav-col a[aria-current="page"] b{color:var(--accent)}
 
 .nav-cta{padding:12px 22px;border-radius:999px;background:#fff;color:var(--ink);font-size:15px;font-weight:500;transition:background .2s;white-space:nowrap;flex:none}
 .nav-cta:hover{background:var(--pale)}
@@ -28,8 +53,8 @@
 
 /* Laptops: 8 links + CTA must fit the 1280–1600px range */
 @media (max-width:1600px){
-  .nav-links{gap:20px}
-  .nav-links a{font-size:12px;letter-spacing:.02em}
+  .nav-links{gap:24px}
+  .nav-link{font-size:12px;letter-spacing:.02em}
 }
 
 @media (max-width:1279px){
@@ -44,5 +69,9 @@
   .mobile-menu a.mm small{display:block;margin-top:4px;font-size:13px;color:rgba(255,255,255,.55)}
   .mobile-menu a.mm span{font-family:var(--mono);color:rgba(255,255,255,.6)}
   .mobile-menu a.mm[aria-current="page"] b{color:var(--accent)}
+  .mobile-menu .mm.is-soon{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1);opacity:.45}
+  .mobile-menu .mm.is-soon b{display:block;font-weight:500;font-size:20px;letter-spacing:-.02em}
+  .mobile-menu .mm.is-soon small{display:block;margin-top:4px;font-size:13px;color:rgba(255,255,255,.55)}
+  .mobile-menu .mm.is-soon span{font-family:var(--mono);font-size:12px;text-transform:uppercase}
   .mobile-menu .btn{margin-top:28px;justify-content:space-between}
 }

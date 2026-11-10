@@ -35,18 +35,46 @@ ${assets.js.map((h) => `<script defer src="${h}"></script>`).join('\n')}
 </head>`;
 }
 
-export function header({ page, products }) {
-  // Site-wide navigation (Figma "Nav", node 63:4344): product links + Careers, identical on every page.
-  const current = (slug) => (page.slug === slug ? ' class="active" aria-current="page"' : '');
-  const navLinks = [...products.map((p) => ({ slug: p.slug, label: p.name })), { slug: 'careers', label: 'Careers' }];
+export function header({ page, products, groups }) {
+  // Site-wide navigation, identical on every page: logo · Products (menu) · About ·
+  // Careers · Blog · Contacts · "Discuss a project".
+  const isCurrent = (slug) => page.slug === slug;
+  const byGroup = products.reduce((acc, p) => ((acc[p.group] ??= []).push(p), acc), {});
+  const inProducts = products.some((p) => isCurrent(p.slug));
+
+  const menuGroup = (g) => `<div class="nav-col">
+            <h3>${esc(g.label)}</h3>
+            ${(byGroup[g.id] ?? [])
+              .map(
+                (p) => `<a href="${href(p.slug)}"${isCurrent(p.slug) ? ' aria-current="page"' : ''}><b>${esc(p.name)}</b><small>${esc(p.tagline)}</small></a>`,
+              )
+              .join('\n            ')}
+          </div>`;
+
+  // Blog has no page yet: shown but not a link, so it cannot 404.
+  const bar = `<div class="nav-item has-menu" data-navmenu>
+          <button class="nav-link nav-toggle${inProducts ? ' active' : ''}" type="button" id="navProductsBtn"
+            aria-expanded="false" aria-controls="navProducts"${inProducts ? ' aria-current="true"' : ''}>Products<i class="caret" aria-hidden="true"></i></button>
+          <div class="nav-menu" id="navProducts" role="group" aria-labelledby="navProductsBtn">
+            <div class="nav-menu-inner">
+            ${groups.map(menuGroup).join('\n            ')}
+          </div>
+          </div>
+        </div>
+        <a class="nav-link" href="index.html#about">About</a>
+        <a class="nav-link${isCurrent('careers') ? ' active' : ''}" href="careers.html"${isCurrent('careers') ? ' aria-current="page"' : ''}>Careers</a>
+        <span class="nav-link is-soon" aria-disabled="true">Blog<em>soon</em></span>
+        <a class="nav-link" href="#contact">Contacts</a>`;
+
   const mobileItem = (p) =>
-    `<a class="mm" href="${href(p.slug)}"${page.slug === p.slug ? ' aria-current="page"' : ''}><div><b>${esc(p.name)}</b><small>${esc(p.tagline)}</small></div><span aria-hidden="true">↗</span></a>`;
+    `<a class="mm" href="${href(p.slug)}"${isCurrent(p.slug) ? ' aria-current="page"' : ''}><div><b>${esc(p.name)}</b><small>${esc(p.tagline)}</small></div><span aria-hidden="true">↗</span></a>`;
+
   return `<header class="nav-wrap" id="navWrap">
   <div class="wrap">
     <nav class="nav" aria-label="Main">
       <a href="index.html" class="logo" aria-label="Sollisero — home">sollisero</a>
       <div class="nav-links">
-        ${navLinks.map((l) => `<a href="${href(l.slug)}"${current(l.slug)}>${esc(l.label)}</a>`).join('\n        ')}
+        ${bar}
       </div>
       <a href="#contact" class="nav-cta">Discuss a project</a>
       <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><i></i><i></i></button>
@@ -55,7 +83,10 @@ export function header({ page, products }) {
       <span class="mm-label">[ Products ]</span>
       ${products.map(mobileItem).join('\n      ')}
       <span class="mm-label">[ Company ]</span>
-      <a class="mm" href="careers.html"${page.slug === 'careers' ? ' aria-current="page"' : ''}><div><b>Careers</b><small>Open roles and how hiring works</small></div><span aria-hidden="true">↗</span></a>
+      <a class="mm" href="index.html#about"><div><b>About</b><small>Who we are and how we work</small></div><span aria-hidden="true">↗</span></a>
+      <a class="mm" href="careers.html"${isCurrent('careers') ? ' aria-current="page"' : ''}><div><b>Careers</b><small>Open roles and how hiring works</small></div><span aria-hidden="true">↗</span></a>
+      <span class="mm is-soon"><div><b>Blog</b><small>Coming soon</small></div><span aria-hidden="true">soon</span></span>
+      <a class="mm" href="#contact"><div><b>Contacts</b><small>Tell us about your project</small></div><span aria-hidden="true">↗</span></a>
       <a href="#contact" class="btn btn-primary">Discuss a project<span class="arr">↗</span></a>
     </div>
   </div>
