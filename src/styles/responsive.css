@@ -18,7 +18,6 @@
   .others{grid-template-columns:1fr}
   .hero{padding-top:96px}
   .nav{padding-top:24px;padding-bottom:16px}
-  .sec-head{margin-bottom:40px}
 }
 @media (max-width:640px){
   .logos{grid-template-columns:repeat(2,1fr)}

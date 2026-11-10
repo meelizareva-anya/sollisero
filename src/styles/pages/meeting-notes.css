@@ -9,10 +9,6 @@ body>footer .wordmark{background:radial-gradient(circle,rgba(166,218,14,.28) 1.1
 .prod-card:hover i{background:var(--lime);color:var(--ink)}
 .form .done .ok{background:var(--lime)}
 .form .done .ok svg{stroke:var(--ink)}
-.s-dark .sec-head,.s-navy .sec-head{color:#fff}
-.s-dark .sec-head span:last-child,.s-navy .sec-head span:last-child{color:#fff}
-.s-light .sec-head{border-color:var(--ink);color:var(--ink)}
-.s-light .sec-head span:last-child{color:var(--ink)}
 .s-dark .lead,.s-navy .lead{color:rgba(255,255,255,.8);font-size:18px}
 .s-light .lead{font-size:18px}
 .title.plain{letter-spacing:-.04em}

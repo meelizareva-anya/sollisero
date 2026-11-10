@@ -4,9 +4,6 @@ body{--de-pale:#a6dcf2;--de-acc:#0079ad}
 .s-dark .title .dim,.s-navy .title .dim{color:var(--de-pale)}
 .s-light .num-label,.s-white .num-label{color:var(--de-acc)}
 .s-dark .lead,.s-navy .lead{color:var(--chip)}
-.sec-head.acc span:first-child{color:var(--de-acc)}
-.s-dark .sec-head,.s-navy .sec-head{color:var(--chip)}
-.s-light .sec-head,.s-white .sec-head{border-color:var(--ink)}
 .mono-s{font-family:var(--mono);font-size:13px;letter-spacing:.04em;text-transform:uppercase}
 .mono-xs{font-family:var(--mono);font-size:11px;letter-spacing:.03em;text-transform:uppercase}
 .intro{display:grid;grid-template-columns:minmax(0,1100px) minmax(0,440px);justify-content:space-between;gap:32px 64px;align-items:start;margin-bottom:64px}

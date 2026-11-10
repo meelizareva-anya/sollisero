@@ -4,7 +4,6 @@ body{--tint:#c4bffb}
 .h1 .dim,.s-dark .title .dim,.s-navy .title .dim,.cta h2 .dim{color:var(--tint)}
 .s-light .title .dim{color:rgba(85,96,127,.55)}
 .s-light .title{color:#15113f}
-.s-light .sec-head{border-color:var(--ink)}
 .mono-acc{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--accent)}
 /* Figma 60:2777 - hero is 1229 tall, stats end at 1165. The 64 below comes from
    .hero .stats padding-bottom, so the shared hero clamp is zeroed here. */

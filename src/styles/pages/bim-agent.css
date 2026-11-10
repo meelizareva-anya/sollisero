@@ -4,8 +4,6 @@ body{
   --al:#8fd9d1; /* accent-light for secondary text on dark */
   --tint:#e6f4f3;
 }
-.sec-head span:first-child{color:var(--accent)}
-.s-light .sec-head span:first-child,.s-white .sec-head span:first-child{color:var(--brand)}
 .s-light .title,.s-white .title{color:#06262d}
 .s-dark .lead,.s-navy .lead{color:var(--al)}
 .btn-primary .arr{transition:transform .35s cubic-bezier(.2,.8,.2,1),background .25s}
@@ -247,7 +245,6 @@ body{
 
 /* 08 CTA */
 .cta{padding-top:96px;padding-bottom:96px}
-.cta .sec-head{position:relative;z-index:1}
 .cta .cta-grid{grid-template-columns:minmax(0,900px) 640px;align-items:center;min-height:0}
 .cta h2{font-size:clamp(44px,4.6vw,88px);line-height:1}
 .cta h2 .hl{color:var(--accent)}

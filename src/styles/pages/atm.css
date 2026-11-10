@@ -1,9 +1,6 @@
 /* ===== Sollisero ATM · page-specific ===== */
 .h1 .dim,.title .dim{color:#cde9f6}
 .s-light .title .dim{color:var(--dim)}
-.sec-head .mid{display:flex;gap:8px;align-items:center;color:rgba(255,255,255,.5);font-size:11px}
-.sec-head .mid i{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:blink 1.8s infinite}
-.s-light .sec-head .mid{color:var(--text)}
 @keyframes blink{50%{opacity:.3}}
 
 /* Hero */

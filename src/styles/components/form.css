@@ -1,5 +1,4 @@
 .cta{background:var(--cta-bg);overflow:hidden;padding-top:96px;padding-bottom:96px;color:#fff}
-.cta .sec-head{border-color:rgba(255,255,255,.2)}
 .cta canvas.dots{position:absolute;right:-80px;top:120px;width:min(1100px,60vw);height:900px;pointer-events:none}
 .cta-grid{position:relative;display:grid;grid-template-columns:1fr 640px;gap:60px;align-items:center;min-height:612px}
 .cta h2{font-weight:500;font-size:clamp(44px,5.833vw,112px);line-height:1.04;letter-spacing:-.04em}

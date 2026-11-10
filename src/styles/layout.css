@@ -6,11 +6,6 @@ section{position:relative}
 .s-light{background:var(--paper);color:var(--text)}
 .s-white{background:#fff;color:var(--text)}
 .s-blue{background:linear-gradient(138deg,var(--brand) 0%,var(--brand-deep) 71%);color:#fff}
-.sec-head{display:flex;justify-content:space-between;gap:16px;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:64px;font-family:var(--mono);font-size:13px;letter-spacing:.04em;text-transform:uppercase}
-.sec-head span:first-child{white-space:pre}
-.sec-head span:last-child{color:rgba(255,255,255,.7)}
-.s-light .sec-head,.s-white .sec-head{border-color:var(--line)}
-.s-light .sec-head span:last-child,.s-white .sec-head span:last-child{color:var(--muted)}
 .title{font-weight:500;font-size:clamp(36px,3.75vw,72px);line-height:1.04;letter-spacing:-.04em}
 .title .dim{color:rgba(194,209,245,.45)}
 .title .hl{color:var(--accent)}

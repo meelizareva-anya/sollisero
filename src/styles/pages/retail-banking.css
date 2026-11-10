@@ -3,7 +3,6 @@ body{--tint:#cdd7f5;--app:#2450d6;--app-soft:#eaf0fe}
 .h1 .dim,.s-dark .title .dim,.s-navy .title .dim,.cta h2 .dim{color:var(--tint)}
 .s-light .title .dim{color:rgba(85,96,127,.55)}
 .s-light .title{color:#121a36}
-.s-light .sec-head{border-color:var(--ink)}
 .mono-acc{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--accent)}
 .mt24{margin-top:24px}.mt48{margin-top:48px}
 .split .lead{max-width:400px}
