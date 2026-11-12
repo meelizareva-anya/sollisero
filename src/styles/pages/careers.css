@@ -199,3 +199,10 @@
   .facts{grid-template-columns:1fr}
   .fact{min-height:140px}
 }
+
+/* eight products fill two rows of four, so the CTA runs full width beneath them */
+.bento>.bc.cta{flex:0 0 auto;min-height:0;padding:26px 32px}
+.bento>.bc.cta .base{flex-direction:row;align-items:center;gap:8px 24px;flex-wrap:wrap}
+.bento>.bc.cta .base .nm{margin:0}
+.bento>.bc.cta .base .cat{flex:none}
+@media (max-width:760px){.bento>.bc.cta{padding:22px 24px}}
