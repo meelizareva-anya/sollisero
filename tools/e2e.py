@@ -3,7 +3,7 @@ import os
 import json, time, sys
 from playwright.sync_api import sync_playwright
 BASE=os.environ.get('BASE','http://localhost:4173'); LEADS=os.environ.get('LEADS_FILE','/tmp/leads/leads.jsonl')
-PAGES=['index','careers','atm','dspm','cash-solutions','retail-banking','digital-employees','meeting-notes','bim-agent','thanks','nope/deep/link']
+PAGES=['index','careers','atm','dspm','cash-solutions','retail-banking','digital-employees','meeting-notes','bim-agent','process-mining','thanks','nope/deep/link']
 fails=[]
 def check(cond,msg):
     print(('  ✓ ' if cond else '  ✗ ')+msg)

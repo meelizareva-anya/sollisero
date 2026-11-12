@@ -12,3 +12,8 @@ body>footer{position:relative;overflow:hidden;background:var(--foot);border-top:
 .legal a:hover{color:#fff}
 body>footer .wordmark{top:auto;bottom:-.475em;font-size:clamp(163px,29.74vw,668px);line-height:1;background:radial-gradient(circle,rgba(194,209,245,.3) 1.1px,transparent 1.6px) 0 0/14px 14px,linear-gradient(180deg,rgba(34,70,189,.55),rgba(34,70,189,.25));-webkit-background-clip:text;background-clip:text}
 
+
+/* Product footer (meeting notes): brand + three link columns, legal note instead of legal links */
+.foot-product .foot h4{color:var(--accent)}
+.foot-product .foot .logo{font-size:28px;display:inline-block}
+.foot-product .foot p{margin-top:14px;font-size:15px;max-width:360px}

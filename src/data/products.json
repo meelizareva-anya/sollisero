@@ -5,12 +5,13 @@
     { "id": "ai", "label": "AI & AUTOMATION" }
   ],
   "products": [
-    { "slug": "atm",               "name": "Sollisero ATM",     "tagline": "ATM network management",                   "group": "banking"  },
-    { "slug": "dspm",              "name": "dspm",              "tagline": "Sensitive data monitoring for Kubernetes", "group": "security" },
-    { "slug": "cash-solutions",    "name": "cash solutions",    "tagline": "POS terminal and merchant portal",         "group": "banking"  },
-    { "slug": "retail-banking",    "name": "retail banking",    "tagline": "Mobile bank for individuals",              "group": "banking"  },
-    { "slug": "digital-employees", "name": "digital employees", "tagline": "Digital employees for business processes", "group": "ai"       },
-    { "slug": "meeting-notes",     "name": "meeting notes",     "tagline": "Meeting reports, tasks and decisions",     "group": "ai"       },
-    { "slug": "bim-agent",         "name": "bim-agent",         "tagline": "BIM process automation",                   "group": "ai"       }
+    { "slug": "atm",               "name": "Sollisero ATM",     "tagline": "ATM network management",                   "short": "ATM network management",     "group": "banking"  },
+    { "slug": "dspm",              "name": "dspm",              "tagline": "Sensitive data monitoring for Kubernetes", "short": "Sensitive data monitoring",   "group": "security" },
+    { "slug": "cash-solutions",    "name": "cash solutions",    "tagline": "POS terminal and merchant portal",         "short": "POS + merchant portal",      "group": "banking"  },
+    { "slug": "retail-banking",    "name": "retail banking",    "tagline": "Mobile banking for consumers",             "short": "Mobile banking for consumers", "group": "banking"  },
+    { "slug": "digital-employees", "name": "digital employees", "tagline": "Digital employees for business processes", "short": "Digital employees",          "group": "ai"       },
+    { "slug": "meeting-notes",     "name": "meeting notes",     "tagline": "Meeting reports, tasks and decisions",     "short": "Meetings into reports",      "group": "ai"       },
+    { "slug": "bim-agent",         "name": "bim-agent",         "tagline": "BIM process automation",                   "short": "BIM process automation",     "group": "ai"       },
+    { "slug": "process-mining",    "name": "process mining",    "tagline": "An objective map of how the work runs",     "short": "Measure before you automate", "group": "ai"      }
   ]
 }

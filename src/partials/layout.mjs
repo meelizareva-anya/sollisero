@@ -37,7 +37,7 @@ ${assets.js.map((h) => `<script defer src="${h}"></script>`).join('\n')}
 
 export function header({ page, products, groups }) {
   // Site-wide navigation, identical on every page: logo · Products (menu) · About ·
-  // Careers · Blog · Contacts · "Discuss a project".
+  // Careers · Contacts · "Discuss a project".
   const isCurrent = (slug) => page.slug === slug;
   const byGroup = products.reduce((acc, p) => ((acc[p.group] ??= []).push(p), acc), {});
   const inProducts = products.some((p) => isCurrent(p.slug));
@@ -51,23 +51,31 @@ export function header({ page, products, groups }) {
               .join('\n            ')}
           </div>`;
 
-  // Blog has no page yet: shown but not a link, so it cannot 404.
   const bar = `<div class="nav-item has-menu" data-navmenu>
           <button class="nav-link nav-toggle${inProducts ? ' active' : ''}" type="button" id="navProductsBtn"
             aria-expanded="false" aria-controls="navProducts"${inProducts ? ' aria-current="true"' : ''}>Products<i class="caret" aria-hidden="true"></i></button>
           <div class="nav-menu" id="navProducts" role="group" aria-labelledby="navProductsBtn">
             <div class="nav-menu-inner">
             ${groups.map(menuGroup).join('\n            ')}
+            <a class="nav-promo" href="index.html#products">
+              <span class="nav-promo-l">All products</span>
+              <b>${products.length} ready-to-deploy products for banking, security and AI</b>
+              <span class="nav-promo-go">Compare all products<i aria-hidden="true">→</i></span>
+            </a>
           </div>
+            <div class="nav-menu-foot">
+              <span>Not sure which product fits your task?</span>
+              <a href="#contact">Discuss a project<i aria-hidden="true">→</i></a>
+            </div>
           </div>
         </div>
         <a class="nav-link" href="index.html#about">About</a>
         <a class="nav-link${isCurrent('careers') ? ' active' : ''}" href="careers.html"${isCurrent('careers') ? ' aria-current="page"' : ''}>Careers</a>
-        <span class="nav-link is-soon" aria-disabled="true">Blog<em>soon</em></span>
         <a class="nav-link" href="#contact">Contacts</a>`;
 
   const mobileItem = (p) =>
-    `<a class="mm" href="${href(p.slug)}"${isCurrent(p.slug) ? ' aria-current="page"' : ''}><div><b>${esc(p.name)}</b><small>${esc(p.tagline)}</small></div><span aria-hidden="true">↗</span></a>`;
+    // the mobile overlay uses the short tagline; the desktop menu uses the full one
+    `<a class="mm" href="${href(p.slug)}"${isCurrent(p.slug) ? ' aria-current="page"' : ''}><div><b>${esc(p.name)}</b><small>${esc(p.short || p.tagline)}</small></div><span aria-hidden="true">↗</span></a>`;
 
   return `<header class="nav-wrap" id="navWrap">
   <div class="wrap">
@@ -83,10 +91,7 @@ export function header({ page, products, groups }) {
       <span class="mm-label">[ Products ]</span>
       ${products.map(mobileItem).join('\n      ')}
       <span class="mm-label">[ Company ]</span>
-      <a class="mm" href="index.html#about"><div><b>About</b><small>Who we are and how we work</small></div><span aria-hidden="true">↗</span></a>
-      <a class="mm" href="careers.html"${isCurrent('careers') ? ' aria-current="page"' : ''}><div><b>Careers</b><small>Open roles and how hiring works</small></div><span aria-hidden="true">↗</span></a>
-      <span class="mm is-soon"><div><b>Blog</b><small>Coming soon</small></div><span aria-hidden="true">soon</span></span>
-      <a class="mm" href="#contact"><div><b>Contacts</b><small>Tell us about your project</small></div><span aria-hidden="true">↗</span></a>
+      <a class="mm" href="careers.html"${isCurrent('careers') ? ' aria-current="page"' : ''}><div><b>Careers</b><small>Open positions</small></div><span aria-hidden="true">↗</span></a>
       <a href="#contact" class="btn btn-primary">Discuss a project<span class="arr">↗</span></a>
     </div>
   </div>
@@ -110,12 +115,35 @@ export function others({ page, products }) {
 </section>`;
 }
 
+/**
+ * Product footer: brand + three link columns + a legal note instead of the legal links.
+ * Opted into from front matter (`footer`); the legal links move into one of the columns,
+ * so a link with no `href` is resolved by label against config.legal.
+ */
+function productFooter({ page, config }) {
+  const { brand, tagline, columns = [], legalNote } = page.footer;
+  const resolve = (l) => l.href ?? config.legal.find((x) => x.label === l.label)?.href ?? '#';
+  const col = (c) => `<div><h4>${esc(c.label)}</h4><ul>${c.links
+    .map((l) => `<li><a href="${resolve(l)}">${esc(l.label)}</a></li>`)
+    .join('')}</ul></div>`;
+  return `<footer class="foot-product">
+  <div class="wrap">
+    <div class="foot">
+      <div><span class="logo">${esc(brand)}</span><p>${esc(tagline)}</p></div>
+      ${columns.map(col).join('\n      ')}
+    </div>
+    <div class="legal"><span>© ${new Date().getFullYear()} Sollisero</span><div><span>${esc(legalNote)}</span></div></div>
+  </div>
+</footer>`;
+}
+
 export function footer({ page, products, config }) {
+  if (page.footer) return productFooter({ page, config });
   return `<footer>
   <div class="wordmark" aria-hidden="true">${esc(page.wordmark || 'sollisero')}</div>
   <div class="wrap">
     <div class="foot">
-      <div><a href="index.html" class="logo">sollisero</a><p>International technology group for the design and development of digital products.</p></div>
+      <div><a href="index.html" class="logo">sollisero</a><p>An international technology group that designs and builds digital products.</p></div>
       <div><h4>Products</h4><ul>
         ${products.map((p) => `<li><a href="${href(p.slug)}">${esc(p.name)}</a></li>`).join('')}</ul></div>
       <div><h4>Company</h4><ul><li><a href="index.html#about">About</a></li><li><a href="index.html#engagement">Services</a></li><li><a href="index.html#industries">Industries</a></li><li><a href="careers.html">Careers</a></li></ul></div>
