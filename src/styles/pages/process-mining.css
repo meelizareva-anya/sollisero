@@ -265,3 +265,24 @@
 /* chart + total: the chart carries the bars, so it takes the wider column */
 .pm-flow--chart{grid-template-columns:2.1fr 1fr}
 @media (max-width:1000px){.pm-flow--chart{grid-template-columns:1fr}}
+
+/* overview: the two lower panels, and the payback chart in the business case */
+.pm-hint{margin-left:auto;font-size:8px;color:var(--brand);white-space:nowrap}
+.pm-panel>header{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.pm-panel>header>b{flex:none}
+.pm-panel>header>small{flex:1 1 100%;order:3}
+.pm-qs{display:flex;flex-direction:column;gap:3px;counter-reset:q;font-size:9px}
+.pm-qs li{counter-increment:q;display:flex;gap:8px;padding:3px 0}
+.pm-qs li::before{content:"0" counter(q);color:var(--dim);flex:none}
+.pm-cands{display:flex;flex-direction:column;gap:1px}
+.pm-cands li{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:5px 7px;border-radius:6px;font-size:9px}
+.pm-cands li:nth-child(odd){background:#f7f8fc}
+.pm-cands li em{display:block;font-style:normal;font-size:8px;color:var(--muted);margin-top:1px}
+.pm-cands li b{text-align:right;font-weight:600;white-space:nowrap}
+.pm-cands li b u{display:block;text-decoration:none;font-weight:400;font-size:8px;color:var(--brand)}
+.pm-pay{display:flex;flex-direction:column;gap:5px}
+.pm-pay-l{font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:var(--brand)}
+.pm-pay-bars{display:block;height:54px;border-bottom:1px solid var(--win-line);background:
+  repeating-linear-gradient(90deg,#e0564f 0 7px,transparent 7px 11px) left bottom/121px 60% no-repeat,
+  repeating-linear-gradient(90deg,#2fb67c 0 7px,transparent 7px 11px) 132px bottom/160px 100% no-repeat}
+.pm-pay small{color:var(--muted);font-size:8px}

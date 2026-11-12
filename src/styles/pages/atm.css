@@ -409,3 +409,12 @@
 .hc-pref span{font-family:var(--mono);font-size:4.9px;letter-spacing:.06em;text-transform:uppercase;color:#9fb0bc}
 .hc-pref em{margin-top:auto;font-style:normal;font-size:6.5px;font-weight:600;color:#6cc3ea}
 .hc-foot{display:flex;justify-content:space-between;gap:10px;font-family:var(--mono);font-size:5.4px;letter-spacing:.08em;text-transform:uppercase;color:#9fb0bc}
+
+/* The Figma hero clips the customer screen: rows 4–6 and the accessibility card are
+   part of the screen but sit below the fold, so the panel is cropped the same way. */
+.hcard{max-height:240px}
+.hc-a11y{gap:5px}
+.hc-a11y small{font-size:6px;color:#9fb0bc;line-height:1.3}
+.hc-tic-bill::after{border:1.1px solid #6cc3ea;border-radius:1px;width:7px;height:9px;margin:-4.5px 0 0 -3.5px}
+.hc-tic-more::after{border:0;width:9px;height:1.1px;margin:-.5px 0 0 -4.5px;background:#6cc3ea;box-shadow:0 -3px 0 #6cc3ea,0 3px 0 #6cc3ea}
+.hc-tic-ear::after{border:1.1px solid #6cc3ea;border-radius:50%;width:8px;height:8px;margin:-4px 0 0 -4px}
