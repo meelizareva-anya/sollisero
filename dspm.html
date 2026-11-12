@@ -5,22 +5,22 @@
 <script>document.documentElement.classList.add('js')</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>dspm — sensitive data monitoring for Kubernetes — Sollisero</title>
-<meta name="description" content="dspm: eBPF-powered platform that analyzes inter-service traffic and connected storage in Kubernetes, detecting security policy violations in real time.">
+<meta name="description" content="dspm: eBPF-powered platform that analyses inter-service traffic and connected storage in Kubernetes, detecting security policy violations in real time.">
 <link rel="canonical" href="https://sollisero.com/dspm.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Sollisero">
 <meta property="og:title" content="dspm — sensitive data monitoring for Kubernetes — Sollisero">
-<meta property="og:description" content="dspm: eBPF-powered platform that analyzes inter-service traffic and connected storage in Kubernetes, detecting security policy violations in real time.">
+<meta property="og:description" content="dspm: eBPF-powered platform that analyses inter-service traffic and connected storage in Kubernetes, detecting security policy violations in real time.">
 <meta property="og:url" content="https://sollisero.com/dspm.html">
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#060b22">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/app.90fcc0920e.css">
+<link rel="stylesheet" href="assets/css/app.9289bf9614.css">
 <link rel="stylesheet" href="assets/css/dspm.53c9cb8b73.css">
 <script defer src="assets/js/app.99753ba352.js"></script>
-<script defer src="assets/js/dspm.b20fa2181d.js"></script>
+<script defer src="assets/js/dspm.5ff66299b8.js"></script>
 </head>
 <body data-page="dspm" data-product="dspm">
 <a class="skip-link" href="#top">Skip to content</a>
@@ -38,7 +38,7 @@
             <h3>BANKING &amp; PAYMENTS</h3>
             <a href="atm.html"><b>Sollisero ATM</b><small>ATM network management</small></a>
             <a href="cash-solutions.html"><b>cash solutions</b><small>POS terminal and merchant portal</small></a>
-            <a href="retail-banking.html"><b>retail banking</b><small>Mobile bank for individuals</small></a>
+            <a href="retail-banking.html"><b>retail banking</b><small>Mobile banking for consumers</small></a>
           </div>
             <div class="nav-col">
             <h3>DATA SECURITY</h3>
@@ -49,13 +49,22 @@
             <a href="digital-employees.html"><b>digital employees</b><small>Digital employees for business processes</small></a>
             <a href="meeting-notes.html"><b>meeting notes</b><small>Meeting reports, tasks and decisions</small></a>
             <a href="bim-agent.html"><b>bim-agent</b><small>BIM process automation</small></a>
+            <a href="process-mining.html"><b>process mining</b><small>An objective map of how the work runs</small></a>
           </div>
+            <a class="nav-promo" href="index.html#products">
+              <span class="nav-promo-l">All products</span>
+              <b>8 ready-to-deploy products for banking, security and AI</b>
+              <span class="nav-promo-go">Compare all products<i aria-hidden="true">→</i></span>
+            </a>
           </div>
+            <div class="nav-menu-foot">
+              <span>Not sure which product fits your task?</span>
+              <a href="#contact">Discuss a project<i aria-hidden="true">→</i></a>
+            </div>
           </div>
         </div>
         <a class="nav-link" href="index.html#about">About</a>
         <a class="nav-link" href="careers.html">Careers</a>
-        <span class="nav-link is-soon" aria-disabled="true">Blog<em>soon</em></span>
         <a class="nav-link" href="#contact">Contacts</a>
       </div>
       <a href="#contact" class="nav-cta">Discuss a project</a>
@@ -64,17 +73,15 @@
     <div class="mobile-menu" id="mobileMenu">
       <span class="mm-label">[ Products ]</span>
       <a class="mm" href="atm.html"><div><b>Sollisero ATM</b><small>ATM network management</small></div><span aria-hidden="true">↗</span></a>
-      <a class="mm" href="dspm.html" aria-current="page"><div><b>dspm</b><small>Sensitive data monitoring for Kubernetes</small></div><span aria-hidden="true">↗</span></a>
-      <a class="mm" href="cash-solutions.html"><div><b>cash solutions</b><small>POS terminal and merchant portal</small></div><span aria-hidden="true">↗</span></a>
-      <a class="mm" href="retail-banking.html"><div><b>retail banking</b><small>Mobile bank for individuals</small></div><span aria-hidden="true">↗</span></a>
-      <a class="mm" href="digital-employees.html"><div><b>digital employees</b><small>Digital employees for business processes</small></div><span aria-hidden="true">↗</span></a>
-      <a class="mm" href="meeting-notes.html"><div><b>meeting notes</b><small>Meeting reports, tasks and decisions</small></div><span aria-hidden="true">↗</span></a>
+      <a class="mm" href="dspm.html" aria-current="page"><div><b>dspm</b><small>Sensitive data monitoring</small></div><span aria-hidden="true">↗</span></a>
+      <a class="mm" href="cash-solutions.html"><div><b>cash solutions</b><small>POS + merchant portal</small></div><span aria-hidden="true">↗</span></a>
+      <a class="mm" href="retail-banking.html"><div><b>retail banking</b><small>Mobile banking for consumers</small></div><span aria-hidden="true">↗</span></a>
+      <a class="mm" href="digital-employees.html"><div><b>digital employees</b><small>Digital employees</small></div><span aria-hidden="true">↗</span></a>
+      <a class="mm" href="meeting-notes.html"><div><b>meeting notes</b><small>Meetings into reports</small></div><span aria-hidden="true">↗</span></a>
       <a class="mm" href="bim-agent.html"><div><b>bim-agent</b><small>BIM process automation</small></div><span aria-hidden="true">↗</span></a>
+      <a class="mm" href="process-mining.html"><div><b>process mining</b><small>Measure before you automate</small></div><span aria-hidden="true">↗</span></a>
       <span class="mm-label">[ Company ]</span>
-      <a class="mm" href="index.html#about"><div><b>About</b><small>Who we are and how we work</small></div><span aria-hidden="true">↗</span></a>
-      <a class="mm" href="careers.html"><div><b>Careers</b><small>Open roles and how hiring works</small></div><span aria-hidden="true">↗</span></a>
-      <span class="mm is-soon"><div><b>Blog</b><small>Coming soon</small></div><span aria-hidden="true">soon</span></span>
-      <a class="mm" href="#contact"><div><b>Contacts</b><small>Tell us about your project</small></div><span aria-hidden="true">↗</span></a>
+      <a class="mm" href="careers.html"><div><b>Careers</b><small>Open positions</small></div><span aria-hidden="true">↗</span></a>
       <a href="#contact" class="btn btn-primary">Discuss a project<span class="arr">↗</span></a>
     </div>
   </div>
@@ -92,7 +99,7 @@
         <span class="mono crumb">[ 01 ]  Products  /  dspm</span>
         <h1 class="h1" data-split>Where does your sensitive data <span class="dim">actually go?</span></h1>
         <div class="tag mono"><i></i>dspm — sensitive data monitoring platform</div>
-        <p class="sub">Powered by eBPF, the platform analyzes inter-service traffic and connected storage, detecting security policy violations in real time.</p>
+        <p class="sub">Powered by eBPF, the platform analyses inter-service traffic and connected storage, detecting security policy violations in real time.</p>
         <div class="ctas">
           <a href="#contact" class="btn btn-primary">Request a demo<span class="arr">↗</span></a>
           <a href="#capabilities" class="btn btn-ghost">Learn more</a>
@@ -365,7 +372,7 @@
     </div>
     <div class="iface">
       <div class="slot big-slot rv">
-        <span class="chip"><b>01</b>Data flow map</span>
+        <span class="chip"><b>01</b>Security overview</span>
         <div class="win light"><div class="win-bar"><i></i><i></i><i></i><span class="win-url"><i></i>dspm.sollisero / overview</span></div><div class="win-screen">
           <div class="dm ui light u-p-0">
             <nav class="dm-rail">
@@ -430,7 +437,7 @@
       </div>
       <div class="side">
         <div class="slot rv">
-          <span class="chip"><b>02</b>Incident log</span>
+          <span class="chip"><b>02</b>Data inventory</span>
           <div class="win light"><div class="win-bar"><i></i><i></i><i></i><span class="win-url"><i></i>dspm.sollisero / inventory</span></div><div class="win-screen"><div class="dm dm-compact ui light u-p-0">
             <nav class="dm-rail"><span class="dm-logo">.S</span><span class="dm-rail-i"><svg viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="1" width="6" height="6" rx="1.5"/><rect x="9" y="1" width="6" height="6" rx="1.5"/><rect x="1" y="9" width="6" height="6" rx="1.5"/><rect x="9" y="9" width="6" height="6" rx="1.5"/></svg>Overview</span><span class="dm-rail-i"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><ellipse cx="8" cy="4" rx="5.5" ry="2.2"/><path d="M2.5 4v8c0 1.2 2.5 2.2 5.5 2.2s5.5-1 5.5-2.2V4"/></svg>Inventory</span><span class="dm-rail-i on"><b class="dm-badge">4</b><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 1.5 3 3.5v4c0 3 2.1 5.3 5 6.1 2.9-.8 5-3.1 5-6.1v-4z"/><path d="m6 7.8 1.6 1.6L10.4 6"/></svg>Protection</span><span class="dm-rail-i"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="2.3"/><path d="M8 1.6v2M8 12.4v2M1.6 8h2M12.4 8h2"/></svg>Manage</span></nav>
             <div class="body">
@@ -441,7 +448,7 @@
           </div></div></div></div>
         </div>
         <div class="slot rv">
-          <span class="chip"><b>03</b>Policy rules</span>
+          <span class="chip"><b>03</b>Compliance reports</span>
           <div class="win light"><div class="win-bar"><i></i><i></i><i></i><span class="win-url"><i></i>dspm.sollisero / reports</span></div><div class="win-screen"><div class="dm dm-compact ui light u-p-0">
             <nav class="dm-rail"><span class="dm-logo">.S</span><span class="dm-rail-i"><svg viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="1" width="6" height="6" rx="1.5"/><rect x="9" y="1" width="6" height="6" rx="1.5"/><rect x="1" y="9" width="6" height="6" rx="1.5"/><rect x="9" y="9" width="6" height="6" rx="1.5"/></svg>Overview</span><span class="dm-rail-i"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><ellipse cx="8" cy="4" rx="5.5" ry="2.2"/><path d="M2.5 4v8c0 1.2 2.5 2.2 5.5 2.2s5.5-1 5.5-2.2V4"/></svg>Inventory</span><span class="dm-rail-i on"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 1.5 3 3.5v4c0 3 2.1 5.3 5 6.1 2.9-.8 5-3.1 5-6.1v-4z"/><path d="m6 7.8 1.6 1.6L10.4 6"/></svg>Protection</span><span class="dm-rail-i"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="2.3"/><path d="M8 1.6v2M8 12.4v2M1.6 8h2M12.4 8h2"/></svg>Manage</span></nav>
             <div class="body">
@@ -594,9 +601,9 @@
   <div class="wordmark" aria-hidden="true">dspm</div>
   <div class="wrap">
     <div class="foot">
-      <div><a href="index.html" class="logo">sollisero</a><p>International technology group for the design and development of digital products.</p></div>
+      <div><a href="index.html" class="logo">sollisero</a><p>An international technology group that designs and builds digital products.</p></div>
       <div><h4>Products</h4><ul>
-        <li><a href="atm.html">Sollisero ATM</a></li><li><a href="dspm.html">dspm</a></li><li><a href="cash-solutions.html">cash solutions</a></li><li><a href="retail-banking.html">retail banking</a></li><li><a href="digital-employees.html">digital employees</a></li><li><a href="meeting-notes.html">meeting notes</a></li><li><a href="bim-agent.html">bim-agent</a></li></ul></div>
+        <li><a href="atm.html">Sollisero ATM</a></li><li><a href="dspm.html">dspm</a></li><li><a href="cash-solutions.html">cash solutions</a></li><li><a href="retail-banking.html">retail banking</a></li><li><a href="digital-employees.html">digital employees</a></li><li><a href="meeting-notes.html">meeting notes</a></li><li><a href="bim-agent.html">bim-agent</a></li><li><a href="process-mining.html">process mining</a></li></ul></div>
       <div><h4>Company</h4><ul><li><a href="index.html#about">About</a></li><li><a href="index.html#engagement">Services</a></li><li><a href="index.html#industries">Industries</a></li><li><a href="careers.html">Careers</a></li></ul></div>
       <div><h4>Contacts</h4><ul><li><a href="mailto:sales@sollisero.com">sales@sollisero.com</a></li></ul></div>
     </div>

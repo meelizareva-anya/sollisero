@@ -1,0 +1,789 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>process mining — an objective map of how the work actually runs — Sollisero</title>
+<meta name="description" content="process mining observes real working processes, separates systematic repetition from one-off cases and builds an objective map of the process: where the time goes, what can be handed to AI and what it is worth — before anything is built.">
+<link rel="canonical" href="https://sollisero.com/process-mining.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sollisero">
+<meta property="og:title" content="process mining — an objective map of how the work actually runs — Sollisero">
+<meta property="og:description" content="process mining observes real working processes, separates systematic repetition from one-off cases and builds an objective map of the process: where the time goes, what can be handed to AI and what it is worth — before anything is built.">
+<meta property="og:url" content="https://sollisero.com/process-mining.html">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#060b22">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/app.9289bf9614.css">
+<link rel="stylesheet" href="assets/css/process-mining.645ad10beb.css">
+<script defer src="assets/js/app.99753ba352.js"></script>
+</head>
+<body data-page="process-mining">
+<a class="skip-link" href="#top">Skip to content</a>
+<header class="nav-wrap" id="navWrap">
+  <div class="wrap">
+    <nav class="nav" aria-label="Main">
+      <a href="index.html" class="logo" aria-label="Sollisero — home">sollisero</a>
+      <div class="nav-links">
+        <div class="nav-item has-menu" data-navmenu>
+          <button class="nav-link nav-toggle active" type="button" id="navProductsBtn"
+            aria-expanded="false" aria-controls="navProducts" aria-current="true">Products<i class="caret" aria-hidden="true"></i></button>
+          <div class="nav-menu" id="navProducts" role="group" aria-labelledby="navProductsBtn">
+            <div class="nav-menu-inner">
+            <div class="nav-col">
+            <h3>BANKING &amp; PAYMENTS</h3>
+            <a href="atm.html"><b>Sollisero ATM</b><small>ATM network management</small></a>
+            <a href="cash-solutions.html"><b>cash solutions</b><small>POS terminal and merchant portal</small></a>
+            <a href="retail-banking.html"><b>retail banking</b><small>Mobile banking for consumers</small></a>
+          </div>
+            <div class="nav-col">
+            <h3>DATA SECURITY</h3>
+            <a href="dspm.html"><b>dspm</b><small>Sensitive data monitoring for Kubernetes</small></a>
+          </div>
+            <div class="nav-col">
+            <h3>AI &amp; AUTOMATION</h3>
+            <a href="digital-employees.html"><b>digital employees</b><small>Digital employees for business processes</small></a>
+            <a href="meeting-notes.html"><b>meeting notes</b><small>Meeting reports, tasks and decisions</small></a>
+            <a href="bim-agent.html"><b>bim-agent</b><small>BIM process automation</small></a>
+            <a href="process-mining.html" aria-current="page"><b>process mining</b><small>An objective map of how the work runs</small></a>
+          </div>
+            <a class="nav-promo" href="index.html#products">
+              <span class="nav-promo-l">All products</span>
+              <b>8 ready-to-deploy products for banking, security and AI</b>
+              <span class="nav-promo-go">Compare all products<i aria-hidden="true">→</i></span>
+            </a>
+          </div>
+            <div class="nav-menu-foot">
+              <span>Not sure which product fits your task?</span>
+              <a href="#contact">Discuss a project<i aria-hidden="true">→</i></a>
+            </div>
+          </div>
+        </div>
+        <a class="nav-link" href="index.html#about">About</a>
+        <a class="nav-link" href="careers.html">Careers</a>
+        <a class="nav-link" href="#contact">Contacts</a>
+      </div>
+      <a href="#contact" class="nav-cta">Discuss a project</a>
+      <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><i></i><i></i></button>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+      <span class="mm-label">[ Products ]</span>
+      <a class="mm" href="atm.html"><div><b>Sollisero ATM</b><small>ATM network management</small></div><span aria-hidden="true">↗</span></a>
+      <a class="mm" href="dspm.html"><div><b>dspm</b><small>Sensitive data monitoring</small></div><span aria-hidden="true">↗</span></a>
+      <a class="mm" href="cash-solutions.html"><div><b>cash solutions</b><small>POS + merchant portal</small></div><span aria-hidden="true">↗</span></a>
+      <a class="mm" href="retail-banking.html"><div><b>retail banking</b><small>Mobile banking for consumers</small></div><span aria-hidden="true">↗</span></a>
+      <a class="mm" href="digital-employees.html"><div><b>digital employees</b><small>Digital employees</small></div><span aria-hidden="true">↗</span></a>
+      <a class="mm" href="meeting-notes.html"><div><b>meeting notes</b><small>Meetings into reports</small></div><span aria-hidden="true">↗</span></a>
+      <a class="mm" href="bim-agent.html"><div><b>bim-agent</b><small>BIM process automation</small></div><span aria-hidden="true">↗</span></a>
+      <a class="mm" href="process-mining.html" aria-current="page"><div><b>process mining</b><small>Measure before you automate</small></div><span aria-hidden="true">↗</span></a>
+      <span class="mm-label">[ Company ]</span>
+      <a class="mm" href="careers.html"><div><b>Careers</b><small>Open positions</small></div><span aria-hidden="true">↗</span></a>
+      <a href="#contact" class="btn btn-primary">Discuss a project<span class="arr">↗</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ===== 01 HERO ===== -->
+<section class="hero" id="hero">
+  <div class="texture" aria-hidden="true" data-lines="OBSERVED WORK · 14 WORKING DAYS|PRIMARY DOCUMENTS 360 H / MONTH|PAYMENTS 80 H / MONTH|RECONCILIATIONS 70 H / MONTH|INVOICES &amp; CLOSING 50 H / MONTH|REPETITIVE 70% OF CAPACITY|CAN GO TO AI 71%|400 H FREED EVERY MONTH"></div>
+  <canvas class="dots dotfield" aria-hidden="true"></canvas>
+  <div class="wordmark" aria-hidden="true">process mining</div>
+  <div class="wrap">
+    <div class="hero-main">
+      <div class="hero-copy">
+        <span class="crumb mono">[ 01 ]  PRODUCTS  /  PROCESS MINING</span>
+        <h1 class="h1" data-split>Know the effect <span class="dim">before you automate.</span></h1>
+        <div class="tag"><i></i>PROCESS MINING — AN OBJECTIVE MAP OF HOW THE WORK ACTUALLY RUNS</div>
+        <p class="sub">process mining observes real working processes: it watches what people actually do, separates systematic repetition from one-off cases and builds an objective map of the process. You see where the time goes, what can be handed to AI and what it is worth — before anything is built.</p>
+        <div class="ctas">
+          <a class="btn btn-primary" href="#contact">Request a diagnostic<span class="arr">↗</span></a>
+          <a class="btn btn-ghost" href="#before">See the case</a>
+        </div>
+      </div>
+      <div class="hero-visual rv">
+        <div class="fit-view" data-w="760" data-h="350" data-mode="width">
+          <div class="win" role="img" aria-label="process mining: a process map of the accounting function with monthly volume, manual work, the repetitive share and manual hours by area">
+            <div class="win-bar"><span class="dots">● ● ●</span><span class="url">app.process-mining&nbsp;&nbsp;/&nbsp;&nbsp;map&nbsp;&nbsp;/&nbsp;&nbsp;accounting</span></div>
+            <div class="win-screen">
+              <div class="pm-map">
+                <div class="pm-kpis">
+                  <div class="pm-kpi"><small>Units / month</small><b>6 300</b></div>
+                  <div class="pm-kpi"><small>Manual work</small><b>560 h</b></div>
+                  <div class="pm-kpi"><small>Repetitive</small><b>70%</b></div>
+                  <div class="pm-kpi on"><small>Can go to AI</small><b>71%</b></div>
+                </div>
+                <div class="pm-bars">
+                  <span class="pm-bars-h mono">Manual hours by area&nbsp;&nbsp;·&nbsp;&nbsp;per month</span>
+                  <div class="pm-bar"><span>Primary documents</span><i style="--v:1"></i><b>360 h</b><em class="mono">systematic</em></div>
+                  <div class="pm-bar"><span>Payments</span><i style="--v:.222"></i><b>80 h</b><em class="mono">systematic</em></div>
+                  <div class="pm-bar"><span>Reconciliations &amp; receivables</span><i style="--v:.194"></i><b>70 h</b><em class="mono">systematic</em></div>
+                  <div class="pm-bar"><span>Invoices &amp; closing documents</span><i style="--v:.139"></i><b>50 h</b><em class="mono">systematic</em></div>
+                </div>
+                <div class="pm-map-foot mono">560 h repeat every month&nbsp;&nbsp;·&nbsp;&nbsp;400 h can be freed&nbsp;&nbsp;·&nbsp;&nbsp;payback modelled</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pm-ticker rv">
+      <span class="mono">Diagnostic of one unit</span>
+      <span class="mono">Observed work</span>
+      <span class="mono">Process map</span>
+      <span class="mono">Business case with ROI</span>
+      <b class="mono">[ Effect first ]</b>
+    </div>
+    <div class="stats">
+      <div class="stat rv"><span class="n mono">01</span><h3>Observes the real work</h3><p class="mono">not interviews or an org chart</p></div>
+      <div class="stat rv"><span class="n mono">02</span><h3>Separates systematic repetition</h3><p class="mono">from genuine one-off cases</p></div>
+      <div class="stat rv"><span class="n mono">03</span><h3>Prices what AI can take</h3><p class="mono">hours freed, cost and payback</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 02 WHY MEASURE FIRST ===== -->
+<section class="sec s-light" id="why" aria-labelledby="why-t">
+  <div class="wrap">
+    <div class="split">
+      <h2 class="title rv u-maxw-1300" id="why-t">Every AI initiative starts with a measurable business case <span class="dim">— so the effect is visible in advance.</span></h2>
+      <p class="lead rv">Teams usually choose what to automate from interviews, memory and intuition. process mining replaces that with observation: what is actually done, how often, and how long it takes.</p>
+    </div>
+    <div class="pm-grid pm-grid-4 rv">
+      <article class="pm-card"><span class="pm-n mono">01</span><h3>Opinion, not evidence</h3><p>Automation candidates are picked from interviews and intuition. The loudest pain is rarely the most expensive one.</p></article>
+      <article class="pm-card"><span class="pm-n mono">02</span><h3>Repetition hides in exceptions</h3><p>In a written process description, stable repetition and genuine one-off cases look exactly the same.</p></article>
+      <article class="pm-card"><span class="pm-n mono">03</span><h3>Bottlenecks stay invisible</h3><p>Queues and hand-offs between people and systems appear on no org chart and in no regulation.</p></article>
+      <article class="pm-card"><span class="pm-n mono">04</span><h3>Payback is argued, not calculated</h3><p>Without a measured baseline there is no honest way to say what automation costs and when it returns.</p></article>
+    </div>
+    <p class="pm-strip rv">process mining does not start from a tool. It starts from a measurement of the work you already do — and ends with a number you can sign off.</p>
+  </div>
+</section>
+
+<!-- ===== 03 WHAT IT SHOWS ===== -->
+<section class="sec s-dark" id="shows" aria-labelledby="shows-t">
+  <div class="wrap">
+    <div class="split">
+      <h2 class="title rv" id="shows-t">Six answers <span class="dim">from one diagnostic.</span></h2>
+      <p class="lead rv">One pass over a single unit produces the full picture: where the time goes, what repeats, what can be handed over, and what it is worth.</p>
+    </div>
+    <div class="pm-grid pm-grid-3 rv">
+      <article class="pm-card"><span class="pm-n mono">01</span><h3>Where most of the time goes</h3><p>Hours per month by area of work, measured rather than estimated.</p></article>
+      <article class="pm-card"><span class="pm-n mono">02</span><h3>Which actions repeat systematically</h3><p>Stable patterns separated from genuine exceptions.</p></article>
+      <article class="pm-card"><span class="pm-n mono">03</span><h3>Where bottlenecks appear</h3><p>Queues, hand-offs and waiting between people and systems.</p></article>
+      <article class="pm-card"><span class="pm-n mono">04</span><h3>What can be handed to AI</h3><p>The share of the process that an agent can perform under rules.</p></article>
+      <article class="pm-card"><span class="pm-n mono">05</span><h3>How much time is freed up</h3><p>Working hours returned to the team every month.</p></article>
+      <article class="pm-card"><span class="pm-n mono">06</span><h3>What it costs and when it pays back</h3><p>The cost of automation and the point at which it returns.</p></article>
+    </div>
+    <div class="pm-shot rv">
+      <div class="fit-view" data-w="1160" data-h="760" data-mode="width">
+        <div class="win" role="img" aria-label="process mining overview: observed hours, manual repetitive work, what can go to AI, modelled saving and diagnostic progress for the finance and accounting unit">
+          <div class="win-bar"><span class="dots">● ● ●</span><span class="url">app.process-mining&nbsp;&nbsp;/&nbsp;&nbsp;overview&nbsp;&nbsp;/&nbsp;&nbsp;finance &amp; accounting</span></div>
+          <div class="win-screen"><div class="pm-app">
+            <nav class="pm-rail">
+              <span class="pm-brand">sollisero<b> / process mining</b></span>
+              <span class="pm-org"><i>N</i><span><b>Northwind Inc.</b><small>Diagnostic workspace</small></span></span>
+              <span class="pm-rail-l mono">Measure</span>
+              <span class="pm-rail-i on">Overview</span>
+              <span class="pm-rail-i">Observation</span>
+              <span class="pm-rail-i">Process map</span>
+              <span class="pm-rail-i">Repetition</span>
+              <span class="pm-rail-i">Bottlenecks</span>
+              <span class="pm-rail-l mono">Decide</span>
+              <span class="pm-rail-i">AI candidates</span>
+              <span class="pm-rail-i">Business case</span>
+              <span class="pm-rail-l mono">Govern</span>
+              <span class="pm-rail-i">Scope &amp; privacy</span>
+              <span class="pm-rail-f"><b class="mono">Diagnostic · day 14 / 20</b><i style="--v:.7"></i><small>560 h/month mapped · report due 27 Nov</small></span>
+            </nav>
+            <div class="pm-main">
+              <div class="pm-head">
+                <div>
+                  <span class="mono pm-eyebrow">Diagnostic of one unit&nbsp;·&nbsp;day 14 of 20</span>
+                  <h4>Finance &amp; Accounting</h4>
+                  <small>Seven people, observed for 14 working days. 6,300 processing units a month — 560 h of them manual, repetitive work.</small>
+                </div>
+                <div class="pm-acts"><span class="pm-btn">Observing · day 14 / 20</span><span class="pm-btn">Export report</span><span class="pm-btn pri">Open business case</span></div>
+              </div>
+              <div class="pm-row4">
+                <div class="pm-kpi"><small>Observed hours</small><b>1,120 h</b><span class="d">7 people · 14 days</span></div>
+                <div class="pm-kpi"><small>Manual, repetitive</small><b>560 h</b><span class="d">a month · 70% of capacity</span></div>
+                <div class="pm-kpi"><small>Can go to AI</small><b class="acc">400 h</b><span class="d">a month · 71% of manual</span></div>
+                <div class="pm-kpi"><small>Modelled saving</small><b class="ok">RUB 4.1 m</b><span class="d">a year</span></div>
+              </div>
+              <div class="pm-cols">
+                <section class="pm-panel">
+                  <header><b>Where the time goes</b><small>Manual hours a month, by area of work</small><span class="pm-hint">Open process map</span></header>
+                  <div class="pm-bars tight">
+                    <div class="pm-bar"><span>Primary documents<em>≈ 4,800 line items a month</em></span><i style="--v:1"></i><b>360 h</b><u>64%</u></div>
+                    <div class="pm-bar"><span>Payments<em>≈ 900 payments a month</em></span><i style="--v:.222"></i><b>80 h</b><u>14%</u></div>
+                    <div class="pm-bar"><span>Reconciliations &amp; receivables<em>RUB 48 m outstanding</em></span><i style="--v:.194"></i><b>70 h</b><u>13%</u></div>
+                    <div class="pm-bar"><span>Invoices &amp; closing documents<em>≈ 600 sets a month</em></span><i style="--v:.139"></i><b>50 h</b><u>9%</u></div>
+                  </div>
+                  <footer><b>Total 560 h a month</b><small>70% of the team’s capacity of 800 h</small><span class="pm-tag">Measured, not estimated</span></footer>
+                </section>
+                <section class="pm-panel">
+                  <header><b>Diagnostic progress</b><small>Six questions, one unit</small></header>
+                  <ul class="pm-steps">
+                    <li class="run"><span>Observation<em>14 of 20 days</em></span><b class="mono">running</b></li>
+                    <li class="done"><span>Process map<em>41 variants found</em></span></li>
+                    <li class="done"><span>Repetition<em>9 stable patterns</em></span></li>
+                    <li class="done"><span>Bottlenecks<em>6 found</em></span></li>
+                    <li class="done"><span>AI candidates<em>9 ranked</em></span></li>
+                    <li><span>Business case<em>draft · payback 11 months</em></span></li>
+                  </ul>
+                </section>
+              </div>
+              <div class="pm-cols">
+                <section class="pm-panel">
+                  <header><b>What the diagnostic answers</b><small>Six questions, answered before anything is built</small></header>
+                  <ol class="pm-qs mono">
+                    <li>Where most of the time goes</li>
+                    <li>Which actions repeat systematically</li>
+                    <li>Where bottlenecks appear</li>
+                    <li>What part of the process can go to AI</li>
+                    <li>How much working time is freed</li>
+                    <li>What automation costs and when it pays back</li>
+                  </ol>
+                </section>
+                <section class="pm-panel">
+                  <header><b>Top candidates to hand over</b><small>Ranked by hours freed a month</small><span class="pm-hint">See all 9 →</span></header>
+                  <ul class="pm-cands">
+                    <li><span>Enter invoice line items<em>high confidence · 6% exceptions</em></span><b>168 → 42 h<u>126 h freed</u></b></li>
+                    <li><span>Create a document from a scan<em>high confidence · 7% exceptions</em></span><b>110 → 28 h<u>82 h freed</u></b></li>
+                    <li><span>Check counterparty details<em>high confidence · 3% exceptions</em></span><b>82 → 20 h<u>62 h freed</u></b></li>
+                  </ul>
+                  <footer class="pm-foot-note">Hours are measured from observed work. The saving is modelled on the agreed scope.</footer>
+                </section>
+              </div>
+            </div>
+          </div></div>
+        </div>
+      </div>
+      <aside class="pm-note rv">
+        <span class="mono">In the product&nbsp;&nbsp;·&nbsp;&nbsp;Overview</span>
+        <p>One unit on one screen: hours observed, how much of the work repeats, how much of it an agent can take — and which of the six questions are already answered.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 04 HOW IT WORKS ===== -->
+<section class="sec s-light" id="how" aria-labelledby="how-t">
+  <div class="wrap">
+    <div class="split">
+      <h2 class="title rv" id="how-t">Observation, <span class="dim">not interviews.</span></h2>
+      <p class="lead rv">The diagnostic runs on one unit over a representative period. Nothing is installed into the business process itself — the work is observed as it already happens.</p>
+    </div>
+    <div class="pm-grid pm-grid-3 rv">
+      <article class="pm-card"><span class="pm-n mono">01</span><h3>Observe the real work</h3><p>We record the actual actions of the team in the systems they already use, over a period long enough to be representative.</p></article>
+      <article class="pm-card"><span class="pm-n mono">02</span><h3>Separate repetition from exceptions</h3><p>Stable, rule-shaped repetition is separated from genuine one-off cases that need a person’s judgement.</p></article>
+      <article class="pm-card"><span class="pm-n mono">03</span><h3>Build the process map</h3><p>The result is an objective map: volumes, hours, hand-offs and bottlenecks — with the automatable share marked on it.</p></article>
+    </div>
+    <div class="pm-shot rv">
+      <div class="fit-view" data-w="1160" data-h="711" data-mode="width">
+        <div class="win" role="img" aria-label="process mining observation: one accountant’s working day minute by minute, assembled from raw events into cases">
+          <div class="win-bar"><span class="dots">● ● ●</span><span class="url">app.process-mining&nbsp;&nbsp;/&nbsp;&nbsp;observation&nbsp;&nbsp;/&nbsp;&nbsp;day</span></div>
+          <div class="win-screen"><div class="pm-app">
+            <nav class="pm-rail">
+              <span class="pm-brand">sollisero<b> / process mining</b></span>
+              <span class="pm-org"><i>N</i><span><b>Northwind Inc.</b><small>Diagnostic workspace</small></span></span>
+              <span class="pm-rail-l mono">Measure</span>
+              <span class="pm-rail-i">Overview</span>
+              <span class="pm-rail-i on">Observation</span>
+              <span class="pm-rail-i">Process map</span>
+              <span class="pm-rail-i">Repetition</span>
+              <span class="pm-rail-i">Bottlenecks</span>
+              <span class="pm-rail-l mono">Decide</span>
+              <span class="pm-rail-i">AI candidates</span>
+              <span class="pm-rail-i">Business case</span>
+              <span class="pm-rail-l mono">Govern</span>
+              <span class="pm-rail-i">Scope &amp; privacy</span>
+              <span class="pm-rail-f"><b class="mono">Diagnostic · day 14 / 20</b><i style="--v:.7"></i><small>560 h/month mapped · report due 27 Nov</small></span>
+            </nav>
+            <div class="pm-main">
+              <div class="pm-head">
+                <div>
+                  <span class="mono pm-eyebrow">Observed work&nbsp;·&nbsp;one person, one day</span>
+                  <h4>A. Ivanova — Accountant, primary documents</h4>
+                  <small>Observed 12 Oct – 6 Nov · consent given 1 Oct · 84% of events classified automatically</small>
+                </div>
+                <div class="pm-acts"><span class="pm-btn">A. Ivanova · 5 Nov</span><span class="pm-btn">Show steps inline</span><span class="pm-btn">Export day</span></div>
+              </div>
+              <div class="pm-row5">
+                <div class="pm-kpi"><small>Cases</small><b>7</b><span class="d">+ other activity</span></div>
+                <div class="pm-kpi"><small>Tracked</small><b>7 h 34 m</b><span class="d">of 9 h 43 m present</span></div>
+                <div class="pm-kpi"><small>Idle</small><b>14 m</b><span class="d">no input detected</span></div>
+                <div class="pm-kpi"><small>Unassigned</small><b>27 m</b><span class="d">not matched to a case</span></div>
+                <div class="pm-kpi"><small>Classified</small><b>84%</b><span class="d">events matched automatically</span></div>
+              </div>
+              <section class="pm-panel">
+                <header><b>The working day, minute by minute</b><small>Each block is a stretch of work on one case · 08:00 – 18:00</small></header>
+                <div class="pm-day">
+                  <i style="--w:5;--c:var(--pm-c1)"></i><i style="--w:9;--c:var(--pm-c2)"></i><i style="--w:4;--c:var(--pm-c3)"></i>
+                  <i style="--w:3;--c:var(--pm-c4)"></i><i style="--w:7;--c:var(--pm-c2)"></i><i style="--w:5;--c:var(--pm-c5)"></i>
+                  <i style="--w:4;--c:var(--pm-c6)"></i><i style="--w:8;--c:var(--pm-c2)"></i><i style="--w:3;--c:var(--pm-c3)"></i>
+                  <i style="--w:6;--c:var(--pm-c4)"></i><i style="--w:4;--c:var(--pm-c5)"></i><i style="--w:7;--c:var(--pm-c2)"></i>
+                  <i style="--w:3;--c:var(--pm-c1)"></i><i style="--w:5;--c:var(--pm-c6)"></i>
+                </div>
+                <div class="pm-legend">
+                  <span><i style="background:var(--pm-c2)"></i>Primary documents 4 h 15 m</span>
+                  <span><i style="background:var(--pm-c4)"></i>Payments 44 m</span>
+                  <span><i style="background:var(--pm-c5)"></i>Reconciliations 52 m</span>
+                  <span><i style="background:var(--pm-c3)"></i>Invoices &amp; closing 28 m</span>
+                  <span><i style="background:var(--pm-c1)"></i>Mail &amp; coordination 31 m</span>
+                  <span><i style="background:var(--pm-c6)"></i>Reporting &amp; tax 22 m</span>
+                  <span><i style="background:#e7eaf2"></i>Idle / unassigned 41 m</span>
+                </div>
+              </section>
+              <div class="pm-cols">
+                <section class="pm-panel">
+                  <header><b>Cases of the day</b><small>Grouped from 1,214 events · 7 cases</small></header>
+                  <ul class="pm-cases">
+                    <li class="on"><span>Enter supplier invoices for September<em>412 steps · observed, not reported</em></span><b>2 h 38 m</b></li>
+                    <li><span>Corrections after supplier replies<em>198 steps · observed, not reported</em></span><b>1 h 37 m</b></li>
+                    <li><span>Mail triage and clarifications<em>74 steps · observed, not reported</em></span><b>1 h 01 m</b></li>
+                    <li><span>Reconciliation with Delta Logistics<em>61 steps · observed, not reported</em></span><b>52 m</b></li>
+                    <li><span>Payment run · Thursday batch<em>96 steps · observed, not reported</em></span><b>44 m</b></li>
+                    <li><span>VAT ledger check<em>39 steps · observed, not reported</em></span><b>22 m</b></li>
+                    <li><span>Closing documents for 14 customers<em>58 steps · observed, not reported</em></span><b>28 m</b></li>
+                  </ul>
+                </section>
+                <section class="pm-panel">
+                  <header><b>Minute feed</b><small>08:17 – 08:47 · 190 events in range</small></header>
+                  <ul class="pm-feed mono">
+                    <li><b>08:17:09</b><span>Supplier thread opened</span><u>mail</u></li>
+                    <li><b>08:19:41</b><span>Replied, one attachment</span><u>mail</u></li>
+                    <li><b>08:23:12</b><span>Invoice register opened</span><u>erp</u></li>
+                    <li><b>08:24:50</b><span>Document created from a scan</span><u>erp</u></li>
+                    <li><b>08:34:33</b><span>18 line items entered by hand</span><u>erp</u></li>
+                    <li><b>08:41:08</b><span>Reconciliation file opened</span><u>sheet</u></li>
+                    <li><b>08:44:21</b><span>Matched to a contract</span><u>erp</u></li>
+                    <li><b>08:47:26</b><span>Document posted</span><u>erp</u></li>
+                    <li><b>08:51:02</b><span>Asked supplier for a missing field</span><u>mail</u></li>
+                  </ul>
+                  <footer class="pm-foot-note">Window titles are normalised. Document contents and keystrokes are never captured.</footer>
+                </section>
+              </div>
+            </div>
+          </div></div>
+        </div>
+      </div>
+      <aside class="pm-note rv">
+        <span class="mono">In the product&nbsp;&nbsp;·&nbsp;&nbsp;Observed work</span>
+        <p>A real working day, minute by minute. Cases are assembled from raw events — nobody fills in a timesheet and nobody is asked to describe the process from memory.</p>
+      </aside>
+    </div>
+    <div class="pm-deliv rv">
+      <div class="pm-dcard"><span class="mono">Deliverable 01</span><h3>Process map</h3><p class="mono">volumes, time and bottlenecks by area</p></div>
+      <div class="pm-dcard"><span class="mono">Deliverable 02</span><h3>Business case with ROI</h3><p class="mono">hours freed, cost of automation, payback</p></div>
+      <div class="pm-dcard"><span class="mono">Scope</span><h3>One unit</h3><p class="mono">the most labour-intensive process first</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 05 WHERE IT FITS ===== -->
+<section class="sec s-light" id="fits" style="background:#eceff8" aria-labelledby="fits-t">
+  <div class="wrap">
+    <div class="split">
+      <h2 class="title rv" id="fits-t">Wherever the same work <span class="dim">happens again and again.</span></h2>
+      <p class="lead rv">The diagnostic is function-agnostic. It pays off first where volume is high, the steps are repeatable and the team is already at the limit of its capacity.</p>
+    </div>
+    <div class="pm-funcs rv">
+      <div class="pm-func"><b>Operations</b><span class="mono">high volume, strict deadlines</span></div>
+      <div class="pm-func"><b>Back office</b><span class="mono">repeatable processing work</span></div>
+      <div class="pm-func"><b>Finance</b><span class="mono">documents, payments, reconciliation</span></div>
+      <div class="pm-func"><b>Document flow</b><span class="mono">incoming and outgoing paperwork</span></div>
+      <div class="pm-func"><b>HR</b><span class="mono">hiring, records, routine requests</span></div>
+      <div class="pm-func"><b>Procurement</b><span class="mono">requests, suppliers, approvals</span></div>
+    </div>
+    <div class="pm-panels rv">
+      <article class="pm-pane light">
+        <span class="mono">Example&nbsp;·&nbsp;Back office</span>
+        <h3>How it works in a bank</h3>
+        <p>In the back office, process mining shows where the largest volume of repetitive manual work sits — and which of it is worth handing to AI. The answer is a map and a number, not a recommendation.</p>
+      </article>
+      <article class="pm-pane dark">
+        <span class="mono">Where we suggest starting</span>
+        <h3>A diagnostic of one unit</h3>
+        <p>We start with a single unit and its most labour-intensive process. The deliverable is a process map and a business case with ROI — before any automation is agreed.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 06 IN PRACTICE · BEFORE ===== -->
+<section class="sec s-dark" id="before" aria-labelledby="before-t">
+  <div class="wrap">
+    <div class="split">
+      <h2 class="title rv" id="before-t">A finance team already <span class="dim">at the limit of its capacity.</span></h2>
+      <p class="lead rv">Accounting function of a mid-sized manufacturing and trading company. Four accountants and a head of function.</p>
+    </div>
+    <div class="pm-flow rv">
+      <div class="pm-vol">
+        <span class="mono">Average monthly volume</span>
+        <div class="pm-vrow"><b>~4,800</b><span>line items in primary documents</span></div>
+        <div class="pm-vrow"><b>~900</b><span>payments</span></div>
+        <div class="pm-vrow"><b>~600</b><span>sets of invoices and closing documents</span></div>
+      </div>
+      <span class="pm-arrow" aria-hidden="true">→</span>
+      <div class="pm-total">
+        <span class="mono">Processing units per month</span>
+        <b class="n" data-count="6300" data-sep=" ">6 300</b>
+        <span class="mono d">team capacity: 800 hours a month</span>
+      </div>
+    </div>
+    <p class="pm-strip dark rv"><span class="mono">Constraint</span>A 40% rise in document flow would require two more accountants under the current process.</p>
+    <p class="pm-src mono rv">Case data collected during an analysis of the accounting function. Figures are rounded.</p>
+  </div>
+</section>
+
+<!-- ===== 07 WHERE THE TIME GOES ===== -->
+<section class="sec s-white" id="time" aria-labelledby="time-t">
+  <div class="wrap">
+    <div class="split">
+      <h2 class="title rv u-maxw-1300" id="time-t">About 560 hours a month go to repetitive tasks <span class="dim">— 70% of the team’s capacity.</span></h2>
+      <p class="lead rv">Measured by area of work rather than estimated. The remaining 240 hours go to reporting, taxes and non-standard situations.</p>
+    </div>
+    <div class="pm-flow pm-flow--chart rv">
+      <div class="pm-chart">
+        <span class="mono">Manual work by area&nbsp;&nbsp;·&nbsp;&nbsp;hours per month</span>
+        <div class="pm-bars axis">
+          <div class="pm-bar"><span>Primary documents</span><i style="--v:.9"></i><b>360 h</b></div>
+          <div class="pm-bar"><span>Payments</span><i style="--v:.2"></i><b>80 h</b></div>
+          <div class="pm-bar"><span>Reconciliations and receivables</span><i style="--v:.175"></i><b>70 h</b></div>
+          <div class="pm-bar"><span>Invoices and closing documents</span><i style="--v:.125"></i><b>50 h</b></div>
+        </div>
+        <div class="pm-axis mono"><span>0</span><span>100</span><span>200</span><span>300</span><span>400</span></div>
+      </div>
+      <div class="pm-total">
+        <span class="mono">Total repetitive work</span>
+        <b class="n" data-count="560" data-suf=" h">560 h</b>
+        <span class="mono d">per month&nbsp;·&nbsp;70% of capacity</span>
+      </div>
+    </div>
+    <div class="pm-notes rv">
+      <div class="pm-nt"><span class="mono">Primary documents</span><p>Purchases, delivery, waybills, shipments and sales. A single document can carry up to 50 line items and up to two hours of manual entry.</p></div>
+      <div class="pm-nt"><span class="mono">The other 240 hours</span><p>Reporting, taxes and non-standard situations — work that stays with the team.</p></div>
+    </div>
+    <p class="pm-src mono rv">Case data collected during an analysis of the accounting function. Figures are rounded.</p>
+  </div>
+</section>
+
+<!-- ===== 08 WHAT THE AGENT TAKES OVER ===== -->
+<section class="sec s-light" id="agent" aria-labelledby="agent-t">
+  <div class="wrap">
+    <div class="split">
+      <h2 class="title rv u-maxw-1300" id="agent-t">An AI agent takes over four areas. <span class="dim">The accountant works with the exceptions.</span></h2>
+      <p class="lead rv">Standard actions are performed by the system. People keep confirmation, corrections and everything that falls outside the rules.</p>
+    </div>
+    <div class="pm-grid pm-grid-4 rv">
+      <article class="pm-card"><span class="pm-n mono">01</span><h3>Primary documents</h3><p>Recognises scans in the accounting system, picks the line item from the reference book or creates a new one.</p></article>
+      <article class="pm-card"><span class="pm-n mono">02</span><h3>Payments</h3><p>Finds goods and services received but not paid. Where a contract exists, checks the payment term and prepares a payment order.</p></article>
+      <article class="pm-card"><span class="pm-n mono">03</span><h3>Invoices under contracts</h3><p>Prepares invoices, acts and UPD in bulk from the contract terms. Sends UPD and acts by EDI, invoices by email.</p></article>
+      <article class="pm-card"><span class="pm-n mono">04</span><h3>Reconciliation and debt</h3><p>Maintains receivables and payables. Prepares reconciliation reports, letters and reminders about deadlines.</p></article>
+    </div>
+    <div class="pm-shot rv">
+      <div class="fit-view" data-w="1160" data-h="633" data-mode="width">
+        <div class="win" role="img" aria-label="process mining AI candidates: every area ranked by the hours it frees, with the share that stays manual">
+          <div class="win-bar"><span class="dots">● ● ●</span><span class="url">app.process-mining&nbsp;&nbsp;/&nbsp;&nbsp;ai candidates</span></div>
+          <div class="win-screen"><div class="pm-app">
+            <nav class="pm-rail">
+              <span class="pm-brand">sollisero<b> / process mining</b></span>
+              <span class="pm-org"><i>N</i><span><b>Northwind Inc.</b><small>Diagnostic workspace</small></span></span>
+              <span class="pm-rail-l mono">Measure</span>
+              <span class="pm-rail-i">Overview</span>
+              <span class="pm-rail-i">Observation</span>
+              <span class="pm-rail-i">Process map</span>
+              <span class="pm-rail-i">Repetition</span>
+              <span class="pm-rail-i">Bottlenecks</span>
+              <span class="pm-rail-l mono">Decide</span>
+              <span class="pm-rail-i on">AI candidates</span>
+              <span class="pm-rail-i">Business case</span>
+              <span class="pm-rail-l mono">Govern</span>
+              <span class="pm-rail-i">Scope &amp; privacy</span>
+              <span class="pm-rail-f"><b class="mono">Diagnostic · day 14 / 20</b><i style="--v:.7"></i><small>560 h/month mapped · report due 27 Nov</small></span>
+            </nav>
+            <div class="pm-main">
+              <div class="pm-head">
+                <div>
+                  <span class="mono pm-eyebrow">What can be handed to AI&nbsp;·&nbsp;priced in hours</span>
+                  <h4>Candidates, and what each one is worth</h4>
+                  <small>9 areas assessed, 6 selected. 560 → 160 manual hours a month. The accountant keeps the exceptions.</small>
+                </div>
+                <div class="pm-acts"><span class="pm-btn">Needs a human step</span><span class="pm-btn">Compare</span><span class="pm-btn pri">Build business case</span></div>
+              </div>
+              <div class="pm-cols wide">
+                <section class="pm-panel">
+                  <header><b>Candidates</b><small>Hours a month now, and with an agent doing the repeatable part</small><span class="pm-hint mono">Hours from the observation window</span></header>
+                  <table class="pm-tbl">
+                    <thead><tr><th>Area of work</th><th class="num">Now</th><th class="num">With agent</th><th class="num">Freed</th><th class="num">Exceptions</th><th>Confidence</th></tr></thead>
+                    <tbody>
+                      <tr class="sel"><td>Enter invoice line items</td><td class="num">168 h</td><td class="num">42 h</td><td class="num acc">+126 h</td><td class="num">6%</td><td><span class="pm-pill ok">high</span></td></tr>
+                      <tr class="sel"><td>Create a document from a scan</td><td class="num">110 h</td><td class="num">28 h</td><td class="num acc">+82 h</td><td class="num">7%</td><td><span class="pm-pill ok">high</span></td></tr>
+                      <tr class="sel"><td>Check counterparty details</td><td class="num">82 h</td><td class="num">20 h</td><td class="num acc">+62 h</td><td class="num">3%</td><td><span class="pm-pill ok">high</span></td></tr>
+                      <tr class="sel"><td>Prepare and match payments</td><td class="num">80 h</td><td class="num">25 h</td><td class="num acc">+55 h</td><td class="num">4%</td><td><span class="pm-pill ok">high</span></td></tr>
+                      <tr class="sel"><td>Reconciliations and debt letters</td><td class="num">70 h</td><td class="num">25 h</td><td class="num acc">+45 h</td><td class="num">13%</td><td><span class="pm-pill mid">medium</span></td></tr>
+                      <tr class="sel"><td>Invoices and closing documents</td><td class="num">50 h</td><td class="num">20 h</td><td class="num acc">+30 h</td><td class="num">8%</td><td><span class="pm-pill ok">high</span></td></tr>
+                      <tr><td>VAT ledger checks</td><td class="num">60 h</td><td class="num">kept</td><td class="num">—</td><td class="num">24%</td><td><span class="pm-pill low">low</span></td></tr>
+                      <tr><td>Tax reporting</td><td class="num">90 h</td><td class="num">kept</td><td class="num">—</td><td class="num">—</td><td><span class="pm-pill low">low</span></td></tr>
+                      <tr><td>Non-standard situations</td><td class="num">90 h</td><td class="num">kept</td><td class="num">—</td><td class="num">—</td><td><span class="pm-pill low">low</span></td></tr>
+                    </tbody>
+                  </table>
+                  <footer><b>6 selected</b><small>560 h → 160 h a month</small><span class="pm-tag ok">−71% of manual work</span></footer>
+                </section>
+                <div class="pm-side">
+                  <section class="pm-panel">
+                    <header><b class="mono">Your selection</b></header>
+                    <div class="pm-sel"><b class="acc">400 h</b><span>freed every month</span></div>
+                    <div class="pm-sel"><b class="ok">RUB 4.1 m</b><span>a year — two accountants not hired</span></div>
+                    <div class="pm-sel"><b>11 months</b><span>to pay back the build</span></div>
+                    <span class="pm-btn pri wide">Build the business case</span>
+                  </section>
+                  <section class="pm-panel">
+                    <header><b>Enter invoice line items</b><small>168 → 42 h a month · 6% exceptions</small></header>
+                    <span class="mono pm-sub">The agent does</span>
+                    <ul class="pm-ticks"><li>Reads the scan and fills the header</li><li>Enters line items and VAT</li><li>Flags anything it has not seen</li></ul>
+                    <span class="mono pm-sub">The person confirms</span>
+                    <ul class="pm-ticks flag"><li>New line items on first use</li><li>Anything the agent flagged</li><li>The posting itself</li></ul>
+                  </section>
+                </div>
+              </div>
+              <div class="pm-rules">
+                <span><b>The agent proposes, a person posts</b><small>Nothing leaves the system without a confirmation on new line items, payments and outgoing documents.</small></span>
+                <span><b>Exceptions are queued, not guessed</b><small>6% of invoices carry something the agent has not seen before. Those go to a person untouched.</small></span>
+                <span><b>Every action is reversible</b><small>Each posting is one transaction with a visible author and a one-click undo.</small></span>
+              </div>
+            </div>
+          </div></div>
+        </div>
+      </div>
+      <aside class="pm-note rv">
+        <span class="mono">In the product&nbsp;&nbsp;·&nbsp;&nbsp;Candidates</span>
+        <p>Every area is ranked by the hours it frees and by what is left for a person to confirm. The work that stays manual sits in the same table — that is what the 71% is measured against.</p>
+      </aside>
+    </div>
+    <p class="pm-strip dark rv"><span class="mono">The accountant’s role</span>The accountant confirms new line items, payments and outgoing documents — and makes corrections where they are needed.</p>
+  </div>
+</section>
+
+<!-- ===== 09 RECEIVABLES UNDER CONTROL ===== -->
+<section class="sec s-dark" id="debt" aria-labelledby="debt-t">
+  <div class="wrap">
+    <div class="split">
+      <h2 class="title rv" id="debt-t">Receivables <span class="dim">under control.</span></h2>
+      <p class="lead rv">The agent starts work on a debt once it passes six months outstanding, and tracks the limitation period from there.</p>
+    </div>
+    <div class="pm-flow rv">
+      <div class="pm-vol">
+        <span class="mono">Receivables</span>
+        <div class="pm-vrow"><b>RUB 48 m</b><span>of receivables</span></div>
+        <div class="pm-vrow"><b>RUB 7.2 m</b><span>overdue</span></div>
+        <div class="pm-vrow"><b>RUB 1.1 m</b><span>across 23 items older than three years</span></div>
+      </div>
+      <span class="pm-arrow" aria-hidden="true">→</span>
+      <div class="pm-total">
+        <span class="mono">Working the debt</span>
+        <b>6+ months</b>
+        <span class="mono d">reconciliation report and a letter with payment details</span>
+      </div>
+    </div>
+    <p class="pm-strip dark rv"><span class="mono">Two scenarios</span>On receivables the agent sends a reconciliation report and a letter with payment details. On payables it highlights obligations to suppliers and prepares payment orders.</p>
+    <p class="pm-src mono rv">Case data collected during an analysis of the accounting function. Figures are rounded.</p>
+  </div>
+</section>
+
+<!-- ===== 10 THE RESULT ===== -->
+<section class="sec s-light" id="result" aria-labelledby="result-t">
+  <div class="wrap">
+    <div class="split">
+      <h2 class="title rv u-maxw-1300" id="result-t">Manual work falls by 71% <span class="dim">— and 40% growth fits the same team.</span></h2>
+      <p class="lead rv">About 560 hours of manual work a month come down to 160. A complex document that took up to two hours is handled in minutes.</p>
+    </div>
+    <div class="pm-flow pm-flow--chart rv">
+      <div class="pm-chart">
+        <div class="pm-chart-h">
+          <span class="mono">Manual work by area&nbsp;&nbsp;·&nbsp;&nbsp;hours per month</span>
+          <span class="pm-key mono"><i class="was"></i>Before<i class="now"></i>With an AI agent</span>
+        </div>
+        <div class="pm-bars pair">
+          <div class="pm-bar2"><span>Primary documents</span><div><i class="was" style="--v:1"></i><i class="now" style="--v:.25"></i></div><b>360 h <u>→</u> 90 h</b></div>
+          <div class="pm-bar2"><span>Payments</span><div><i class="was" style="--v:.222"></i><i class="now" style="--v:.069"></i></div><b>80 h <u>→</u> 25 h</b></div>
+          <div class="pm-bar2"><span>Reconciliations and receivables</span><div><i class="was" style="--v:.194"></i><i class="now" style="--v:.069"></i></div><b>70 h <u>→</u> 25 h</b></div>
+          <div class="pm-bar2"><span>Invoices and closing documents</span><div><i class="was" style="--v:.139"></i><i class="now" style="--v:.056"></i></div><b>50 h <u>→</u> 20 h</b></div>
+        </div>
+      </div>
+      <div class="pm-total">
+        <span class="mono">Total manual work</span>
+        <b>560 → 160 h</b>
+        <span class="mono d">per month&nbsp;·&nbsp;−71%</span>
+      </div>
+    </div>
+    <div class="pm-kcards rv">
+      <div class="pm-kc"><span class="mono">Freed up</span><b>~400 h</b><small class="mono">every month</small></div>
+      <div class="pm-kc"><span class="mono">Month close</span><b>8 → 5</b><small class="mono">working days</small></div>
+      <div class="pm-kc"><span class="mono">Volume</span><b>8,800</b><small class="mono">units a month&nbsp;·&nbsp;+40%</small></div>
+      <div class="pm-kc"><span class="mono">Team</span><b>5 instead of 7</b><small class="mono">no new hires needed</small></div>
+      <div class="pm-kc"><span class="mono">Avoided cost</span><b>RUB 4.1 m</b><small class="mono">a year&nbsp;·&nbsp;two accountants</small></div>
+    </div>
+    <div class="pm-shot rv">
+      <div class="fit-view" data-w="1160" data-h="771" data-mode="width">
+        <div class="win" role="img" aria-label="process mining business case: hours freed, avoided cost, payback month and what is not included in the number">
+          <div class="win-bar"><span class="dots">● ● ●</span><span class="url">app.process-mining&nbsp;&nbsp;/&nbsp;&nbsp;business case</span></div>
+          <div class="win-screen"><div class="pm-app">
+            <nav class="pm-rail">
+              <span class="pm-brand">sollisero<b> / process mining</b></span>
+              <span class="pm-org"><i>N</i><span><b>Northwind Inc.</b><small>Diagnostic workspace</small></span></span>
+              <span class="pm-rail-l mono">Measure</span>
+              <span class="pm-rail-i">Overview</span>
+              <span class="pm-rail-i">Observation</span>
+              <span class="pm-rail-i">Process map</span>
+              <span class="pm-rail-i">Repetition</span>
+              <span class="pm-rail-i">Bottlenecks</span>
+              <span class="pm-rail-l mono">Decide</span>
+              <span class="pm-rail-i">AI candidates</span>
+              <span class="pm-rail-i on">Business case</span>
+              <span class="pm-rail-l mono">Govern</span>
+              <span class="pm-rail-i">Scope &amp; privacy</span>
+              <span class="pm-rail-f"><b class="mono">Diagnostic · day 14 / 20</b><i style="--v:.7"></i><small>560 h/month mapped · report due 27 Nov</small></span>
+            </nav>
+            <div class="pm-main">
+              <div class="pm-head">
+                <div>
+                  <span class="mono pm-eyebrow">The number you can sign off</span>
+                  <h4>Business case&nbsp;·&nbsp;Finance &amp; Accounting</h4>
+                  <small>560 → 160 manual hours a month, RUB 4.1 m a year, and 40% more volume fits the same team.</small>
+                </div>
+                <div class="pm-acts"><span class="pm-btn">Export PDF</span><span class="pm-btn pri">Share with finance</span></div>
+              </div>
+              <div class="pm-row4">
+                <div class="pm-kpi"><small>Freed every month</small><b>400 h</b><span class="d">of 560 manual</span></div>
+                <div class="pm-kpi"><small>Avoided cost</small><b class="ok">RUB 4.1 m</b><span class="d">a year</span></div>
+                <div class="pm-kpi"><small>Payback</small><b>11 months</b><span class="d">on a RUB 2.8 m build</span></div>
+                <div class="pm-kpi"><small>Team size</small><b>5 of 7</b><span class="d">at 8,800 units a month</span></div>
+              </div>
+              <div class="pm-cols">
+                <section class="pm-panel">
+                  <header><b>Before, and with an AI agent</b><small>Manual hours a month by area of work</small></header>
+                  <div class="pm-bars pair tight">
+                    <div class="pm-bar2"><span>Primary documents</span><div><i class="was" style="--v:1"></i><i class="now" style="--v:.25"></i></div><b>360 → 90 h</b><u>−75%</u></div>
+                    <div class="pm-bar2"><span>Payments</span><div><i class="was" style="--v:.222"></i><i class="now" style="--v:.069"></i></div><b>80 → 25 h</b><u>−69%</u></div>
+                    <div class="pm-bar2"><span>Reconciliations &amp; receivables</span><div><i class="was" style="--v:.194"></i><i class="now" style="--v:.069"></i></div><b>70 → 25 h</b><u>−64%</u></div>
+                    <div class="pm-bar2"><span>Invoices &amp; closing documents</span><div><i class="was" style="--v:.139"></i><i class="now" style="--v:.056"></i></div><b>50 → 20 h</b><u>−60%</u></div>
+                  </div>
+                  <footer><b>Total 560 h → 160 h a month</b><span class="pm-tag ok">−71%</span></footer>
+                </section>
+                <div class="pm-side">
+                  <section class="pm-panel">
+                    <header><b>Cost and payback</b><small>Cumulative result, RUB million · build RUB 2.8 m one-off, RUB 0.9 m a year to run</small></header>
+                    <div class="pm-pay"><span class="mono pm-pay-l">Payback · month 11</span><i class="pm-pay-bars" aria-hidden="true"></i><small class="mono">Result over 24 months</small></div>
+                  </section>
+                  <section class="pm-panel">
+                    <header><b>What changes for the team</b><small>At 8,800 units a month — 40% more than today</small></header>
+                    <ul class="pm-deltas">
+                      <li><span>Month close<em>working days</em></span><b>8 → 5</b></li>
+                      <li><span>Volume handled<em>units a month</em></span><b class="acc">6,300 → 8,800</b></li>
+                      <li><span>Team size<em>people</em></span><b>7 → 5</b></li>
+                      <li><span>Manual work<em>of capacity</em></span><b class="acc">70% → 20%</b></li>
+                    </ul>
+                  </section>
+                  <section class="pm-panel">
+                    <header><b>What is not in the number</b><small>So the case survives a finance review</small></header>
+                    <ul class="pm-ticks note">
+                      <li>Debt actually collected is excluded, although the agent chases it.</li>
+                      <li>Figures are rounded; hours come from the observed window, not from estimates.</li>
+                      <li>Licence and infrastructure are inside the RUB 0.9 m a year to run.</li>
+                      <li>People are not made redundant — the plan is 40% more volume with five.</li>
+                    </ul>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div></div>
+        </div>
+      </div>
+      <aside class="pm-note rv">
+        <span class="mono">In the product&nbsp;&nbsp;·&nbsp;&nbsp;Business case</span>
+        <p>The same figures as on this page, with the cost of the work and the payback month attached — the sheet a finance team can sign off.</p>
+      </aside>
+    </div>
+    <p class="pm-src mono rv">Month close goes from 8 to 5 working days. Debt collection is not included in the economic effect. Figures are rounded.</p>
+  </div>
+</section>
+
+<!-- ===== 11 FAQ ===== -->
+<section class="sec s-light" id="faq" aria-labelledby="faq-t">
+  <div class="wrap">
+    <div class="split">
+      <h2 class="title rv" id="faq-t">Questions <span class="dim">we usually get.</span></h2>
+      <p class="lead rv">Anything not covered here, we can answer on a short call before the diagnostic starts.</p>
+    </div>
+    <div data-faq class="rv u-mt-64">
+      <div class="qa open"><button type="button" aria-expanded="true"><sup>01</sup><span class="t">What exactly do you observe, and how?</span><span class="pm"></span></button><div class="ans"><div><p>We record the actual actions of the team in the systems they already use, over a period long enough to be representative. The output is volumes, hours and hand-offs by area — measured, not estimated.</p></div></div></div>
+      <div class="qa"><button type="button" aria-expanded="false"><sup>02</sup><span class="t">How long does a diagnostic take, and what do we get?</span><span class="pm"></span></button><div class="ans"><div><p>One unit over a representative period — around twenty working days in the case on this page. You get two things: a process map with volumes, hours and bottlenecks by area, and a business case with ROI that states the hours freed, the cost of automation and the payback month.</p></div></div></div>
+      <div class="qa"><button type="button" aria-expanded="false"><sup>03</sup><span class="t">Do we have to automate anything afterwards?</span><span class="pm"></span></button><div class="ans"><div><p>No. The diagnostic is a measurement, and it ends with a number you can act on or shelve. If the business case does not pay back, that is a useful answer too — it is cheaper to learn it from a map than from a finished build.</p></div></div></div>
+      <div class="qa"><button type="button" aria-expanded="false"><sup>04</sup><span class="t">Does the AI agent decide anything on its own?</span><span class="pm"></span></button><div class="ans"><div><p>It performs standard actions under defined rules and prepares a result. New line items, payments and outgoing documents are confirmed by a person, anything outside the rules is queued for them untouched, and every action is reversible.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 12 CTA ===== -->
+<section class="cta" id="contact" aria-labelledby="cta-t">
+  <canvas class="dots" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="cta-grid">
+      <div class="copy rv">
+        <h2 id="cta-t">Start with one unit <span class="dim">and a number.</span></h2>
+        <p>We pick your most labour-intensive process, measure how it actually runs and put a process map and a business case with ROI in front of you — before anything is built.</p>
+        <div class="contacts">
+          <div><small>Email</small><a href="mailto:sales@sollisero.com">sales@sollisero.com</a></div>
+          <div><small>Web</small><a href="index.html">sollisero.com</a></div>
+        </div>
+      </div>
+      <form action="/api/leads" method="post" data-form="demo" class="form rv" novalidate>
+        <input type="hidden" name="form" value="demo"><input type="hidden" name="product" value="process-mining">
+        <div class="hp" aria-hidden="true"><label>Leave this field empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+        <h3>[ REQUEST A DIAGNOSTIC ]</h3>
+        <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" placeholder="John Smith" required><span class="e"></span></div>
+        <div class="field"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" placeholder="john@company.com" required><span class="e"></span></div>
+        <div class="field full"><label for="f-company">Company</label><input id="f-company" name="company" type="text" placeholder="Company name" autocomplete="organization"><span class="e"></span></div>
+        <div class="field full"><label for="f-msg">Unit or process to measure</label><textarea id="f-msg" name="message" placeholder="Tell us about one unit"></textarea><span class="e"></span></div>
+        <div class="foot">
+          <label class="consent"><input type="checkbox" name="consent" value="yes" required><span>I agree to the processing of my personal data in accordance with the <a href="#">Privacy Policy</a>.</span></label>
+          <button class="btn btn-primary" type="submit">Request a diagnostic<span class="arr">↗</span></button>
+        </div>
+        <div class="done" aria-live="polite"><span class="ok"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="m5 12 5 5 9-10"/></svg></span><h4>Request received</h4><p>Thanks. We’ll write to you within one business day.</p><button type="button" class="btn btn-ghost btn-sm again">Send another</button></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<section class="s-dark" id="other-products" aria-label="Other products">
+  <div class="wrap others">
+    <span class="mono">Other products</span>
+    <a class="prod-card" href="digital-employees.html"><span><b>digital employees</b><small>Digital employees for business processes</small></span><i>↗</i></a>
+    <a class="prod-card" href="dspm.html"><span><b>dspm</b><small>Sensitive data monitoring for Kubernetes</small></span><i>↗</i></a>
+    <a class="prod-card" href="atm.html"><span><b>Sollisero ATM</b><small>ATM network management</small></span><i>↗</i></a>
+  </div>
+</section>
+
+<footer>
+  <div class="wordmark" aria-hidden="true">process mining</div>
+  <div class="wrap">
+    <div class="foot">
+      <div><a href="index.html" class="logo">sollisero</a><p>An international technology group that designs and builds digital products.</p></div>
+      <div><h4>Products</h4><ul>
+        <li><a href="atm.html">Sollisero ATM</a></li><li><a href="dspm.html">dspm</a></li><li><a href="cash-solutions.html">cash solutions</a></li><li><a href="retail-banking.html">retail banking</a></li><li><a href="digital-employees.html">digital employees</a></li><li><a href="meeting-notes.html">meeting notes</a></li><li><a href="bim-agent.html">bim-agent</a></li><li><a href="process-mining.html">process mining</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="index.html#about">About</a></li><li><a href="index.html#engagement">Services</a></li><li><a href="index.html#industries">Industries</a></li><li><a href="careers.html">Careers</a></li></ul></div>
+      <div><h4>Contacts</h4><ul><li><a href="mailto:sales@sollisero.com">sales@sollisero.com</a></li></ul></div>
+    </div>
+    <div class="legal"><span>© 2026 Sollisero // process mining</span><div><a href="#">Privacy policy</a><a href="#">Terms of use</a><a href="#">Cookie policy</a></div></div>
+  </div>
+</footer>
+</body>
+</html>

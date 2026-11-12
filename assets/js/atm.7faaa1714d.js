@@ -32,13 +32,9 @@ Sollisero.onReady(() => {
   /* QR pattern boxes */
   $$('[data-qr]').forEach(q => { let s = 11; const r = () => (s = (s*9301+49297)%233280)/233280; let h = ''; for (let i = 0; i < 81; i++) { const x = i%9, y = (i/9)|0; const fin = (x<3&&y<3)||(x>5&&y<3)||(x<3&&y>5); const on = fin ? !((x===1||x===7)&&(y===1||y===7)) && !(x===1&&y===1) || (x===1&&y===1) || (x===7&&y===1) || (x===1&&y===7) ? (x%3!==1||y%3!==1||true) : true : r()>.5; h += `<i class="${on?'':'o'}"></i>`; } q.innerHTML = h; });
 
-  /* Hero: amount buttons + session timer + tile cycling */
-  const amts = $('#amts'), out = $('#amtOut');
-  amts && amts.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; $$('button', amts).forEach(x => x.classList.remove('on')); b.classList.add('on'); out.textContent = b.dataset.v === 'Other' ? '…' : b.dataset.v; });
-  const tmo = $('#tmo'); let sec = 45;
-  if (tmo && !RM) setInterval(() => { sec = sec <= 0 ? 45 : sec - 1; tmo.textContent = '00:' + String(sec).padStart(2,'0'); }, 1000);
-  const tiles = $$('#ktiles b'); let ti = 0;
-  if (tiles.length && !RM) setInterval(() => { tiles[ti].classList.remove('on'); ti = (ti+1)%tiles.length; tiles[ti].classList.add('on'); }, 2200);
+  /* Hero: the customer screen's session countdown */
+  const tmo = $('#tmo'); let sec = 42;
+  if (tmo && !RM) setInterval(() => { sec = sec <= 0 ? 42 : sec - 1; tmo.textContent = '0:' + String(sec).padStart(2,'0'); }, 1000);
 
   /* Network nodes: light status changes (online → service → online) */
   const nodes = $$('[data-net] .anode:not([data-keep])');
@@ -65,8 +61,6 @@ Sollisero.onReady(() => {
   setTimeout(() => { const k = $('.panel .k', adv); if (k) k.textContent = '[ 01 / 08 ]  Core'; }, 0);
   if (!RM) setInterval(() => { ['tpsA','tpsB','tpsC'].forEach(id => { const n = document.getElementById(id); if (n) n.textContent = Math.max(5, (+n.textContent) + Math.round((Math.random()-.5)*8)); }); }, 1200);
 
-  /* Status pill in the hero row */
-  const so = $('#srowOn'); if (so && !RM) setInterval(() => { so.style.opacity = so.style.opacity === '0.55' ? '1' : '0.55'; }, 1500);
 })();
 
 });
