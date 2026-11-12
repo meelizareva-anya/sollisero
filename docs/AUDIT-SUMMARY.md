@@ -37,13 +37,16 @@ showcases was compared against its Figma frame and fixed in `src/`. Per-page det
 
 ## Open decisions (nothing was changed on these)
 
-- **Nav: Figma omits the current product.** On the dspm page the nav lists the other six products +
-  Careers; same on ATM and retail banking. The build shows all seven and underlines the current one.
-  Keeping the build's behaviour preserves the "you are here" signal; switching is a one-line change
-  in `src/partials/layout.mjs`.
-- **bim-agent `#demo`.** Figma shows two stacked Runs-console windows (a completed run `/runs/317`
-  and a live run `/runs/live`). The build has a different concept: an interactive agenda that plays a
-  run against an isometric model viewer. Matching Figma means deleting a working feature.
+> Re-checked against Figma on 12 Nov 2026 — the first two entries below are **stale**; the design
+> has moved since this audit. See `claude/figma-vs-repo-diff.md` in the Sollisero project for the
+> full re-comparison.
+
+- ~~**Nav: Figma omits the current product.**~~ *Stale.* Figma now has one products mega menu
+  (`Overlay · Products mega menu`) listing every product in three groups, which is what the build
+  renders. Nothing to decide.
+- ~~**bim-agent `#demo`.**~~ *Stale.* Figma's `07 · Demo` is now the same interactive agenda plus
+  isometric model viewer that the build has — the two stacked Runs-console windows are gone. The
+  working feature stays.
 - **retail banking `#capabilities` card 04 "Support and settings".** Figma reuses the home and
   transaction-history screens here, which contradict the card's own title; the build's support-chat
   and settings screens match the copy. Left as the build has it.
