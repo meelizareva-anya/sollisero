@@ -520,3 +520,6 @@ svg.i{fill:currentColor;flex:none;display:block}
 .lcard.lcard--m{min-height:186px;padding:28px}
 .lcard.lcard--l{min-height:214px}
 .adv.adv--compact{margin-top:24px;min-height:480px}
+
+/* the Figma Problem block has no illustration, so the copy runs on its own */
+.prob{grid-template-columns:minmax(0,1fr)}
