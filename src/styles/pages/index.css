@@ -68,3 +68,10 @@
   .bcard .barrow{display:none}
   .bcard .bvis{display:block}
 }
+
+/* eight products fill two rows of four, so the CTA runs full width beneath them */
+.bento>.bcta{flex:0 0 auto;align-items:center;gap:24px;padding:26px 32px}
+.bento>.bcta .bcopy{flex:1 1 auto}
+.bento>.bcta .btop{flex-direction:row;align-items:baseline;gap:8px 24px;flex-wrap:wrap}
+.bento>.bcta .btitle{font-size:clamp(22px,1.77vw,34px)}
+@media (max-width:760px){.bento>.bcta{padding:22px 24px}}
