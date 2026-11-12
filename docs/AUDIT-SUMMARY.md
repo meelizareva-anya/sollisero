@@ -103,3 +103,26 @@ export; since a page's source is only its `<main>`, it was moved inside, otherwi
 
 Verified after porting: `build --check`, the 31-check e2e suite, and no overflow or console
 errors across ten pages at 375 / 768 / 1440 / 1920.
+
+## Figma parity, second pass (12 Nov 2026)
+
+Every text node on the Figma page `сайт` (frame `63:4340` and the per-product frames) was
+diffed string-by-string against the built HTML, with each page's JS appended so labels that
+only exist at runtime still count. Ten frames were compared; `index`, `careers`, `atm`,
+`meeting-notes`, `bim-agent`, `digital-employees` and `process-mining` come back with nothing
+missing. Three strings are left, and all three are Figma-side leftovers rather than gaps in
+the code:
+
+- **`Unified ATM platform`** — the Other-products card on the `cash-solutions` and
+  `retail-banking` frames still carries the old product name. Figma itself calls it
+  `Sollisero ATM` everywhere else, its own page included, so the code keeps the current name
+  and the two frames are the thing to correct.
+- **`[ 01 / 08 ]`** — the dspm advantages frame shows one advantage at a time behind a
+  counter. The page renders all eight as a numbered grid, so no copy is missing; the counter
+  is meaningless in a grid and is not reproduced.
+
+Numbers corrected on `process-mining` against the frames: observed presence `9 h 43 m`,
+step counts `198` and `96`, and the invoice-line-items row `168 → 42 h a month`. Because the
+Overview and Business-case mocks gained panels, the `fit-view` canvases were re-measured
+(545→760, 695→711, 625→633, 589→771) — `data-h` has to equal the content's natural height or
+the mock gets empty space under it.
