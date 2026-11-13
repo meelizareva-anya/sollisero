@@ -305,3 +305,6 @@ body{--tint:#cdd7f5;--app:#2450d6;--app-soft:#eaf0fe}
 
 .adv.adv--compact{margin-top:24px;min-height:480px}
 .body.body--split{grid-template-columns:220px 1fr}
+
+/* the Figma Problem block has no illustration, so the copy runs on its own */
+.prob{grid-template-columns:minmax(0,1fr)}
