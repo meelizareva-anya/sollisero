@@ -80,12 +80,18 @@ export function header({ page, products, groups }) {
   return `<header class="nav-wrap" id="navWrap">
   <div class="wrap">
     <nav class="nav" aria-label="Main">
-      <a href="index.html" class="logo" aria-label="Sollisero — home">sollisero</a>
-      <div class="nav-links">
-        ${bar}
+      <div class="nav-pill">
+        <a href="index.html" class="logo" aria-label="Sollisero — home">soll<i class="hl">i</i>sero</a>
+        <div class="nav-links">
+          ${bar}
+        </div>
+        <div class="nav-actions">
+          <a class="nav-btn" href="index.html#products">Explore products</a>
+          <a class="nav-btn is-primary" href="#contact">Request a demo</a>
+          <a class="nav-btn" href="#contact">Contact us</a>
+        </div>
+        <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><i></i><i></i></button>
       </div>
-      <a href="#contact" class="nav-cta">Discuss a project</a>
-      <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><i></i><i></i></button>
     </nav>
     <div class="mobile-menu" id="mobileMenu">
       <span class="mm-label">[ Products ]</span>
@@ -143,7 +149,7 @@ export function footer({ page, products, config }) {
   <div class="wordmark" aria-hidden="true">${esc(page.wordmark || 'sollisero')}</div>
   <div class="wrap">
     <div class="foot">
-      <div><a href="index.html" class="logo">sollisero</a><p>An international technology group that designs and builds digital products.</p></div>
+      <div><a href="index.html" class="logo">soll<i class="hl">i</i>sero</a><p>An international technology group that designs and builds digital products.</p></div>
       <div><h4>Products</h4><ul>
         ${products.map((p) => `<li><a href="${href(p.slug)}">${esc(p.name)}</a></li>`).join('')}</ul></div>
       <div><h4>Company</h4><ul><li><a href="index.html#about">About</a></li><li><a href="index.html#engagement">Services</a></li><li><a href="index.html#industries">Industries</a></li><li><a href="careers.html">Careers</a></li></ul></div>
