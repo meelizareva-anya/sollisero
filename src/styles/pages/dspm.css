@@ -890,3 +890,9 @@ body.lock{overflow:hidden}
 .dl .form .done .ok{width:44px;height:44px;border-radius:50%;background:var(--accent);display:grid;place-items:center}
 .dl .form .consent{max-width:var(--consent-w,340px);font-size:13px;color:var(--muted);align-items:flex-start}
 .dl .form .consent input[type="checkbox"]{width:16px;height:16px;margin:2px 0 0;accent-color:var(--accent);flex:none}
+
+/* coloured bands are slabs on the page canvas, so their corners round against it
+   (56px at 1920 — the radius the Figma deck uses on every section frame) */
+.dl{--band-r:clamp(32px,2.9vw,56px)}
+.dl .sec.light,.dl #advantages{border-radius:var(--band-r)}
+.dl .sec.light .egrid{border-radius:inherit}
