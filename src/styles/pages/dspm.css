@@ -748,34 +748,27 @@ body.lock{overflow:hidden}
 /* ============================================================
    09 · CTA
    ============================================================ */
-.dl .cta{position:relative;overflow:hidden}
-.dl .cta canvas{position:absolute;right:-6%;top:0;width:1100px;height:100%;opacity:.9}
-.dl .cta-row{position:relative;z-index:2;display:grid;grid-template-columns:820px 1fr;gap:100px;align-items:start}
-.dl .form{border-radius:18px;border:1px solid var(--line);padding:41px;background:rgba(10,16,44,.72);
-  backdrop-filter:blur(14px)}
-.dl .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.dl .field{margin-bottom:20px}
-.dl .field label{display:block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--muted-2);margin-bottom:9px}
+
+
+
+
+
+
+
 /* quieter than the label itself: it marks the field, it doesn't name it */
-.dl .field label .opt{margin-left:8px;color:var(--muted-2);opacity:.6;text-transform:none;letter-spacing:.04em}
-.dl .field input,
-.dl .field textarea{width:100%;padding:17px;border-radius:10px;background:rgba(125,150,255,.05);
-  border:1px solid var(--line);outline:none;font-size:15px;transition:border-color .3s,background .3s}
-.dl .field textarea{min-height:120px;resize:vertical}
-.dl .field input:focus,
-.dl .field textarea:focus{border-color:var(--accent);background:rgba(61,107,255,.08)}
-.dl .field input::placeholder,
-.dl .field textarea::placeholder{color:var(--muted-2)}
-.dl .consent{display:flex;align-items:flex-start;gap:12px;font-size:12.5px;color:var(--muted);max-width:300px}
-.dl .cbx{width:17px;height:17px;border-radius:5px;border:1px solid var(--line-2);flex:none;margin-top:1px;
-  display:grid;place-items:center;cursor:pointer;transition:all .3s}
-.dl .cbx.on{background:var(--accent);border-color:var(--accent)}
-.dl .cbx svg{opacity:0;transition:opacity .25s}
-.dl .cbx.on svg{opacity:1}
-.dl .form-foot{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:8px}
-.dl .sent{display:none;align-items:center;gap:10px;font-size:13.5px;color:var(--ok)}
-.dl .sent.show{display:flex}
+
+
+
+
+
+
+
+
+
+
+
+
+
 .dl .contactk{display:flex;gap:48px;margin-top:40px}
 .dl .contactk .k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;
   color:var(--muted-2);margin-bottom:8px}
@@ -784,27 +777,21 @@ body.lock{overflow:hidden}
 /* ============================================================
    OTHER PRODUCTS + FOOTER
    ============================================================ */
-.dl .op{display:grid;grid-template-columns:240px 1fr 1fr;gap:48px;align-items:center}
-.dl .opcard{display:flex;align-items:center;gap:18px;padding:26px 30px;border-radius:14px;border:1px solid var(--line);
-  transition:all .45s var(--ease)}
-.dl .opcard:hover{border-color:var(--accent);background:var(--accent-dim);transform:translateX(6px)}
-.dl .opcard .ar{margin-left:auto;transition:transform .45s var(--ease)}
-.dl .opcard:hover .ar{transform:translate(5px,-5px)}
+
+
+
+
+
 .dl footer{position:relative;padding:65px 0 0;border-top:1px solid var(--line);overflow:hidden}
-.dl .fgrid4{display:grid;grid-template-columns:560px repeat(3,1fr);gap:40px}
-.dl .fcol .k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--muted-2);margin-bottom:22px}
-.dl .fcol a{display:block;font-size:15px;color:var(--muted);margin-bottom:14px;transition:color .3s,transform .3s var(--ease)}
-.dl .fcol a:hover{color:var(--txt);transform:translateX(4px)}
-.dl .fbrand{font-size:36px;font-weight:600;letter-spacing:-.03em}
-.dl .fbottom{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-top:60px;padding-bottom:24px}
-.dl .fbottom a{font-size:13px;color:var(--muted-2);margin-left:34px;transition:color .3s}
-.dl .fbottom a:hover{color:var(--txt)}
-.dl .wordmark{position:relative;font-size:clamp(90px,21vw,330px);font-weight:700;letter-spacing:-.05em;line-height:.78;
-  text-align:center;margin:0 -2vw;padding-top:10px;
-  background:linear-gradient(180deg,rgba(125,150,255,.26),rgba(125,150,255,.02));
-  -webkit-background-clip:text;background-clip:text;color:transparent;user-select:none;
-  transform:translateY(22%)}
+
+
+
+
+
+
+
+
+
 
 /* ============================================================
    RESPONSIVE
@@ -878,21 +865,26 @@ body.lock{overflow:hidden}
 .dl .hero{background:transparent;color:var(--txt)}
 .dl .win{background:var(--card);color:var(--txt)}
 .dl .sec.light .win{background:var(--light);color:var(--ink)}
-.dl .cta{background:transparent;padding:120px 0;color:var(--txt)}
-.dl .form{display:block;box-shadow:none}
-.dl .form h3{font-size:10px;letter-spacing:.1em;color:var(--accent);margin:0 0 28px}
-.dl .form .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-.dl .form .e{display:block;min-height:0;font-size:12px;color:var(--danger)}
-.dl .form .done{position:absolute;inset:0;border-radius:18px;background:rgba(10,16,44,.96);
-  display:flex;flex-direction:column;justify-content:center;gap:14px;padding:41px;
-  opacity:0;pointer-events:none;transition:opacity .4s}
-.dl .form .done[data-on],.dl .form.is-done .done{opacity:1;pointer-events:auto}
-.dl .form .done .ok{width:44px;height:44px;border-radius:50%;background:var(--accent);display:grid;place-items:center}
-.dl .form .consent{max-width:var(--consent-w,340px);font-size:13px;color:var(--muted);align-items:flex-start}
-.dl .form .consent input[type="checkbox"]{width:16px;height:16px;margin:2px 0 0;accent-color:var(--accent);flex:none}
+
+
+
+
+
+
+
+
+
+
 
 /* coloured bands are slabs on the page canvas, so their corners round against it
    (56px at 1920 — the radius the Figma deck uses on every section frame) */
 .dl{--band-r:clamp(32px,2.9vw,56px)}
 .dl .sec.light,.dl #advantages{border-radius:var(--band-r)}
 .dl .sec.light .egrid{border-radius:inherit}
+
+/* The CTA band, the other-products strip and the footer are shared components:
+   this page used to carry its own copies from the prototype, which fought them.
+   They are gone; app.css owns that part of the page now. */
+/* the page's own h3 scale would otherwise swallow the form's mono eyebrow */
+.dl .form h3{grid-column:1/-1;margin:0;font-family:var(--mono);font-weight:400;font-size:13px;
+  letter-spacing:.04em;text-transform:uppercase;color:var(--pale)}
