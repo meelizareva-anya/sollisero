@@ -1,0 +1,125 @@
+# Pages CMS configuration — https://pagescms.org/docs/configuration/
+# Editors sign in at https://app.pagescms.org; every save is a commit to this repository.
+# A commit to main triggers .github/workflows/pages.yml, which rebuilds and publishes the site.
+
+media:
+  - name: images
+    label: Images
+    input: src/static/img
+    output: img
+
+settings:
+  # Merge edited fields into the existing file instead of rewriting it from the schema.
+  # Page front matter carries keys that are not listed below (product, footer, others…);
+  # without this they would be dropped on save.
+  content: true
+  commit:
+    identity: user
+    templates:
+      create: "content(create): {path}"
+      update: "content(update): {path}"
+      delete: "content(delete): {path}"
+      rename: "content(rename): {oldPath} -> {newPath}"
+
+content:
+  - name: products
+    label: Products (menu, footer, bento)
+    type: file
+    path: src/data/products.json
+    format: json
+    fields:
+      - name: groups
+        label: Menu groups
+        type: object
+        list: true
+        fields:
+          - name: id
+            label: ID (used by products, do not change)
+            type: string
+            readonly: true
+          - name: label
+            label: Label
+            type: string
+            required: true
+      - name: products
+        label: Products
+        type: object
+        list: true
+        fields:
+          - name: slug
+            label: Slug (page file name, do not change)
+            type: string
+            readonly: true
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: tagline
+            label: Tagline (desktop menu)
+            type: string
+            required: true
+          - name: short
+            label: Short tagline (mobile menu)
+            type: string
+            required: true
+          - name: group
+            label: Menu group
+            type: select
+            required: true
+            options:
+              values:
+                - name: banking
+                  label: Banking & payments
+                - name: security
+                  label: Data security
+                - name: ai
+                  label: AI & automation
+
+  - name: pages
+    label: Pages — SEO title and description
+    type: collection
+    path: src/pages
+    format: json-frontmatter
+    delimiters: "---"
+    filename: "{primary}.html"
+    exclude: ["404.html", "thanks.html"]
+    operations:
+      create: false
+      rename: false
+      delete: false
+    view:
+      fields: [title]
+      primary: title
+    fields:
+      - name: title
+        label: Title (browser tab, search results)
+        type: string
+        required: true
+      - name: description
+        label: Description (search results, link previews)
+        type: text
+        required: true
+
+  - name: site
+    label: Site settings
+    type: file
+    path: site.config.json
+    format: json
+    fields:
+      - name: contactEmail
+        label: Contact e-mail
+        type: string
+        required: true
+      - name: legal
+        label: Legal links (footer)
+        type: object
+        list: true
+        fields:
+          - name: label
+            label: Label
+            type: string
+            required: true
+          - name: href
+            label: Link
+            type: string
+            required: true
