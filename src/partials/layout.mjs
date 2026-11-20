@@ -8,9 +8,9 @@ export const esc = (s = '') =>
   String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 
 const href = (slug) => `${slug}.html`;
-// Company pages. Until the About and Contacts pages exist these point at the home sections.
-const ABOUT = 'index.html#about';
-const CONTACTS = '#contact';
+// Company pages.
+const ABOUT = 'about.html';
+const CONTACTS = 'contacts.html';
 
 export function head({ page, config, assets }) {
   const url = `${config.siteUrl}/${page.slug === 'index' ? '' : href(page.slug)}`;
@@ -38,7 +38,9 @@ ${assets.js.map((h) => `<script defer src="${h}"></script>`).join('\n')}
 </head>`;
 }
 
-export function header({ page, products, groups }) {
+export function header({ page, products, groups, hasContact = true }) {
+  // Pages without their own contact form send "Request a demo" to the Contacts page.
+  const demo = hasContact ? '#contact' : `${CONTACTS}#contact`;
   // Site-wide navigation (Figma "Nav/Floating pill" 753:14236, open menu 404:23432,
   // mobile overlay 287:7028): a floating glass pill — logo · Products (menu) · Careers ·
   // Contacts · three action buttons. Below 1280px the pill keeps only logo + burger and
@@ -84,13 +86,13 @@ export function header({ page, products, groups }) {
     </div>
     <div class="nav-btns">
       <a class="nb nb-light" href="index.html#products">Explore products</a>
-      <a class="nb nb-glass" href="#contact">Request a demo</a>
+      <a class="nb nb-glass" href="${demo}">Request a demo</a>
       <a class="nb nb-ghost" href="${CONTACTS}">Contact us</a>
     </div>
     <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><i></i><i></i></button>
   </nav>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#contact" class="btn btn-primary">Discuss a project<span class="arr">↗</span></a>
+    <a href="${demo}" class="btn btn-primary">Discuss a project<span class="arr">↗</span></a>
     ${groups
       .map((g) => `<span class="mm-label">${esc(g.label)}</span>
     ${(byGroup[g.id] ?? []).map((p) => mobileItem(p)).join('\n    ')}`)
@@ -149,15 +151,24 @@ export function footer({ page, products, config }) {
       <div><a href="index.html" class="logo">sollisero</a><p>An international technology group that designs and builds digital products.</p></div>
       <div><h4>Products</h4><ul>
         ${products.map((p) => `<li><a href="${href(p.slug)}">${esc(p.name)}</a></li>`).join('')}</ul></div>
-      <div><h4>Company</h4><ul><li><a href="index.html#about">About</a></li><li><a href="index.html#services">Services</a></li><li><a href="index.html#industries">Industries</a></li><li><a href="careers.html">Careers</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="index.html#services">Services</a></li><li><a href="index.html#industries">Industries</a></li><li><a href="careers.html">Careers</a></li><li><a href="contacts.html">Contacts</a></li></ul></div>
       <div><h4>Contacts</h4><ul><li><a href="mailto:${config.contactEmail}">${config.contactEmail}</a></li></ul></div>
     </div>
-    <div class="legal"><span>© ${new Date().getFullYear()} Sollisero${page.legalSuffix ? ` // ${esc(page.legalSuffix)}` : ''}</span><div>${config.legal.map((l) => `<a href="${l.href}">${esc(l.label)}</a>`).join('')}</div></div>
+    <div class="legal"><span>© ${new Date().getFullYear()} Sollisero${page.legalSuffix ? ` // ${esc(page.legalSuffix)}` : ''}</span><div>${config.legal.map((l) => `<a href="${l.href}">${esc(l.label)}</a>`).join('')}<button type="button" class="cookie-open" data-cookie-open>Cookie settings</button></div></div>
   </div>
 </footer>`;
 }
 
+/** Cookie banner (Figma "Cookie banner" 793:12804). Hidden until the script finds no stored choice. */
+export function cookieBanner() {
+  return `<div class="cookie" id="cookieBanner" role="dialog" aria-live="polite" aria-labelledby="cookieTitle" hidden>
+  <div class="cookie-copy"><h2 id="cookieTitle">We use cookies</h2><p>Strictly necessary cookies keep the site working. With your consent we also use analytics cookies to understand how the site is used. You can change your choice at any time — see the <a href="cookies.html">Cookie Policy</a>.</p></div>
+  <div class="cookie-actions"><a class="cookie-link" href="cookies.html">Cookie settings</a><button type="button" class="btn btn-ghost" data-cookie="necessary">Only necessary</button><button type="button" class="btn btn-primary" data-cookie="all">Accept all<span class="arr">↗</span></button></div>
+</div>`;
+}
+
 export function document(ctx, main) {
+  ctx = { ...ctx, hasContact: /id="contact"/.test(main) };
   const { page } = ctx;
   const attrs = [`data-page="${page.slug}"`, page.product ? `data-product="${page.product}"` : ''].filter(Boolean).join(' ');
   return `${head(ctx)}
@@ -170,6 +181,7 @@ ${main}
 ${others(ctx)}
 
 ${footer(ctx)}
+${cookieBanner()}
 </body>
 </html>
 `;

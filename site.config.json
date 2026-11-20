@@ -12,15 +12,15 @@
   "legal": [
     {
       "label": "Privacy policy",
-      "href": "#"
+      "href": "privacy.html"
     },
     {
       "label": "Terms of use",
-      "href": "#"
+      "href": "terms.html"
     },
     {
       "label": "Cookie policy",
-      "href": "#"
+      "href": "cookies.html"
     }
   ]
 }

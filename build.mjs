@@ -47,6 +47,8 @@ const APP_CSS = [
   'styles/components/form.css',
   'styles/components/others.css',
   'styles/components/footer.css',
+  'styles/components/presence.css',
+  'styles/components/cookie.css',
   'styles/utilities.css',
   'styles/responsive.css',
 ];
@@ -62,6 +64,7 @@ const APP_JS = [
   'scripts/components/form.js',
   'scripts/components/count-up.js',
   'scripts/components/reveal.js',
+  'scripts/components/cookie.js',
 ];
 
 /* ---------- helpers ---------- */

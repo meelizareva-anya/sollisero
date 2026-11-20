@@ -86,7 +86,8 @@ there, which is expected — point `forms.endpoint` at a real backend for anythi
 Asset file names contain a content hash, so browsers never see stale CSS/JS after a deploy, and HTML is always revalidated.
 
 ### Before launch — checklist
-- [ ] `site.config.json`: real `siteUrl` (canonical/OG/sitemap), `legal` links (Privacy / Terms / Cookies are `#` now), `contactEmail`.
+- [ ] `site.config.json`: real `siteUrl` (canonical/OG/sitemap), `contactEmail`.
+- [ ] Legal pages (`privacy`, `terms`, `cookies`) are drafts from the design: fill the `[ brackets ]`, have legal counsel approve, then remove the draft notice and `noindex`.
 - [ ] Forms endpoint reachable from the site origin; leads arriving in storage/CRM (`LEAD_WEBHOOK_URL`).
 - [ ] TLS certificate paths in `deploy/nginx.conf`.
 - [ ] Replace placeholders that come from the design: client logos (text), Careers photos.

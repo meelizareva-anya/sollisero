@@ -1,4 +1,11 @@
-/* System pages (thanks, 404): a single full-height hero. */
-.system-page{min-height:100vh;min-height:100dvh;display:flex;align-items:center;padding-bottom:96px}
-.system-page .dots{position:absolute;right:-80px;top:0;width:min(1100px,60vw);height:100%;pointer-events:none}
-.system-page__body{position:relative;display:flex;flex-direction:column;gap:32px;max-width:1000px;padding-top:64px}
+/* System pages (404, 500, thanks, form error, maintenance) — Figma 793:12834…793:15368:
+   one full-height centred hero with a dot-matrix illustration. */
+.hero.system-page{min-height:100vh;min-height:100dvh;display:flex;align-items:center;padding-top:140px;padding-bottom:96px}
+.system-page__body{display:flex;flex-direction:column;align-items:center;text-align:center;gap:32px;max-width:1500px;margin-inline:auto}
+.sys-ill{display:block;height:225px;width:auto;max-width:100%;margin-bottom:8px}
+.system-page .sub a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+@media (max-width:640px){
+  .hero.system-page{padding-top:114px;padding-bottom:64px}
+  .system-page__body{gap:24px}
+  .sys-ill{height:auto;width:min(300px,80vw)}
+}

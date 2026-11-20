@@ -1,0 +1,20 @@
+/* Cookie banner — Figma "Cookie banner · Desktop" (793:12804) and "· Mobile". */
+.cookie{position:fixed;left:50%;bottom:24px;z-index:70;transform:translate(-50%,16px);opacity:0;transition:opacity .3s,transform .3s;
+  display:flex;align-items:center;gap:40px;width:min(1163px,calc(100% - 32px));padding:28px 32px;border-radius:20px;
+  background:var(--ink);color:#fff;border:1px solid rgba(255,255,255,.12);box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.cookie.in{opacity:1;transform:translate(-50%,0)}
+.cookie[hidden]{display:none}
+.cookie-copy{flex:1;min-width:0}
+.cookie-copy h2{font-size:22px;font-weight:500;letter-spacing:-.02em;margin-bottom:8px}
+.cookie-copy p{font-size:15px;line-height:1.5;color:rgba(255,255,255,.7)}
+.cookie-copy a,.cookie-link{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.cookie-actions{display:flex;align-items:center;gap:12px;flex:none}
+.cookie-link{font-size:15px;margin-right:8px}
+.cookie-open{background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer}
+@media (max-width:900px){
+  .cookie{flex-direction:column;align-items:stretch;gap:20px;padding:20px;bottom:16px}
+  .cookie-actions{flex-direction:column;align-items:stretch}
+  .cookie-actions .btn{justify-content:center}
+  .cookie-actions .btn-primary{justify-content:space-between}
+  .cookie-link{margin:0 0 4px}
+}
