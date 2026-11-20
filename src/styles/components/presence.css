@@ -27,3 +27,12 @@
 @media (max-width:1200px){.countries{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:900px){.presence{padding:24px}}
 @media (max-width:640px){.countries{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* Figma "Presence row": countries in two columns on the left, the map on the right */
+.presence-row{display:grid;grid-template-columns:minmax(0,657px) minmax(0,973px);justify-content:space-between;gap:48px;align-items:center}
+.presence-row .countries{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 40px}
+@media (max-width:1100px){.presence-row{grid-template-columns:1fr}.presence-row .countries{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.presence-row .countries{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* The map art occupies 18.9%–81.1% of the 1678-wide canvas: scale the canvas so the map fills the column */
+.presence{overflow:hidden}
+.presence-row .wmap{width:160.8%;margin-left:-30.4%}
+@media (max-width:1100px){.presence-row .wmap{width:160.8%;margin-left:-30.4%}}

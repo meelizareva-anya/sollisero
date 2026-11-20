@@ -332,3 +332,7 @@ body{
 
 /* Centred hero: the crystal sits under the copy at a calmer size. */
 .hero-c .crystal-wrap{width:min(520px,100%);margin-inline:auto}
+/* Figma "Hero · Visual" (165:13109): the scenario editor window. The render carries its shadow, so it bleeds 6.25% each side. */
+.hero-c .hero-visual{overflow:visible}
+.hero-c .bim-shot{display:block;width:112.5%;max-width:none;height:auto;margin:-3.5% -6.25% -6%}
+@media (max-width:640px){.hero-c .hero-visual{overflow:hidden;border-radius:12px}.hero-c .bim-shot{width:200%;margin:-6% 0 -10% -11%}}

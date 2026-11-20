@@ -526,5 +526,5 @@ svg.i{fill:currentColor;flex:none;display:block}
 
 /* Centred hero: the merchant portal alone, centred under the copy (Figma "Hero · Visual"). */
 .hero-c .hero-vis{height:auto;display:block}
-.hero-c .hero-vis .portal-fit{position:relative;right:auto;top:auto;width:min(1080px,100%);margin-inline:auto}
+.hero-c .hero-vis .portal-fit{position:relative;right:auto;top:auto;width:100%;max-width:1280px;margin-inline:auto}
 .hero-c .hero-vis .pos-iso,.hero-c .hero-vis .callout{display:none}

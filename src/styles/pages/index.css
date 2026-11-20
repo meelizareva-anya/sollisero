@@ -183,3 +183,11 @@
   /* Review decision (claude/mobile-review-site-vs-figma.md §6): not shown on mobile */
   #about .presence,#security,#careers{display:none}
 }
+/* Figma: Industries and Expertise headings are centred; Expertise has the button under the title */
+.ind-head{display:flex;flex-direction:column;align-items:center;text-align:center;justify-content:center;gap:16px}
+.ind-head p{max-width:760px}
+.exp-head{display:flex;flex-direction:column;align-items:center;text-align:center;gap:32px;margin-bottom:64px}
+.exp-head .title{max-width:1500px}
+/* Figma desktop CTA has no email/web lines (they stay on mobile) */
+@media (min-width:1201px){#contact .contacts{display:none}}
+@media (max-width:640px){.ind-head,.exp-head{align-items:flex-start;text-align:left}.exp-head{margin-bottom:32px}.exp-head .btn{width:100%;justify-content:space-between}}

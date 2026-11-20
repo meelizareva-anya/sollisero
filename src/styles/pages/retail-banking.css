@@ -311,5 +311,5 @@ body{--tint:#cdd7f5;--app:#2450d6;--app-soft:#eaf0fe}
 
 /* Centred hero: web bank centred under the copy at the Figma visual width. */
 .hero-c .hero-vis{height:auto}
-.hero-c .hero-vis .fit-view{width:min(1080px,100%);margin-inline:auto}
+.hero-c .hero-vis .fit-view{position:relative;right:auto;top:auto;width:100%;max-width:1280px;margin-inline:auto}
 .hero-c .hero-vis .callout{display:none}

@@ -73,3 +73,17 @@
     linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px) 0 0/100% 120px}
   .hero.hero-c .stats,.hero.hero-c .hstats,.hero.hero-c .hero-stats{margin-top:40px;padding-top:32px}
 }
+/* Product UI window under the copy: Figma "Hero · Visual" 1280 × 520 */
+.hero.hero-c .hero-visual .fit-view,.hero.hero-c .hero-vis .fit-view{width:100%;max-width:1280px}
+/* Strip under the visual (retail status row, digital employees ticker): the hairline sits above it, as in Figma */
+.hero.hero-c .status-row,.hero.hero-c .ticker{width:100%;margin-top:64px;position:relative}
+.hero.hero-c .status-row::before,.hero.hero-c .ticker::before{content:"";position:absolute;left:0;right:0;top:-40px;height:1px;background:rgba(255,255,255,.08)}
+.hero.hero-c .status-row+.stats,.hero.hero-c .ticker+.hstats{border-top:0;margin-top:32px;padding-top:24px}
+.hero.hero-c .pm-ticker{display:none}
+@media (max-width:640px){
+  /* On a phone the 1280-wide product window would shrink to ~28%: show it at ~half size, cropped at the right edge */
+  .hero.hero-c .hero-visual,.hero.hero-c .hero-vis{overflow:hidden;border-radius:12px}
+  .hero.hero-c .hero-visual .fit-view,.hero.hero-c .hero-vis .fit-view{flex:none;width:175%;max-width:none;margin-inline:0}
+  .hero.hero-c .hero-visual{display:block}
+}
+.hero.hero-c .ready-chip{display:none}
