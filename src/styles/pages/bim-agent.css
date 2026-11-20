@@ -329,3 +329,6 @@ body{
   .form-foot .btn{width:100%;justify-content:space-between}
   .hero .ctas{width:100%}
 }
+
+/* Centred hero: the crystal sits under the copy at a calmer size. */
+.hero-c .crystal-wrap{width:min(520px,100%);margin-inline:auto}

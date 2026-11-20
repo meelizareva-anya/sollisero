@@ -16,8 +16,6 @@
   .stat{padding:0;border:0}
   .foot{grid-template-columns:1fr 1fr}
   .others{grid-template-columns:1fr}
-  .hero{padding-top:96px}
-  .nav{padding-top:24px;padding-bottom:16px}
 }
 @media (max-width:640px){
   .logos{grid-template-columns:repeat(2,1fr)}

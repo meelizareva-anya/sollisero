@@ -25,3 +25,51 @@
 .stat h3{font-weight:500;font-size:26px;letter-spacing:-.02em}
 .stat p{font-size:16px;color:rgba(255,255,255,.65)}
 
+
+/* ==========================================================================
+   Centred hero (Figma "Hero copy · centred", 680:15489 and the product heroes).
+   Solid hero colour + engineering grid + radial glow from the top, eyebrow pill,
+   headline with an accent line, sub, CTAs; the product visual sits centred below and
+   the stats row closes the hero under a hairline. Colours come from the product theme
+   (--hero-solid, --glow-a, --glow-b, --hero-acc); the headline size from --h1px
+   (the Figma size at 1920, set per page on the section).
+   ========================================================================== */
+.hero.hero-c{background:var(--hero-solid,#060b22);padding-top:184px;padding-bottom:72px;isolation:isolate}
+.hero-bg{position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(49.5vw 28.6vw at 50% 15vw,var(--glow-a,rgba(34,70,189,.55)) 0%,var(--glow-b,rgba(85,121,235,.18)) 45%,rgba(0,0,0,0) 100%),
+    linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px) 0 0/120px 100%,
+    linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px) 0 0/100% 120px}
+.hero-c .dotfield{left:50%;right:auto;top:64%;transform:translateX(-50%);width:min(1100px,100%);height:900px;opacity:.32;z-index:-1}
+.hero.hero-c .hero-main,.hero.hero-c .hero-grid{display:flex;flex-direction:column;align-items:center;gap:56px;padding:0;min-height:0}
+.hero.hero-c .hero-copy,.hero.hero-c .copy{display:flex;flex-direction:column;align-items:center;text-align:center;gap:36px;max-width:1500px;width:100%;margin-inline:auto}
+.hero.hero-c .h1{font-size:clamp(44px,calc(var(--h1px,132) / 1920 * 100vw),calc(var(--h1px,132) * 1px));line-height:1.02;letter-spacing:-.045em;max-width:none}
+.hero.hero-c .h1 .acc{color:var(--hero-acc,#9db4ff)}
+.hero.hero-c .sub{font-size:clamp(17px,1.1vw,21px);line-height:1.5;color:rgba(255,255,255,.72);max-width:900px;margin:0}
+.hero.hero-c .ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;width:auto}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;padding:9px 18px 9px 16px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);
+  font-family:var(--mono);font-size:12px;letter-spacing:.04em;line-height:1.3;text-transform:uppercase;color:rgba(255,255,255,.85);white-space:nowrap}
+.eyebrow i{width:7px;height:7px;border-radius:50%;background:#7ccbff;flex:none}
+/* Visual: centred under the copy, Figma width 1280 */
+.hero.hero-c .hero-mock,.hero.hero-c .hero-vis,.hero.hero-c .hero-visual{width:min(1280px,100%);max-width:100%;margin-inline:auto;justify-content:center}
+.hero.hero-c .hero-visual .fit-view,.hero.hero-c .hero-mock .fit-view{margin-inline:auto}
+/* Stats under a hairline */
+.hero.hero-c .stats,.hero.hero-c .hstats,.hero.hero-c .hero-stats{width:100%;margin-top:64px;border-top:1px solid rgba(255,255,255,.08);padding-top:56px;text-align:left}
+.hero.hero-c .plinks,.hero.hero-c .facts{margin-top:56px}
+
+@media (max-width:1279px){
+  .hero.hero-c{padding-top:132px;padding-bottom:56px}
+}
+@media (max-width:640px){
+  .hero.hero-c{padding-top:114px;padding-bottom:48px}
+  .hero.hero-c .hero-main,.hero.hero-c .hero-grid{gap:40px}
+  .hero.hero-c .hero-copy{gap:24px}
+  .hero.hero-c .h1{font-size:clamp(40px,12.3vw,52px);letter-spacing:-.04em}
+  .hero.hero-c .ctas{width:100%;flex-direction:column;gap:12px}
+  .eyebrow{white-space:normal;font-size:12px;text-align:left}
+  .hero-bg{background:
+    radial-gradient(90vw 70vw at 50% 0,var(--glow-a,rgba(34,70,189,.55)) 0%,var(--glow-b,rgba(85,121,235,.18)) 45%,rgba(0,0,0,0) 100%),
+    linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px) -45px 0/120px 100%,
+    linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px) 0 0/100% 120px}
+  .hero.hero-c .stats,.hero.hero-c .hstats,.hero.hero-c .hero-stats{margin-top:40px;padding-top:32px}
+}

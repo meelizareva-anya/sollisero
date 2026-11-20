@@ -308,3 +308,8 @@ body{--tint:#cdd7f5;--app:#2450d6;--app-soft:#eaf0fe}
 
 /* the Figma Problem block has no illustration, so the copy runs on its own */
 .prob{grid-template-columns:minmax(0,1fr)}
+
+/* Centred hero: web bank centred under the copy at the Figma visual width. */
+.hero-c .hero-vis{height:auto}
+.hero-c .hero-vis .fit-view{width:min(1080px,100%);margin-inline:auto}
+.hero-c .hero-vis .callout{display:none}

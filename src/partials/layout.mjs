@@ -8,6 +8,9 @@ export const esc = (s = '') =>
   String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 
 const href = (slug) => `${slug}.html`;
+// Company pages. Until the About and Contacts pages exist these point at the home sections.
+const ABOUT = 'index.html#about';
+const CONTACTS = '#contact';
 
 export function head({ page, config, assets }) {
   const url = `${config.siteUrl}/${page.slug === 'index' ? '' : href(page.slug)}`;
@@ -36,18 +39,19 @@ ${assets.js.map((h) => `<script defer src="${h}"></script>`).join('\n')}
 }
 
 export function header({ page, products, groups }) {
-  // Site-wide navigation, identical on every page: logo · Products (menu) · About ·
-  // Careers · Contacts · "Discuss a project".
+  // Site-wide navigation (Figma "Nav/Floating pill" 753:14236, open menu 404:23432,
+  // mobile overlay 287:7028): a floating glass pill — logo · Products (menu) · Careers ·
+  // Contacts · three action buttons. Below 1280px the pill keeps only logo + burger and
+  // the menu opens as a full-screen overlay with the products grouped like the desktop menu.
   const isCurrent = (slug) => page.slug === slug;
+  const cur = (slug) => (isCurrent(slug) ? ' aria-current="page"' : '');
   const byGroup = products.reduce((acc, p) => ((acc[p.group] ??= []).push(p), acc), {});
   const inProducts = products.some((p) => isCurrent(p.slug));
 
   const menuGroup = (g) => `<div class="nav-col">
             <h3>${esc(g.label)}</h3>
             ${(byGroup[g.id] ?? [])
-              .map(
-                (p) => `<a href="${href(p.slug)}"${isCurrent(p.slug) ? ' aria-current="page"' : ''}><b>${esc(p.name)}</b><small>${esc(p.tagline)}</small></a>`,
-              )
+              .map((p) => `<a href="${href(p.slug)}"${cur(p.slug)}><b>${esc(p.name)}</b><small>${esc(p.tagline)}</small></a>`)
               .join('\n            ')}
           </div>`;
 
@@ -57,43 +61,42 @@ export function header({ page, products, groups }) {
           <div class="nav-menu" id="navProducts" role="group" aria-labelledby="navProductsBtn">
             <div class="nav-menu-inner">
             ${groups.map(menuGroup).join('\n            ')}
-            <a class="nav-promo" href="index.html#products">
-              <span class="nav-promo-l">All products</span>
-              <b>${products.length} ready-to-deploy products for banking, security and AI</b>
-              <span class="nav-promo-go">Compare all products<i aria-hidden="true">→</i></span>
-            </a>
-          </div>
-            <div class="nav-menu-foot">
-              <span>Not sure which product fits your task?</span>
-              <a href="#contact">Discuss a project<i aria-hidden="true">→</i></a>
             </div>
           </div>
         </div>
-        <a class="nav-link" href="index.html#about">About</a>
-        <a class="nav-link${isCurrent('careers') ? ' active' : ''}" href="careers.html"${isCurrent('careers') ? ' aria-current="page"' : ''}>Careers</a>
-        <a class="nav-link" href="#contact">Contacts</a>`;
+        <a class="nav-link${isCurrent('careers') ? ' active' : ''}" href="careers.html"${cur('careers')}>Careers</a>
+        <a class="nav-link${isCurrent('contacts') ? ' active' : ''}" href="${CONTACTS}"${cur('contacts')}>Contacts</a>`;
 
-  const mobileItem = (p) =>
+  const mobileItem = (p, label = p.name, sub = p.short || p.tagline, url = href(p.slug), current = isCurrent(p.slug)) =>
     // the mobile overlay uses the short tagline; the desktop menu uses the full one
-    `<a class="mm" href="${href(p.slug)}"${isCurrent(p.slug) ? ' aria-current="page"' : ''}><div><b>${esc(p.name)}</b><small>${esc(p.short || p.tagline)}</small></div><span aria-hidden="true">↗</span></a>`;
+    `<a class="mm" href="${url}"${current ? ' aria-current="page"' : ''}><div><b>${esc(label)}</b><small>${esc(sub)}</small></div><span aria-hidden="true">↗</span></a>`;
+  const company = [
+    ['About', 'Group and expertise', ABOUT, isCurrent('about')],
+    ['Careers', 'Open positions', 'careers.html', isCurrent('careers')],
+    ['Contacts', 'Offices and email', CONTACTS, isCurrent('contacts')],
+  ];
 
   return `<header class="nav-wrap" id="navWrap">
-  <div class="wrap">
-    <nav class="nav" aria-label="Main">
-      <a href="index.html" class="logo" aria-label="Sollisero — home">sollisero</a>
-      <div class="nav-links">
-        ${bar}
-      </div>
-      <a href="#contact" class="nav-cta">Discuss a project</a>
-      <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><i></i><i></i></button>
-    </nav>
-    <div class="mobile-menu" id="mobileMenu">
-      <span class="mm-label">[ Products ]</span>
-      ${products.map(mobileItem).join('\n      ')}
-      <span class="mm-label">[ Company ]</span>
-      <a class="mm" href="careers.html"${isCurrent('careers') ? ' aria-current="page"' : ''}><div><b>Careers</b><small>Open positions</small></div><span aria-hidden="true">↗</span></a>
-      <a href="#contact" class="btn btn-primary">Discuss a project<span class="arr">↗</span></a>
+  <nav class="nav" aria-label="Main">
+    <a href="index.html" class="logo" aria-label="Sollisero — home">soll<span>i</span>sero</a>
+    <div class="nav-links">
+      ${bar}
     </div>
+    <div class="nav-btns">
+      <a class="nb nb-light" href="index.html#products">Explore products</a>
+      <a class="nb nb-glass" href="#contact">Request a demo</a>
+      <a class="nb nb-ghost" href="${CONTACTS}">Contact us</a>
+    </div>
+    <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><i></i><i></i></button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#contact" class="btn btn-primary">Discuss a project<span class="arr">↗</span></a>
+    ${groups
+      .map((g) => `<span class="mm-label">${esc(g.label)}</span>
+    ${(byGroup[g.id] ?? []).map((p) => mobileItem(p)).join('\n    ')}`)
+      .join('\n    ')}
+    <span class="mm-label">COMPANY</span>
+    ${company.map(([l, s, u, c]) => mobileItem(null, l, s, u, c)).join('\n    ')}
   </div>
 </header>`;
 }
@@ -146,7 +149,7 @@ export function footer({ page, products, config }) {
       <div><a href="index.html" class="logo">sollisero</a><p>An international technology group that designs and builds digital products.</p></div>
       <div><h4>Products</h4><ul>
         ${products.map((p) => `<li><a href="${href(p.slug)}">${esc(p.name)}</a></li>`).join('')}</ul></div>
-      <div><h4>Company</h4><ul><li><a href="index.html#about">About</a></li><li><a href="index.html#engagement">Services</a></li><li><a href="index.html#industries">Industries</a></li><li><a href="careers.html">Careers</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="index.html#about">About</a></li><li><a href="index.html#services">Services</a></li><li><a href="index.html#industries">Industries</a></li><li><a href="careers.html">Careers</a></li></ul></div>
       <div><h4>Contacts</h4><ul><li><a href="mailto:${config.contactEmail}">${config.contactEmail}</a></li></ul></div>
     </div>
     <div class="legal"><span>© ${new Date().getFullYear()} Sollisero${page.legalSuffix ? ` // ${esc(page.legalSuffix)}` : ''}</span><div>${config.legal.map((l) => `<a href="${l.href}">${esc(l.label)}</a>`).join('')}</div></div>

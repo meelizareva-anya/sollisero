@@ -4,7 +4,7 @@
 @keyframes blink{50%{opacity:.3}}
 
 /* Hero */
-.hero.atm{background:linear-gradient(138deg,#0b1a3a 0%,#070d2b 55%,#060b22 100%)}
+
 .hero-main{display:grid;grid-template-columns:minmax(0,900px) minmax(0,857px);gap:48px;align-items:center;padding-block:96px;position:relative;z-index:2}
 .hero-copy{display:flex;flex-direction:column;gap:40px;align-items:flex-start}
 .callout{position:absolute;display:inline-flex;gap:10px;align-items:center;padding:8px 14px 8px 12px;border-radius:6px;background:#fff;color:var(--ink);font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.04em;text-transform:uppercase;box-shadow:0 10px 30px rgba(0,0,0,.3);white-space:nowrap;z-index:5}
@@ -418,3 +418,9 @@
 .hc-tic-bill::after{border:1.1px solid #6cc3ea;border-radius:1px;width:7px;height:9px;margin:-4.5px 0 0 -3.5px}
 .hc-tic-more::after{border:0;width:9px;height:1.1px;margin:-.5px 0 0 -4.5px;background:#6cc3ea;box-shadow:0 -3px 0 #6cc3ea,0 3px 0 #6cc3ea}
 .hc-tic-ear::after{border:1.1px solid #6cc3ea;border-radius:50%;width:8px;height:8px;margin:-4px 0 0 -4px}
+
+/* Centred hero: the kiosk alone, centred under the copy (Figma "Hero · Visual" 702:14874). */
+.hero-c .hero-mock .callout{display:none}
+.hero-c .hero-mock .atm-stage{width:min(860px,100%);margin-inline:auto}
+.hero-c .hero-mock{display:flex;justify-content:center}
+.hero-c .atm-device{display:block;width:min(576px,82vw);height:auto;margin-block:-24px -40px}
