@@ -33,10 +33,10 @@ body[data-product="cash"]{
 body[data-product="retail"]{--vivid:#4a6bdf;--vivid-deep:#2240a8}
 
 /* digital employees — cerulean */
-body[data-product="work-it"]{--vivid:#0079ad;--vivid-deep:#004a6b;--hero-bg:linear-gradient(141deg,var(--vivid) 0%,var(--vivid-deep) 71%)}
+body[data-product="digital-employees"]{--vivid:#0079ad;--vivid-deep:#004a6b;--hero-bg:linear-gradient(141deg,var(--vivid) 0%,var(--vivid-deep) 71%)}
 
 /* meeting notes — charcoal surfaces, lime accent. Lime is only ever paired with dark text. */
-body[data-product="meetly"]{
+body[data-product="meeting-notes"]{
   --vivid:#a6da0e;--vivid-deep:#5f8300;
   --ink:#0b0c09;--surface-dark:#15170f;--surface-dark-2:#1d2015;--screen:#101209;--foot:#070806;
   --brand:#22251c;--brand-deep:#0b0c09;--brand-bright:#5f8300;
@@ -63,6 +63,6 @@ body[data-product="dspm"]{--hero-solid:#060b22;--glow-a:rgba(61,107,255,.36);--g
 body[data-product="atm"]{--hero-solid:#060709;--glow-a:rgba(91,61,245,.34);--glow-b:rgba(43,123,255,.34);--hero-acc:#9fdcff}
 body[data-product="cash"]{--hero-solid:#15113f;--glow-a:rgba(74,63,214,.48);--glow-b:rgba(91,80,232,.16);--hero-acc:#a39cf5}
 body[data-product="retail"]{--hero-solid:#121a36;--glow-a:rgba(74,107,223,.36);--glow-b:rgba(74,107,223,.12);--hero-acc:#b4c5f7}
-body[data-product="work-it"]{--hero-solid:#04202e;--glow-a:rgba(0,121,173,.44);--glow-b:rgba(0,156,217,.15);--hero-acc:#a6dcf2}
-body[data-product="meetly"]{--hero-solid:#111310;--glow-a:rgba(166,218,14,.22);--glow-b:rgba(127,168,10,.07);--hero-acc:#c5f82a}
+body[data-product="digital-employees"]{--hero-solid:#04202e;--glow-a:rgba(0,121,173,.44);--glow-b:rgba(0,156,217,.15);--hero-acc:#a6dcf2}
+body[data-product="meeting-notes"]{--hero-solid:#111310;--glow-a:rgba(166,218,14,.22);--glow-b:rgba(127,168,10,.07);--hero-acc:#c5f82a}
 body[data-product="bim"]{--hero-solid:#06262d;--glow-a:rgba(20,128,140,.41);--glow-b:rgba(20,128,140,.14);--hero-acc:#2ec4b6}

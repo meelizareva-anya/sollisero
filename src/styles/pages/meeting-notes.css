@@ -1,5 +1,5 @@
 /* ===== meeting notes · page theme (Figma: charcoal surfaces, lime accent) ===== */
-/* Brand tokens: themes.css → body[data-product="meetly"]. Page-private tokens: */
+/* Brand tokens: themes.css → body[data-product="meeting-notes"]. Page-private tokens: */
 body{--tint:#eef4d6;--lime:#a6da0e;--lime-deep:#577800;--surface:#f7f8fb}
 .hero .h1 .dim{color:var(--pale)}
 .hero .sub{color:rgba(255,255,255,.85)}

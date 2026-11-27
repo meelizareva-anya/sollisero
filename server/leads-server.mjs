@@ -23,7 +23,7 @@ const RATE = { windowMs: 10 * 60 * 1000, max: +(process.env.RATE_MAX || 10) };
 const MIN_FILL_MS = 2500; // humans don't fill a form in under ~2.5 s
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const FORMS = new Set(['demo', 'project', 'lead']);
-const PRODUCTS = new Set(['', 'atm', 'dspm', 'cash', 'retail', 'work-it', 'meetly', 'bim']);
+const PRODUCTS = new Set(['', 'atm', 'dspm', 'cash', 'retail', 'digital-employees', 'meeting-notes', 'process-mining', 'bim']);
 
 const seen = new Map(); // requestId → { status, body } (idempotency, 24 h)
 const hits = new Map(); // ip → timestamps
