@@ -22,7 +22,7 @@ ${page.base ? `<base href="${config.basePath}">\n` : ''}<script>${JS_FLAG}</scri
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>${esc(page.title)}</title>
 <meta name="description" content="${esc(page.description)}">
-${page.noindex ? '<meta name="robots" content="noindex">\n' : ''}<link rel="canonical" href="${url}">
+${config.indexing === false ? '<meta name="robots" content="noindex, nofollow">\n' : page.noindex ? '<meta name="robots" content="noindex">\n' : ''}<link rel="canonical" href="${url}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="${esc(config.siteName)}">
 <meta property="og:title" content="${esc(page.title)}">

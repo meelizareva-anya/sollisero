@@ -66,6 +66,10 @@ tools/                      preview server, e2e tests, visual-regression tool
 - **Page**: `src/pages/<slug>.html` with front matter. It's picked up automatically and added to `sitemap.xml`.
 - **Component**: CSS in `styles/components/`, JS in `scripts/components/`, then list both in `APP_CSS` / `APP_JS` in `build.mjs` (order = cascade/execution order).
 
+## Search indexing
+
+`"indexing": false` in `site.config.json` closes the whole site from search engines: every page gets `<meta name="robots" content="noindex, nofollow">`, nginx sends `X-Robots-Tag: noindex, nofollow` (re-generate `deploy/nginx.conf` and reload nginx), and no `sitemap.xml` is built. `robots.txt` deliberately keeps `Allow: /` — a `Disallow` would stop crawlers from seeing the noindex, so already-indexed pages would stay in results. To open the site again, set `"indexing": true` (or remove the key), rebuild and deploy.
+
 ## Deploy
 
 1. `node build.mjs --check` — must pass.
