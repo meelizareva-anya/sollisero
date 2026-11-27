@@ -52,7 +52,7 @@ showcases was compared against its Figma frame and fixed in `src/`. Per-page det
   and settings screens match the copy. Left as the build has it.
 - **meeting notes `#product`.** The animation opens a report titled "Sales sync — Oct 6, 2026" from a
   row Figma names "Recording — Oct 6, 2026, 1:42 PM". The report screen has no Figma counterpart.
-- **Brand lockups inside mocks.** Figma still shows `krit / WORK-IT` and `finative`; the build uses the
+- **Brand lockups inside mocks.** Figma still shows old pre-rebrand lockups; the build uses the
   current Sollisero naming throughout.
 
 ## Verification

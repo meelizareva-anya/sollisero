@@ -22,7 +22,7 @@
 - Verdict: MATCH
 
 ## case (165:13746)
-- Figma: three bordered metric cards (Hours of manual work → minutes / 5 days / 1 year 3 months → weeks) on the left; dark "ESTIMATED CALCULATION" panel on the right with Runs per month 500, Manual work per run 48 min, Engineer's hourly rate ₽2,830, rule, "≈ 400 h freed up per month", "≈ ₽1.1M monetary equivalent", and the calculation note.
+- Figma: three bordered metric cards (Hours of manual work → minutes / 5 days / 1 year 3 months → weeks) on the left; dark "ESTIMATED CALCULATION" panel on the right with Runs per month 500, Manual work per run 48 min, Engineer's hourly rate $60, rule, "≈ 400 h freed up per month", "≈ $24K monetary equivalent", and the calculation note.
 - Build: identical structure, captions and numbers. The build additionally renders range sliders inside the three fields because the calculator is live; Figma (static) shows value only.
 - Verdict: MATCH — sliders left in place deliberately (interactive enhancement of a static frame; resting values are Figma's).
 
