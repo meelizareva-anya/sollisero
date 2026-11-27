@@ -27,10 +27,10 @@ Figma shows three labelled mockups: **01 All meetings** (large), **02 Team chat*
   September 30** with four rows, each `duration + length bar + ● Ready + →`:
   | row | title | meta | dur |
   |---|---|---|---|
-  | 1 | Recording — Oct 6, 2026, 1:42 PM | 1:42 PM · Recorder · olga@example.com | 9 min |
-  | 2 | Recording — Oct 6, 2026, 1:30 PM | 1:30 PM · Recorder · olga@example.com | 10 min |
-  | 3 | Product sync — Q4 roadmap | 3:04 PM · Zoom · olga@example.com | 28 min |
-  | 4 | Recording — Oct 2, 2026, 2:07 PM | 2:07 PM · Recorder · olga@example.com | 53 min |
+  | 1 | Recording — Oct 6, 2026, 1:42 PM | 1:42 PM · Recorder · owen@example.com | 9 min |
+  | 2 | Recording — Oct 6, 2026, 1:30 PM | 1:30 PM · Recorder · owen@example.com | 10 min |
+  | 3 | Product sync — Q4 roadmap | 3:04 PM · Zoom · owen@example.com | 28 min |
+  | 4 | Recording — Oct 2, 2026, 2:07 PM | 2:07 PM · Recorder · owen@example.com | 53 min |
   Row icons are rounded square tiles, tinted **lime / blue / violet / blue**.
 - **02 Team chat** and **03 Tasks** — build already matched verbatim (header, AI Copilot button,
   lime question bubble with dark text, cited answer with `14 Jun · Sales sync ▶ 00:02:14`,
@@ -67,7 +67,7 @@ Figma shows three labelled mockups: **01 All meetings** (large), **02 Team chat*
 ## #record (Figma `104:695`)
 
 - **Figma**: browser bar `meet.google.com / abc-defg-hij`, four **landscape** participant tiles
-  (Anna / Client / Ivan / You) with **no tile highlighted**, and a white bar
+  (Anna / Client / Ian / You) with **no tile highlighted**, and a white bar
   "meeting notes · Chrome extension" / "Tab audio + microphone · 00:12:30" + red `● Recording`.
 - **Build**: all copy matched, but the first tile carried a lime ring at rest (Figma has none), and
   the tiles were a fixed 150 px tall, so below 1920 they turned portrait.

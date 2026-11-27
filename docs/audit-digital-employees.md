@@ -35,7 +35,7 @@ Sections that already match at triage level: `#problem`, `#how`, `#included`, `#
      TASK·REQUEST·DIGITAL EMPLOYEE·CHANNEL·STARTED·DURATION·STATUS, first two rows tinted amber.
   3. *Test on examples* — `+ Add example` / `▷ Run all 12`, a "Comparing V2 · DRAFT with V1 · LIVE"
      strip, 4 KPIs (11/12, 1 improved, 0 regressions, 02:08), a 7-row **Examples** table
-     (#·CASE·EXPECTED·V1·V2·RESULT) and a **right detail panel** for example 02 Valve set VK-40
+     (#·CASE·EXPECTED·V1·V2·RESULT) and a **right detail panel** for example 02 Valve set VS-40
      (expected findings with TS §2.4 / TS §7.1, V1 · LIVE 1 of 2 vs V2 · DRAFT 2 of 2, "What changed in V2").
 - **Build**: three *dark navy* `.mini` cards — no sidebar, no top bar, no right rail, no tabs,
   no filter rows. Content was largely invented: window 1 had a 4-row table of requests
@@ -46,7 +46,7 @@ Sections that already match at triage level: `#problem`, `#how`, `#included`, `#
   (`src/styles/pages/digital-employees.css`, replaces the old `.mini` block) carrying the sidebar,
   top bar, main pane and right rails, and rebuilt every table/label/number verbatim from Figma.
   Kept the dark browser bar as in Figma.
-- **Deliberate deviation**: Figma's in-mock brand lockup reads `krit / WORK-IT`; the build uses
+- **Deliberate deviation**: Figma's in-mock brand lockup still uses the old pre-rebrand name; the build uses
   `sollisero / digital employees` to match the rebrand already applied across the site
   (hero, practice and rules mockups all use it). Not reverted.
 
@@ -94,7 +94,7 @@ Sections that already match at triage level: `#problem`, `#how`, `#included`, `#
   - steps had no connecting rail — **FIXED** (`.run .steps li::before`).
 - Everything else (story column 01–04, ask box, file chips, rows 01–03 and 06, the clipped
   footer rules) already matched verbatim.
-- **Deliberate deviation**: Figma's file row reads "WORK-IT compared 3 documents"; the build now
+- **Deliberate deviation**: Figma's file row still uses the old product name; the build now
   reads "digital employees compared 3 documents" (rebranded product name) rather than the old
   role label "Document Controller" it had before.
 - **Left alone**: the build's thin progress bar above the step list has no counterpart in Figma,

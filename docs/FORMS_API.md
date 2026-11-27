@@ -20,7 +20,7 @@ Idempotency-Key: 3f1c…            (same value as body.requestId)
   "product": "dspm",                   // atm | dspm | cash | retail | work-it | meetly | bim | null (home)
   "page": "/dspm.html",
   "locale": "en",
-  "name": "Anna Petrova",              // required, ≤120
+  "name": "Anna Parker",              // required, ≤120
   "email": "anna@bank.com",            // required, valid email, ≤200
   "company": "Bank",                   // optional, ≤200
   "message": "Need a demo for 300 ATMs", // optional, ≤4000 (label differs per page; field name is always "message")
@@ -60,7 +60,7 @@ Every form also has `action="/api/leads" method="post"`, so it works with JS dis
 POST /api/leads
 Content-Type: application/x-www-form-urlencoded
 
-form=demo&product=dspm&website=&name=Anna+Petrova&email=anna%40bank.com&company=Bank&message=…&consent=yes
+form=demo&product=dspm&website=&name=Anna+Parker&email=anna%40bank.com&company=Bank&message=…&consent=yes
 ```
 
 Respond with **`303 See Other`**:

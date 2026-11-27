@@ -7,10 +7,10 @@
     const fmt = n => n.toLocaleString('en-US');
     const upd = () => {
       const r = +runs.value, m = +mins.value, h = +rate.value;
-      $('#o-runs').textContent = fmt(r); $('#o-min').textContent = m + ' min'; $('#o-rate').textContent = '₽' + fmt(h);
+      $('#o-runs').textContent = fmt(r); $('#o-min').textContent = m + ' min'; $('#o-rate').textContent = '$' + fmt(h);
       const hours = r * m / 60, money = hours * h;
       $('#r-h').textContent = '≈ ' + fmt(Math.round(hours)) + ' h';
-      $('#r-m').textContent = '≈ ₽' + (money >= 1e6 ? (money / 1e6).toFixed(1) + 'M' : money >= 1e3 ? Math.round(money / 1e3) + 'K' : Math.round(money));
+      $('#r-m').textContent = '≈ $' + (money >= 1e6 ? (money / 1e6).toFixed(1) + 'M' : money >= 1e3 ? Math.round(money / 1e3) + 'K' : Math.round(money));
     };
     [runs, mins, rate].forEach(i => i.addEventListener('input', upd)); upd();
   }
