@@ -1,6 +1,7 @@
 {
   "siteUrl": "https://sollisero.com",
   "basePath": "/",
+  "indexing": false,
   "siteName": "Sollisero",
   "lang": "en",
   "contactEmail": "sales@sollisero.com",

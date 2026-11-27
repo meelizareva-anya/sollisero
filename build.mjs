@@ -157,16 +157,29 @@ export async function build() {
     built.push(page);
   }
 
-  // sitemap (404 and noindex pages excluded)
-  const indexable = built.filter((p) => !p.noindex);
-  const today = new Date().toISOString().slice(0, 10);
+  // Search indexing. `"indexing": false` in site.config.json closes the whole site:
+  // noindex/nofollow on every page (layout.mjs), X-Robots-Tag in nginx, no sitemap.
+  // robots.txt keeps `Allow: /` on purpose: a Disallow would stop crawlers from seeing
+  // the noindex, and already-indexed pages would stay in search results.
+  const indexing = config.indexing !== false;
+  if (indexing) {
+    // sitemap (404 and noindex pages excluded)
+    const indexable = built.filter((p) => !p.noindex);
+    const today = new Date().toISOString().slice(0, 10);
+    await writeFile(
+      join(DIST, 'sitemap.xml'),
+      `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${indexable
+        .map((p) => `  <url><loc>${config.siteUrl}/${p.slug === 'index' ? '' : `${p.slug}.html`}</loc><lastmod>${today}</lastmod></url>`)
+        .join('\n')}\n</urlset>\n`,
+    );
+  }
   await writeFile(
-    join(DIST, 'sitemap.xml'),
-    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${indexable
-      .map((p) => `  <url><loc>${config.siteUrl}/${p.slug === 'index' ? '' : `${p.slug}.html`}</loc><lastmod>${today}</lastmod></url>`)
-      .join('\n')}\n</urlset>\n`,
+    join(DIST, 'robots.txt'),
+    indexing
+      ? `User-agent: *\nAllow: /\nSitemap: ${config.siteUrl}/sitemap.xml\n`
+      : `# Site closed from indexing (site.config.json → "indexing": false): every page sends noindex.\nUser-agent: *\nAllow: /\n`,
   );
-  await writeFile(join(DIST, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${config.siteUrl}/sitemap.xml\n`);
+  if (!indexing) log('indexing OFF — noindex on every page, no sitemap');
 
   // Security headers: one definition → deploy/headers.json (preview server) + deploy/nginx.conf (production).
   const csp = [
@@ -188,11 +201,14 @@ export async function build() {
     'Referrer-Policy': 'strict-origin-when-cross-origin',
     'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
     'X-Frame-Options': 'DENY',
+    ...(indexing ? {} : { 'X-Robots-Tag': 'noindex, nofollow' }),
   };
   await mkdir(join(ROOT, 'deploy'), { recursive: true });
   await writeFile(join(ROOT, 'deploy/headers.json'), `${JSON.stringify(headers, null, 2)}\n`);
   const tpl = join(ROOT, 'deploy/nginx.conf.template');
-  if (existsSync(tpl)) await writeFile(join(ROOT, 'deploy/nginx.conf'), (await readFile(tpl, 'utf8')).replaceAll('%CSP%', csp));
+  if (existsSync(tpl)) await writeFile(join(ROOT, 'deploy/nginx.conf'), (await readFile(tpl, 'utf8'))
+          .replaceAll('%CSP%', csp)
+          .replaceAll('%X_ROBOTS%', indexing ? '' : 'add_header X-Robots-Tag "noindex, nofollow" always;'));
 
   log(`${built.length} pages → dist/ in ${Math.round(performance.now() - t0)} ms`);
   return built;
