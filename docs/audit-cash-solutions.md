@@ -259,7 +259,7 @@ product's. Measured before the fix: section background `#060B22` vs Figma `#1511
 surface `#0C1433` vs `#1A1550`, capability bars `#082DAB` vs `#3B31B7`, dimmed headline
 `#C2D1F5` vs `#C4BFFB`.
 
-The theme now carries the full set, matching the pattern the `meetly` and `bim` themes already
+The theme now carries the full set, matching the pattern the `meeting-notes` and `bim` themes already
 used. Verified after: section background and gradient sample **exactly** equal to Figma's
 render; hero mean pixel difference fell 11.1 → **8.3**.
 

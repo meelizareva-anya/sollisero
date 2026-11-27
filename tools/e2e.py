@@ -88,7 +88,7 @@ with sync_playwright() as p:
     pg6.goto(f'{BASE}/meeting-notes.html'); n2=len(leads())
     f6=pg6.locator('form.form'); f6.locator('[name=name]').fill('Lena'); f6.locator('[name=email]').fill('lena@co.ae'); f6.locator('[name=consent]').check()
     f6.locator('[type=submit]').click(); pg6.wait_for_load_state(); pg6.wait_for_timeout(500)
-    check(pg6.url.endswith('/thanks.html') and len(leads())==n2+1 and leads()[-1]['product']=='meetly','urlencoded POST → stored → 303 /thanks.html')
+    check(pg6.url.endswith('/thanks.html') and len(leads())==n2+1 and leads()[-1]['product']=='meeting-notes','urlencoded POST → stored → 303 /thanks.html')
     check(pg6.locator('.rv').count()==0 or pg6.evaluate("getComputedStyle(document.querySelector('.rv')||document.body).opacity")=='1','content visible without JS')
     pg7=ctx.new_page(); pg7.goto(f'{BASE}/dspm.html'); op=pg7.evaluate("getComputedStyle(document.querySelector('.rv')).opacity")
     check(op=='1','no-JS: .rv sections are visible (progressive enhancement)')

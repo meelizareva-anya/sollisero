@@ -17,7 +17,7 @@ Idempotency-Key: 3f1c…            (same value as body.requestId)
 {
   "requestId": "3f1c9a2e-…",          // UUID; stable across retries of the same submission
   "form": "demo",                      // "demo" (product pages) | "project" (home page)
-  "product": "dspm",                   // atm | dspm | cash | retail | work-it | meetly | bim | null (home)
+  "product": "dspm",                   // atm | dspm | cash | retail | digital-employees | meeting-notes | process-mining | bim | null (home)
   "page": "/dspm.html",
   "locale": "en",
   "name": "Anna Parker",              // required, ≤120

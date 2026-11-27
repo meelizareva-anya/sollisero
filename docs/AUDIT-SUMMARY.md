@@ -76,7 +76,7 @@ independently from the same export. Both sets of shared changes were merged:
 
 - `components/window.css` — chrome colours moved from literals to theme tokens
   (`var(--ink)`, `var(--surface-dark-2)`, `var(--pale)`), so a themed page gets its own window
-  chrome. Identical output for the default theme; cash, meetly and bim now tint.
+  chrome. Identical output for the default theme; cash, meeting-notes and bim now tint.
 - `components/tabs.css` — `.panel` gradient built from `--vivid` via `color-mix`.
 - `components/hero.css` — `.hero` gains `padding-bottom:clamp(48px,4.5vw,80px)`.
   **Both pages whose hero geometry is pinned to Figma override it**: index sets 64, cash
