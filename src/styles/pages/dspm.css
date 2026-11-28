@@ -170,3 +170,10 @@
 .conv{display:none}
 .conv-wrap{height:auto;margin-bottom:48px}
 }
+
+/* Clients: three logos — one row on desktop and tablet, a single column on phones. */
+.logos.logos--3{grid-template-columns:repeat(3,1fr)}
+@media (max-width:640px){
+  .logos.logos--3{grid-template-columns:1fr}
+  .logos--3 .logo-c{height:96px}
+}
