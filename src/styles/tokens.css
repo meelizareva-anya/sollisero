@@ -45,6 +45,17 @@
   --sec-cta:clamp(64px,5vw,96px);          /* closing CTA padding: 96 / 72 / 64 / 64 */
   --sec-strip:clamp(48px,3.3334vw,64px);   /* strips, Other products, footer top: 64 / 48 / 48 / 48 */
   --r-panel:clamp(24px,2.9167vw,56px);     /* deck panel radius: 56 / 42 / 24 / 24 */
+  /* Column spans for the 12-column patterns: N columns plus the N − 1 gutters between them.
+     100% resolves where the token is used: the grid container in grid-template-columns, the
+     containing block in width / max-width. Use them on blocks laid on the .wrap.
+     At 1920: 2 = 280 · 4 = 576 · 5 = 724 · 6 = 872 · 7 = 1020 · 8 = 1168 · 10 = 1464. */
+  --w2:calc((100% + var(--gutter)) * 2 / 12 - var(--gutter));
+  --w4:calc((100% + var(--gutter)) * 4 / 12 - var(--gutter));
+  --w5:calc((100% + var(--gutter)) * 5 / 12 - var(--gutter));
+  --w6:calc((100% + var(--gutter)) * 6 / 12 - var(--gutter));
+  --w7:calc((100% + var(--gutter)) * 7 / 12 - var(--gutter));
+  --w8:calc((100% + var(--gutter)) * 8 / 12 - var(--gutter));
+  --w10:calc((100% + var(--gutter)) * 10 / 12 - var(--gutter));
 
   /* Type */
   --sans:"Manrope",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;

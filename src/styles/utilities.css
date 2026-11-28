@@ -19,6 +19,7 @@
 .u-muted{color:var(--muted)!important}.u-text{color:var(--text)!important}.u-brand{color:var(--brand)!important}.u-ui-mute{color:var(--u-mute)!important}.u-white{color:#fff!important}
 .u-left{text-align:left!important}.u-right{text-align:right!important}.u-tc{text-align:center!important}.u-pre{white-space:pre!important}
 .u-fs-10{font-size:10px!important}.u-fs-11{font-size:11px!important}.u-fs-12{font-size:12px!important}.u-fs-14{font-size:14px!important}.u-fw-600{font-weight:600!important}
-.u-rel{position:relative!important}.u-maxw-420{max-width:420px!important}.u-maxw-1000{max-width:1000px!important}
-.u-slate{color:#5c6679!important}.u-fs-24{font-size:24px!important}.u-maxw-380{max-width:380px!important}.u-maxw-1300{max-width:1300px!important}
+.u-rel{position:relative!important}.u-maxw-420{max-width:420px!important}
+.u-slate{color:#5c6679!important}.u-fs-24{font-size:24px!important}.u-maxw-1300{max-width:1300px!important}
 .u-pad-chip{padding:2px 6px!important}.u-float-r{float:right!important}
+@media (min-width:1280px){.u-cols-7{max-width:var(--w7)!important}} /* 7 columns of the 12; full width below 1280 */

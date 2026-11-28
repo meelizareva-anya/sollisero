@@ -42,6 +42,41 @@ the grid (see "Column patterns" in Figma). Don't add new ones without a comment 
 | `--sec-cta` | `clamp(64px, 5vw, 96px)` | 96 | 72 | 64 | 64 | `layout/cta-pad-y` |
 | `--sec-strip` | `clamp(48px, 3.3334vw, 64px)` | 64 | 48 | 48 | 48 | `layout/strip-pad-y` |
 | `--r-panel` | `clamp(24px, 2.9167vw, 56px)` | 56 | 42 | 24 | 24 | `radius/panel` |
+| `--w2` … `--w10` | N columns of 12 + the gutters between them | 280 … 1464 | 207 … 1097 | — | — | — |
+
+## Column patterns
+
+`--wN` is the width of N of the 12 columns plus the gutters between them:
+`calc((100% + var(--gutter)) * N / 12 - var(--gutter))`. The `100%` resolves where the token is
+used: the grid container in `grid-template-columns`, the containing block in `width` or
+`max-width`. So use the tokens on blocks laid on the `.wrap`. Inside a smaller block, write the share
+of that block: the CTA title takes 5 of the copy's 6 columns,
+`calc((100% + var(--gutter)) * 5 / 6 - var(--gutter))`.
+
+| Pattern | At 1920 | CSS | Where |
+|---|---|---|---|
+| Header · split, 7 + 1 + 4 | 1020 · 576 at x 1264 | `var(--w7) var(--w4)` + `justify-content: space-between` | `.split`, `.intro-grid`, `.svc-head`, `.uc-head` |
+| Header · centred, title 10 · lead 6 | 1464 · 872 | `max-width: var(--w10)` / `var(--w6)` | `.prod-head`, `.ind-head`, `.exp-head` |
+| Hero, copy 10 · visual 8 | 1464 · 1168 | `max-width: var(--w10)` · `width: var(--w8)` | `.hero-c .hero-copy`, `.hero-mock` |
+| 2 / 3 / 4 / 6 cards | 872 · 576 · 428 · 280 | `repeat(N, minmax(0, 1fr))` + `gap: var(--gutter)` | `.flags`, `.cap-grid`, `.exp`, `.svcs`, `.stats`, `.three`, `.logos`, `.figs`, `.secg`, `.plinks`, `.cases`, `.clients` |
+| Copy + form, 6 + 1 + 5 | 872 · 724 at x 1116 | `var(--w6) var(--w5)` + `space-between` | `.cta-grid`, `.eng`, `.prob-grid` |
+| Product, 8 + 4 | 1168 · 576 | `var(--w8) var(--w4)` | `.iface` |
+| Tabs, 4 + 8 | 576 · 1168 | `var(--w4) var(--w8)` | `.adv` |
+| FAQ, 4 + 1 + 7 | 576 · 1020 at x 820 | `var(--w4) var(--w7)` + `space-between` | `.faq` |
+| Footer, 6 + 2 + 2 + 2 | 872 · 280 · 280 · 280 | `var(--w6) var(--w2) var(--w2) var(--w2)` | `.foot` |
+| Exception: Steps, 5 in a row | 339 | `repeat(5, minmax(0, 1fr))` | `.steps` |
+
+- **Equal cards:** `repeat(N, minmax(0, 1fr))` with the gutter. When N divides 12, the cards land on the
+  columns. Plain `1fr` lets wide content push a column off the grid. That is how the fourth dspm use
+  case got cut off at 1280–1640 before.
+- **Unequal splits:** two span tokens with `justify-content: space-between`. Never `fr` ratios:
+  `1.6fr 1fr` never lands on the columns.
+- **Text measures** (titles, leads, the hero) apply from 1280: `@media (min-width:1280px)`. Below that
+  the block takes its 8 or 4 columns.
+- **Collapse points** are still the component breakpoints: 1500 for the dspm problem block, 1200 for
+  the rest. Between 1200 and 1279 the 12-column spans still apply.
+- **Text columns on the 16 gutter** get inner right padding (`.three` 32, `.case .txt` 24), so the
+  texts stay at least 40 apart.
 
 ## Vertical rhythm (the horizontal grid)
 
