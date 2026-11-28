@@ -30,10 +30,21 @@
   /* Status */
   --red:#e5484d;--green:#3ecf8e;--amber:#f5a524;
 
-  /* Layout */
-  --pad:clamp(16px,4.1667vw,80px);   /* page gutter: 80px @1920 → 16px @390 */
-  --sec:clamp(64px,6.25vw,120px);    /* section vertical rhythm */
-  --max:1760px;                      /* content width @1920 */
+  /* Layout — one grid for every width (Figma: 02.kit → Kit · Foundations → "Grid & adaptive · v2").
+     1920 is the master. Below it each value scales with the screen (value × 100vw / 1920) until it
+     reaches its 390 value; above it nothing scales: content stops at --max and the margins grow.
+     Breakpoints: S ≤ 639 (4 columns) · M 640–1279 (8) · L 1280–1919 (12) · XL ≥ 1920 (12 × 132).
+     Values in the comments: 1920 / 1440 / 768 / 390. */
+  --cols:12;                               /* grid columns; 8 at M, 4 at S (media queries below) */
+  --gutter:16px;                           /* column gutter = gap between cards, at every width */
+  --pad:clamp(16px,4.1667vw,80px);         /* side margin: 80 / 60 / 32 / 16 */
+  --max:1760px;                            /* content width: 12 × 132 + 11 × 16; never wider */
+  --stage:1920px;                          /* decor stage: glows, dot fields, wordmark stay inside it */
+  --sec:clamp(64px,6.25vw,120px);          /* section padding: 120 / 90 / 64 / 64 */
+  --sec-gap:clamp(32px,3.3334vw,64px);     /* header → content, block → block: 64 / 48 / 32 / 32 */
+  --sec-cta:clamp(64px,5vw,96px);          /* closing CTA padding: 96 / 72 / 64 / 64 */
+  --sec-strip:clamp(48px,3.3334vw,64px);   /* strips, Other products, footer top: 64 / 48 / 48 / 48 */
+  --r-panel:clamp(24px,2.9167vw,56px);     /* deck panel radius: 56 / 42 / 24 / 24 */
 
   /* Type */
   --sans:"Manrope",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
@@ -41,6 +52,8 @@
 
   color-scheme:light;
 }
+@media (max-width:1279px){:root{--cols:8}}
+@media (max-width:639px){:root{--cols:4}}
 
 /* Derived tokens reference other tokens, so they are declared on <body>, where product
    themes have already been applied (a var() inside a custom property resolves where it is declared). */

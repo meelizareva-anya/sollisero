@@ -1,6 +1,8 @@
 /* Section shells, headings, split/intro grids */
 section{position:relative}
 .sec{padding-block:var(--sec)}
+/* Sections touch; their padding is the rhythm. The first block never adds space on top of it. */
+.sec>.wrap>:first-child{margin-top:0}
 .s-dark{background:var(--ink);color:#fff}
 .s-navy{background:var(--surface-dark);color:#fff}
 .s-light{background:var(--paper);color:var(--text)}

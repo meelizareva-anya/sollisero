@@ -12,7 +12,18 @@ h1,h2,h3,h4,p{margin:0}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
+/* Content container: margins var(--pad), never wider than var(--max) (1760); above 1920 the
+   margins grow. Backgrounds belong to the <section> around it, so they always run edge to edge. */
 .wrap{max-width:calc(var(--max) + 2*var(--pad));margin:0 auto;padding-inline:var(--pad)}
+/* Decor stage: an absolutely positioned 1920 box centred in its section. Glows, dot fields and
+   wordmarks placed inside it keep their 1920 position on wider screens. */
+.l-stage{position:absolute;inset:0;width:min(100%,var(--stage));margin-inline:auto;pointer-events:none}
+/* Column grid: 12 / 8 / 4 columns with the 16 gutter. A child spans --span columns (12-column
+   widths), --span-m on tablet and --span-s on mobile; by default it takes the full row there. */
+.l-grid{display:grid;grid-template-columns:repeat(var(--cols),minmax(0,1fr));column-gap:var(--gutter);row-gap:var(--l-row-gap,var(--gutter))}
+.l-grid>*{min-width:0;grid-column:span var(--span,12)}
+@media (max-width:1279px){.l-grid>*{grid-column:span var(--span-m,8)}}
+@media (max-width:639px){.l-grid>*{grid-column:span var(--span-s,4)}}
 .mono{font-family:var(--mono);font-size:13px;letter-spacing:.04em;text-transform:uppercase;font-weight:400}
 .mono-l{font-family:var(--mono);font-size:12px;letter-spacing:.04em;font-weight:500}
 .pre{white-space:pre}

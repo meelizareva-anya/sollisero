@@ -1,4 +1,4 @@
-.others{display:grid;grid-template-columns:220px 1fr 1fr;gap:40px;align-items:center;padding-block:64px}
+.others{display:grid;grid-template-columns:220px 1fr 1fr;gap:40px;align-items:center;padding-block:var(--sec-strip)}
 .others>span{color:rgba(255,255,255,.7)}
 .prod-card{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:32px;border-radius:14px;background:var(--surface-dark);border:1px solid rgba(255,255,255,.08);transition:background .3s,border-color .3s}
 .prod-card b{display:block;font-weight:500;font-size:clamp(26px,1.875vw,36px);letter-spacing:-.03em}

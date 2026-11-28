@@ -1,5 +1,5 @@
 /* Global presence card: header, world map with pins, country list (home, About). */
-.presence{margin-top:64px;padding:40px;border-radius:20px;background:#fff;border:1px solid rgba(6,11,34,.08);display:flex;flex-direction:column;gap:24px}
+.presence{margin-top:var(--sec-gap);padding:40px;border-radius:20px;background:#fff;border:1px solid rgba(6,11,34,.08);display:flex;flex-direction:column;gap:24px}
 .presence .hd{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
 .presence .hd h3{font-weight:500;font-size:clamp(28px,2.29vw,44px);line-height:1.1;letter-spacing:-.03em;margin-top:16px}
 .presence .hd p{width:420px;max-width:100%;font-size:16px;line-height:1.5;color:var(--muted)}
@@ -26,12 +26,12 @@
 .countries small{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--muted)}
 @media (max-width:1200px){.countries{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:900px){.presence{padding:24px}}
-@media (max-width:640px){.countries{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:639px){.countries{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* Figma "Presence row": countries in two columns on the left, the map on the right */
 .presence-row{display:grid;grid-template-columns:minmax(0,657px) minmax(0,973px);justify-content:space-between;gap:48px;align-items:center}
 .presence-row .countries{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 40px}
 @media (max-width:1100px){.presence-row{grid-template-columns:1fr}.presence-row .countries{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (max-width:640px){.presence-row .countries{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:639px){.presence-row .countries{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* The map art occupies 18.9%–81.1% of the 1678-wide canvas: scale the canvas so the map fills the column */
 .presence{overflow:hidden}
 .presence-row .wmap{width:160.8%;margin-left:-30.4%}

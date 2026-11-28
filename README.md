@@ -48,6 +48,8 @@ tools/                      preview server, e2e tests, visual-regression tool
 
 **Tokens & themes.** Components use semantic tokens only (`var(--brand)`, never a product hex). A product palette is one block in `themes.css`. Tokens that reference other tokens (`--hero-bg`, `--cta-bg`) are declared on `body`, because a `var()` inside a custom property resolves where it is declared — on `:root` it would ignore the product theme.
 
+**Grid and breakpoints.** One grid for every width: 12 / 8 / 4 columns, gutter 16, content ≤ 1760, breakpoints 639 and 1279; above 1920 only the margins grow. Tokens, rhythm and wide-screen rules: [docs/GRID.md](docs/GRID.md).
+
 **Where CSS goes.** Used on 2+ pages → `components/`. One page → `pages/<slug>.css` (it's a separate bundle, so page rules can't leak into other pages). Avoid overriding component internals from page CSS; prefer a modifier class (`.adv--compact`) or a component custom property (`.form{--consent-w:326px}`).
 
 **Class names.** Page markup must not reuse a class name that the shared bundle defines bare (`.card`, `.sec`, `.win`, `.pill`, `.panel`, `.field`…) for a *different* purpose — the shared rule still applies and paints your element. Two such bugs existed: `<span class="card">` inside the ATM withdraw mock picked up the white card surface, and `<div class="sec">` inside the cash-solutions device diagram picked up full section padding. Prefix page-private names instead (`.cno`, `.secp`, `.dash-*`, `.dm-*`). To audit: grep page markup for the bare names listed in `src/styles/components/*.css`.

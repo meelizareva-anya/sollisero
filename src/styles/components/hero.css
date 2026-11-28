@@ -3,7 +3,7 @@
 .texture div{animation:drift 90s linear infinite}
 .texture div:nth-child(even){animation-direction:reverse;animation-duration:120s}
 @keyframes drift{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.wordmark{position:absolute;left:-36px;right:0;pointer-events:none;user-select:none;font-weight:500;line-height:.78;letter-spacing:-.06em;font-size:clamp(200px,36.5vw,820px);white-space:nowrap;
+.wordmark{position:absolute;left:max(-36px,calc(50% - 996px));right:0;pointer-events:none;user-select:none;font-weight:500;line-height:.78;letter-spacing:-.06em;font-size:clamp(200px,36.5vw,820px);white-space:nowrap;
   background:radial-gradient(circle,rgba(255,255,255,.28) 1.1px,transparent 1.6px) 0 0/14px 14px,linear-gradient(180deg,rgba(194,209,245,.16) 0%,rgba(194,209,245,.06) 60%,rgba(194,209,245,0) 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent}
 .hero .wordmark{top:229px;opacity:0;transform:translateY(40px);animation:wm 1.6s .2s cubic-bezier(.2,.8,.2,1) forwards}
@@ -37,8 +37,8 @@
 .hero.hero-c{background:var(--hero-solid,#060b22);padding-top:184px;padding-bottom:72px;isolation:isolate}
 .hero-bg{position:absolute;inset:0;z-index:-1;pointer-events:none;
   background:
-    radial-gradient(49.5vw 28.6vw at 50% 15vw,var(--glow-a,rgba(34,70,189,.55)) 0%,var(--glow-b,rgba(85,121,235,.18)) 45%,rgba(0,0,0,0) 100%),
-    linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px) 0 0/120px 100%,
+    radial-gradient(min(49.5vw,950px) min(28.6vw,549px) at 50% min(15vw,288px),var(--glow-a,rgba(34,70,189,.55)) 0%,var(--glow-b,rgba(85,121,235,.18)) 45%,rgba(0,0,0,0) 100%),
+    linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px) calc(50% - 900px) 0/120px 100%,
     linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px) 0 0/100% 120px}
 .hero-c .dotfield{left:50%;right:auto;top:64%;transform:translateX(-50%);width:min(1100px,100%);height:900px;opacity:.32;z-index:-1}
 .hero.hero-c .hero-main,.hero.hero-c .hero-grid{display:flex;flex-direction:column;align-items:center;gap:56px;padding:0;min-height:0}
@@ -60,7 +60,7 @@
 @media (max-width:1279px){
   .hero.hero-c{padding-top:132px;padding-bottom:56px}
 }
-@media (max-width:640px){
+@media (max-width:639px){
   .hero.hero-c{padding-top:114px;padding-bottom:48px}
   .hero.hero-c .hero-main,.hero.hero-c .hero-grid{gap:40px}
   .hero.hero-c .hero-copy{gap:24px}
@@ -80,7 +80,7 @@
 .hero.hero-c .status-row::before,.hero.hero-c .ticker::before{content:"";position:absolute;left:0;right:0;top:-40px;height:1px;background:rgba(255,255,255,.08)}
 .hero.hero-c .status-row+.stats,.hero.hero-c .ticker+.hstats{border-top:0;margin-top:32px;padding-top:24px}
 .hero.hero-c .pm-ticker{display:none}
-@media (max-width:640px){
+@media (max-width:639px){
   /* On a phone the 1280-wide product window would shrink to ~28%: show it at ~half size, cropped at the right edge */
   .hero.hero-c .hero-visual,.hero.hero-c .hero-vis{overflow:hidden;border-radius:12px}
   .hero.hero-c .hero-visual .fit-view,.hero.hero-c .hero-vis .fit-view{flex:none;width:175%;max-width:none;margin-inline:0}

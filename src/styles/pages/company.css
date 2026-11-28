@@ -87,7 +87,7 @@
   .lg-layout{grid-template-columns:1fr;gap:40px}
   .lg-toc{position:static}
 }
-@media (max-width:640px){
+@media (max-width:639px){
   .hero-page{padding-bottom:64px}
   .co-stats,.co-cards,.co-cards--4,.co-offices,.co-facts{grid-template-columns:1fr;gap:12px;margin-top:32px}
   .co-stat{min-height:0;padding:24px;border-radius:16px}

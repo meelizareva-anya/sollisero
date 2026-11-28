@@ -1,4 +1,4 @@
-.cap-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:64px}
+.cap-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:var(--sec-gap)}
 .cap{position:relative;height:600px;border-radius:20px;background:var(--surface-dark);border:1px solid rgba(255,255,255,.08);padding:40px;display:flex;flex-direction:column;gap:28px;overflow:hidden;outline:none;isolation:isolate;color:#fff}
 .cap::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(138deg,var(--brand) 0%,var(--brand-deep) 75%);opacity:0;transition:opacity .45s}
 .cap-h{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}

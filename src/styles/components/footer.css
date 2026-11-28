@@ -1,4 +1,4 @@
-body>footer{position:relative;overflow:hidden;background:var(--foot);border-top:1px solid rgba(255,255,255,.08);padding-top:64px;padding-bottom:clamp(140px,13.6vw,330px);color:#fff}
+body>footer{position:relative;overflow:hidden;background:var(--foot);border-top:1px solid rgba(255,255,255,.08);padding-top:var(--sec-strip);padding-bottom:clamp(140px,13.6vw,330px);color:#fff}
 .foot{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;position:relative;z-index:2}
 .foot>*{min-width:0}
 .foot p{color:rgba(255,255,255,.6);font-size:16px;line-height:1.5;max-width:400px;margin:16px 0 0}
