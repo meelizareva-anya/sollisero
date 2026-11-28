@@ -1,7 +1,11 @@
-@media (max-width:1500px){
-  .adv{grid-template-columns:440px 1fr}
-  .cta-grid{grid-template-columns:1fr 540px}
-}
+/* ==========================================================================
+   Breakpoints (see tokens.css → Layout).
+   Page level, the same in Figma: S ≤ 639 (4 columns, mobile bar) · M 640–1279 (8 columns,
+   mobile bar) · L 1280–1919 (12 columns, nav pill) · XL ≥ 1920 (content stops at --max).
+   Component level, inside a range: 1500, 1200, 1100, 900, 820, 760, 700 — points where a
+   component no longer fits. They move to the page breakpoints as pages are re-laid on the grid;
+   don't add new ones without a comment saying why.
+   ========================================================================== */
 @media (max-width:1200px){
   .cap-grid{grid-template-columns:1fr}
   .adv{grid-template-columns:1fr}
@@ -9,7 +13,7 @@
   .cta-grid{grid-template-columns:1fr}
   .logos{grid-template-columns:repeat(3,1fr)}
   .others{grid-template-columns:1fr 1fr}.others>span{grid-column:1/-1}
-  .intro-grid{grid-template-columns:1fr}
+  .intro-grid,.split{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:900px){
   .stats{grid-template-columns:1fr;gap:28px}
@@ -17,7 +21,7 @@
   .foot{grid-template-columns:1fr 1fr}
   .others{grid-template-columns:1fr}
 }
-@media (max-width:640px){
+@media (max-width:639px){
   .logos{grid-template-columns:repeat(2,1fr)}
   .logo-c{height:110px}
   .cap{height:auto;min-height:520px;padding:24px}

@@ -1,6 +1,8 @@
 /* Section shells, headings, split/intro grids */
 section{position:relative}
 .sec{padding-block:var(--sec)}
+/* Sections touch; their padding is the rhythm. The first block never adds space on top of it. */
+.sec>.wrap>:first-child{margin-top:0}
 .s-dark{background:var(--ink);color:#fff}
 .s-navy{background:var(--surface-dark);color:#fff}
 .s-light{background:var(--paper);color:var(--text)}
@@ -16,9 +18,12 @@ section{position:relative}
 .s-light .lead,.s-white .lead{color:var(--muted)}
 .hint{display:flex;gap:10px;align-items:center;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.7)}
 .hint b{color:var(--accent);font-size:14px;font-weight:400}
-.split{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap}
+/* Header · split: title on 7 columns, aside on the last 4 (7 + 1 + 4); stacks at ≤ 1200 (responsive.css) */
+.split{display:grid;grid-template-columns:var(--w7) var(--w4);justify-content:space-between;align-items:end;gap:40px var(--gutter)}
 .split>*{min-width:0}
-.intro-grid{display:grid;grid-template-columns:minmax(0,1000px) minmax(0,560px);justify-content:space-between;gap:40px 120px;align-items:end}
+.intro-grid{display:grid;grid-template-columns:var(--w7) var(--w4);justify-content:space-between;gap:40px var(--gutter);align-items:end}
 .intro-grid p{font-size:16px;line-height:1.5;color:rgba(255,255,255,.65)}
 .s-light .intro-grid p,.s-white .intro-grid p{color:var(--muted)}
+/* L and XL: the lead fills its 4 columns, as Section/Header in Figma */
+@media (min-width:1280px){.split .lead{max-width:none}}
 

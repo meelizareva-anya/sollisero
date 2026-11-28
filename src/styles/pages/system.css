@@ -4,7 +4,7 @@
 .system-page__body{display:flex;flex-direction:column;align-items:center;text-align:center;gap:32px;max-width:1500px;margin-inline:auto}
 .sys-ill{display:block;height:225px;width:auto;max-width:100%;margin-bottom:8px}
 .system-page .sub a{color:#fff;text-decoration:underline;text-underline-offset:3px}
-@media (max-width:640px){
+@media (max-width:639px){
   .hero.system-page{padding-top:114px;padding-bottom:64px}
   .system-page__body{gap:24px}
   .sys-ill{height:auto;width:min(300px,80vw)}

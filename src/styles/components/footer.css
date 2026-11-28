@@ -1,5 +1,6 @@
-body>footer{position:relative;overflow:hidden;background:var(--foot);border-top:1px solid rgba(255,255,255,.08);padding-top:64px;padding-bottom:clamp(140px,13.6vw,330px);color:#fff}
-.foot{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;position:relative;z-index:2}
+body>footer{position:relative;overflow:hidden;background:var(--foot);border-top:1px solid rgba(255,255,255,.08);padding-top:var(--sec-strip);padding-bottom:clamp(140px,13.6vw,330px);color:#fff}
+/* Brand on 6 columns, link columns on 2 each (6 + 2 + 2 + 2) */
+.foot{display:grid;grid-template-columns:var(--w6) var(--w2) var(--w2) var(--w2);gap:40px var(--gutter);position:relative;z-index:2}
 .foot>*{min-width:0}
 .foot p{color:rgba(255,255,255,.6);font-size:16px;line-height:1.5;max-width:400px;margin:16px 0 0}
 .foot .logo{font-size:32px}
