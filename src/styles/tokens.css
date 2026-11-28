@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Design tokens. Source: Figma variables (file "Solisero (рабочий)").
+   Design tokens. Source: Figma variables (file "Solisero (working)").
    Brand-level colours are overridden per product in themes.css — components must
    only reference these semantic names, never raw hex values for brand colours.
    ========================================================================== */

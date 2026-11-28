@@ -40,7 +40,7 @@ tools/                      preview server, e2e tests, visual-regression tool
 ### Front matter
 ```json
 { "title": "…", "description": "…", "product": "dspm", "wordmark": "sollisero",
-  "others": ["atm", "cash-solutions"], "noindex": false, "styles": "system", "base": "/" }
+  "others": ["dspm"], "noindex": false, "styles": "system", "base": "/" }
 ```
 `product` switches the theme; `others` renders the "Other products" strip from `products.json`; `noindex` hides a page from search and the sitemap; `styles` reuses another page stylesheet; `base` is only for 404.
 
