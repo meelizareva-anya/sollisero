@@ -3,7 +3,7 @@ import os
 import json, time, sys
 from playwright.sync_api import sync_playwright
 BASE=os.environ.get('BASE','http://localhost:4173'); LEADS=os.environ.get('LEADS_FILE','/tmp/leads/leads.jsonl')
-PAGES=['index','careers','atm','dspm','cash-solutions','retail-banking','digital-employees','meeting-notes','bim-agent','process-mining','thanks','nope/deep/link']
+PAGES=['index','dspm','thanks','nope/deep/link']
 fails=[]
 def check(cond,msg):
     print(('  ✓ ' if cond else '  ✗ ')+msg)
@@ -57,14 +57,14 @@ with sync_playwright() as p:
 
     print('Form: product page + UTM attribution (dspm)')
     pg2=b.new_page(); pg2.route('**/fonts.g*/**',lambda r:r.abort()); pg2.goto(f'{BASE}/dspm.html?utm_source=linkedin&utm_campaign=q4'); pg2.wait_for_timeout(400)
-    f2=pg2.locator('form.form'); f2.locator('[name=name]').fill('Ivan'); f2.locator('[name=email]').fill('ivan@corp.io'); f2.locator('[name=consent]').check(); pg2.wait_for_timeout(2600)
+    f2=pg2.locator('form.form'); f2.locator('[name=name]').fill('Ian'); f2.locator('[name=email]').fill('ian@corp.io'); f2.locator('[name=consent]').check(); pg2.wait_for_timeout(2600)
     f2.locator('[type=submit]').click(); pg2.wait_for_selector('form.form.sent',timeout=5000)
     L=leads()[-1]
     check(L['product']=='dspm' and L['form']=='demo','product=dspm form=demo')
     check(L['attribution'].get('utm',{}).get('utm_source')=='linkedin','utm captured')
 
     print('Form: bot signals')
-    pg3=b.new_page(); pg3.route('**/fonts.g*/**',lambda r:r.abort()); pg3.goto(f'{BASE}/atm.html'); pg3.wait_for_timeout(300)
+    pg3=b.new_page(); pg3.route('**/fonts.g*/**',lambda r:r.abort()); pg3.goto(f'{BASE}/dspm.html'); pg3.wait_for_timeout(300)
     f3=pg3.locator('form.form'); f3.locator('[name=name]').fill('Bot'); f3.locator('[name=email]').fill('bot@x.io'); f3.locator('[name=consent]').check()
     f3.locator('[name=website]').evaluate("e=>e.value='http://spam'")
     f3.locator('[type=submit]').click(); pg3.wait_for_selector('form.form.sent',timeout=5000)
@@ -72,23 +72,23 @@ with sync_playwright() as p:
 
     print('Form: failure states')
     for status,expect in [(500,'Something went wrong'),(429,'Too many requests'),('abort','connection')]:
-        pg4=b.new_page(); pg4.route('**/fonts.g*/**',lambda r:r.abort()); pg4.goto(f'{BASE}/retail-banking.html'); pg4.wait_for_timeout(300)
+        pg4=b.new_page(); pg4.route('**/fonts.g*/**',lambda r:r.abort()); pg4.goto(f'{BASE}/dspm.html'); pg4.wait_for_timeout(300)
         pg4.route('**/api/leads',(lambda r:r.abort()) if status=='abort' else (lambda r,req,s=status:r.fulfill(status=s,body='{}',content_type='application/json')))
-        f4=pg4.locator('form.form'); f4.locator('[name=name]').fill('Olga'); f4.locator('[name=email]').fill('olga@bank.com'); f4.locator('[name=consent]').check()
+        f4=pg4.locator('form.form'); f4.locator('[name=name]').fill('Owen'); f4.locator('[name=email]').fill('owen@bank.com'); f4.locator('[name=consent]').check()
         f4.locator('[type=submit]').click(); pg4.wait_for_timeout(800)
         st=pg4.locator('.form-status'); btn=f4.locator('[type=submit]')
         check(st.is_visible() and expect in st.inner_text() and not btn.is_disabled() and 'sent' not in f4.get_attribute('class'), f'{status}: message shown, button re-enabled, data kept ({f4.locator("[name=name]").input_value()})')
-    pg5=b.new_page(); pg5.route('**/fonts.g*/**',lambda r:r.abort()); pg5.goto(f'{BASE}/cash-solutions.html'); pg5.wait_for_timeout(300)
+    pg5=b.new_page(); pg5.route('**/fonts.g*/**',lambda r:r.abort()); pg5.goto(f'{BASE}/dspm.html'); pg5.wait_for_timeout(300)
     pg5.route('**/api/leads',lambda r:r.fulfill(status=422,content_type='application/json',body=json.dumps({'error':'validation_failed','errors':{'email':'This domain is not accepted'}})))
     f5=pg5.locator('form.form'); f5.locator('[name=name]').fill('X'); f5.locator('[name=email]').fill('x@mailinator.com'); f5.locator('[name=consent]').check(); f5.locator('[type=submit]').click(); pg5.wait_for_timeout(600)
     check(f5.locator('[name=email]').get_attribute('aria-invalid')=='true' and pg5.evaluate("document.activeElement.name")=='email','422 → server field error shown on the field')
 
     print('Form: no-JS fallback')
     ctx=b.new_context(java_script_enabled=False,reduced_motion='reduce'); pg6=ctx.new_page(); pg6.route('**/fonts.g*/**',lambda r:r.abort())
-    pg6.goto(f'{BASE}/meeting-notes.html'); n2=len(leads())
-    f6=pg6.locator('form.form'); f6.locator('[name=name]').fill('Lena'); f6.locator('[name=email]').fill('lena@co.ae'); f6.locator('[name=consent]').check()
+    pg6.goto(f'{BASE}/dspm.html'); n2=len(leads())
+    f6=pg6.locator('form.form'); f6.locator('[name=name]').fill('Leah'); f6.locator('[name=email]').fill('leah@co.ae'); f6.locator('[name=consent]').check()
     f6.locator('[type=submit]').click(); pg6.wait_for_load_state(); pg6.wait_for_timeout(500)
-    check(pg6.url.endswith('/thanks.html') and len(leads())==n2+1 and leads()[-1]['product']=='meetly','urlencoded POST → stored → 303 /thanks.html')
+    check(pg6.url.endswith('/thanks.html') and len(leads())==n2+1 and leads()[-1]['product']=='dspm','urlencoded POST → stored → 303 /thanks.html')
     check(pg6.locator('.rv').count()==0 or pg6.evaluate("getComputedStyle(document.querySelector('.rv')||document.body).opacity")=='1','content visible without JS')
     pg7=ctx.new_page(); pg7.goto(f'{BASE}/dspm.html'); op=pg7.evaluate("getComputedStyle(document.querySelector('.rv')).opacity")
     check(op=='1','no-JS: .rv sections are visible (progressive enhancement)')

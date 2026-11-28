@@ -8,9 +8,6 @@ export const esc = (s = '') =>
   String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 
 const href = (slug) => `${slug}.html`;
-// Company pages.
-const ABOUT = 'about.html';
-const CONTACTS = 'contacts.html';
 
 export function head({ page, config, assets }) {
   const url = `${config.siteUrl}/${page.slug === 'index' ? '' : href(page.slug)}`;
@@ -38,12 +35,12 @@ ${assets.js.map((h) => `<script defer src="${h}"></script>`).join('\n')}
 </head>`;
 }
 
-export function header({ page, products, groups, hasContact = true }) {
-  // Pages without their own contact form send "Request a demo" to the Contacts page.
-  const demo = hasContact ? '#contact' : `${CONTACTS}#contact`;
+export function header({ page, config, products, groups, hasContact = true }) {
+  // Pages without their own contact form send "Request a demo" to the form on the home page.
+  const demo = hasContact ? '#contact' : 'index.html#contact';
   // Site-wide navigation (Figma "Nav/Floating pill" 753:14236, open menu 404:23432,
-  // mobile overlay 287:7028): a floating glass pill — logo · Products (menu) · Careers ·
-  // Contacts · three action buttons. Below 1280px the pill keeps only logo + burger and
+  // mobile overlay 287:7028): a floating glass pill — logo · Products (menu) ·
+  // three action buttons. Below 1280px the pill keeps only logo + burger and
   // the menu opens as a full-screen overlay with the products grouped like the desktop menu.
   const isCurrent = (slug) => page.slug === slug;
   const cur = (slug) => (isCurrent(slug) ? ' aria-current="page"' : '');
@@ -65,17 +62,14 @@ export function header({ page, products, groups, hasContact = true }) {
             ${groups.map(menuGroup).join('\n            ')}
             </div>
           </div>
-        </div>
-        <a class="nav-link${isCurrent('careers') ? ' active' : ''}" href="careers.html"${cur('careers')}>Careers</a>
-        <a class="nav-link${isCurrent('contacts') ? ' active' : ''}" href="${CONTACTS}"${cur('contacts')}>Contacts</a>`;
+        </div>`;
 
   const mobileItem = (p, label = p.name, sub = p.short || p.tagline, url = href(p.slug), current = isCurrent(p.slug)) =>
     // the mobile overlay uses the short tagline; the desktop menu uses the full one
     `<a class="mm" href="${url}"${current ? ' aria-current="page"' : ''}><div><b>${esc(label)}</b><small>${esc(sub)}</small></div><span aria-hidden="true">↗</span></a>`;
   const company = [
-    ['About', 'Group and expertise', ABOUT, isCurrent('about')],
-    ['Careers', 'Open positions', 'careers.html', isCurrent('careers')],
-    ['Contacts', 'Offices and email', CONTACTS, isCurrent('contacts')],
+    ['About', 'Group and expertise', 'index.html#about', false],
+    ['Contacts', config.contactEmail, `mailto:${config.contactEmail}`, false],
   ];
 
   return `<header class="nav-wrap" id="navWrap">
@@ -87,7 +81,7 @@ export function header({ page, products, groups, hasContact = true }) {
     <div class="nav-btns">
       <a class="nb nb-light" href="index.html#products">Explore products</a>
       <a class="nb nb-glass" href="${demo}">Request a demo</a>
-      <a class="nb nb-ghost" href="${CONTACTS}">Contact us</a>
+      <a class="nb nb-ghost" href="mailto:${config.contactEmail}">Contact us</a>
     </div>
     <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><i></i><i></i></button>
   </nav>
@@ -151,7 +145,7 @@ export function footer({ page, products, config }) {
       <div><a href="index.html" class="logo">sollisero</a><p>An international technology group that designs and builds digital products.</p></div>
       <div><h4>Products</h4><ul>
         ${products.map((p) => `<li><a href="${href(p.slug)}">${esc(p.name)}</a></li>`).join('')}</ul></div>
-      <div><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="index.html#services">Services</a></li><li><a href="index.html#industries">Industries</a></li><li><a href="careers.html">Careers</a></li><li><a href="contacts.html">Contacts</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="index.html#about">About</a></li><li><a href="index.html#services">Services</a></li><li><a href="index.html#industries">Industries</a></li><li><a href="index.html#careers">Careers</a></li></ul></div>
       <div><h4>Contacts</h4><ul><li><a href="mailto:${config.contactEmail}">${config.contactEmail}</a></li></ul></div>
     </div>
     <div class="legal"><span>© ${new Date().getFullYear()} Sollisero${page.legalSuffix ? ` // ${esc(page.legalSuffix)}` : ''}</span><div>${config.legal.map((l) => `<a href="${l.href}">${esc(l.label)}</a>`).join('')}<button type="button" class="cookie-open" data-cookie-open>Cookie settings</button></div></div>
